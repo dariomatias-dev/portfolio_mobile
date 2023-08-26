@@ -8,20 +8,20 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Stack(
-        children: <Widget>[
-          Column(
-            children: <Widget>[
-              SizedBox(
-                height: 120.0,
-                width: double.infinity,
-                child: Image.asset(
-                  PortfolioImages.backgroundProfile,
-                  fit: BoxFit.cover,
+      body: SingleChildScrollView(
+        child: Stack(
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 120.0,
+                  width: double.maxFinite,
+                  child: Image.asset(
+                    PortfolioImages.backgroundProfile,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Container(
+                Container(
                   padding: const EdgeInsets.only(
                     top: 50,
                   ),
@@ -50,28 +50,28 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          Positioned(
-            top: 78.0,
-            left: 20.0,
-            child: ClipOval(
-              child: Container(
-                padding: const EdgeInsets.all(2.0),
-                decoration: const BoxDecoration(
-                  color: Colors.black,
-                ),
-                child: Image.asset(
-                  PortfolioImages.myPhoto,
-                  width: 80,
-                  height: 80,
-                  fit: BoxFit.cover,
+              ],
+            ),
+            Positioned(
+              top: 78.0,
+              left: 20.0,
+              child: ClipOval(
+                child: Container(
+                  padding: const EdgeInsets.all(2.0),
+                  decoration: const BoxDecoration(
+                    color: Colors.black,
+                  ),
+                  child: Image.asset(
+                    PortfolioImages.myPhoto,
+                    width: 80,
+                    height: 80,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
