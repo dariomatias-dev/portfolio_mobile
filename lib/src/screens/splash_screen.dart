@@ -1,7 +1,8 @@
-import 'package:fade_out_particle/fade_out_particle.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/core/ui/portfolio_videos.dart';
 import 'package:video_player/video_player.dart';
+import 'package:fade_out_particle/fade_out_particle.dart';
+
+import 'package:portfolio/src/core/ui/portfolio_videos.dart';
 
 void main() => runApp(const SplashScreen());
 
@@ -25,13 +26,11 @@ class _SplashScreenState extends State<SplashScreen> {
       _animationOpacityLogo = 0.3;
     });
 
-    _controller = VideoPlayerController.asset(PortfolioVideos.video1);
-
-    _controller.addListener(() {
-      setState(() {});
-    });
-    _controller.initialize().then((_) => setState(() {}));
-    _controller.play();
+    _controller = VideoPlayerController.asset(PortfolioVideos.video2)
+      ..initialize().then((value) {
+        setState(() {});
+      })
+      ..play();
   }
 
   @override
@@ -90,7 +89,12 @@ class _SplashScreenState extends State<SplashScreen> {
                 duration: const Duration(
                   seconds: 4,
                 ),
-                onAnimationEnd: () {},
+                onAnimationEnd: () {
+                  Navigator.pushReplacementNamed(
+                    context,
+                    '/home',
+                  );
+                },
                 child: const Text(
                   'Dário Matias',
                   style: TextStyle(

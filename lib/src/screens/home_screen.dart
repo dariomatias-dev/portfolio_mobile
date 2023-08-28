@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/core/ui/portfolio_colors.dart';
 import 'package:portfolio/src/core/ui/portfolio_images.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,43 +11,59 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Stack(
-          children: <Widget>[
-            Column(
+          children: [
+            Stack(
               children: <Widget>[
-                SizedBox(
-                  height: 120.0,
-                  width: double.maxFinite,
-                  child: Image.asset(
-                    PortfolioImages.backgroundProfile,
-                    fit: BoxFit.cover,
-                  ),
+                Column(
+                  children: [
+                    SizedBox(
+                      height: 130.0,
+                      width: double.maxFinite,
+                      child: Image.asset(
+                        PortfolioImages.backgroundProfile,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Container(
+                      height: MediaQuery.sizeOf(context).height,
+                      decoration: BoxDecoration(
+                        color: PortfolioColors.backgroundColor,
+                      ),
+                    ),
+                  ],
                 ),
-                Container(
-                  padding: const EdgeInsets.only(
-                    top: 50,
-                  ),
-                  alignment: Alignment.centerLeft,
-                  decoration: const BoxDecoration(
-                    color: Colors.white12,
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(10),
+                Positioned(
+                  top: 120.0,
+                  right: 0,
+                  bottom: 0,
+                  left: 0,
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                      top: 50.0,
                     ),
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 20,
+                    alignment: Alignment.centerLeft,
+                    decoration: BoxDecoration(
+                      color: PortfolioColors.backgroundColor,
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(10.0),
+                      ),
                     ),
-                    child: Column(
-                      children: [
-                        Text(
-                          'Dário Matias',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20.0,
+                      ),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Dário Matias',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -55,18 +72,17 @@ class HomeScreen extends StatelessWidget {
             Positioned(
               top: 78.0,
               left: 20.0,
-              child: ClipOval(
-                child: Container(
-                  padding: const EdgeInsets.all(2.0),
-                  decoration: const BoxDecoration(
-                    color: Colors.black,
-                  ),
-                  child: Image.asset(
-                    PortfolioImages.myPhoto,
-                    width: 80,
-                    height: 80,
-                    fit: BoxFit.cover,
-                  ),
+              child: Container(
+                padding: const EdgeInsets.all(4.0),
+                decoration: BoxDecoration(
+                  color: PortfolioColors.backgroundColor,
+                  shape: BoxShape.circle,
+                ),
+                child: Image.asset(
+                  PortfolioImages.myPhoto,
+                  width: 80.0,
+                  height: 80.0,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

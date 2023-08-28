@@ -16,7 +16,7 @@ class PortfolioApp extends StatelessWidget {
       theme: PortfolioTheme.themeData,
       routes: {
         '/': (context) => const SplashScreen(),
-        'home': (context) => const HomeScreen(),
+        '/home': (context) => const HomeScreen(),
       },
     );
   }
