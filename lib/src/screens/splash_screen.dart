@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/core/ui/portfolio_images.dart';
-import 'package:portfolio/src/screens/home_screen.dart';
+import 'package:portfolio/src/core/ui/portfolio_videos.dart';
+import 'package:video_player/video_player.dart';
+
+void main() => runApp(const SplashScreen());
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -11,77 +13,60 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   double _animationOpacityLogo = 0.0;
+  late VideoPlayerController _controller;
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      setState(() {
-        _animationOpacityLogo = 1.0;
-      });
-    });
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _animationOpacityLogo = 0.4;
+    });
+
+    _controller = VideoPlayerController.asset(PortfolioVideos.video1);
+
+    _controller.addListener(() {
+      setState(() {});
+    });
+    _controller.initialize().then((_) => setState(() {}));
+    _controller.play();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: DecoratedBox(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              PortfolioImages.backgroundImageChair,
-            ),
-            opacity: 0.3,
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Center(
-          child: AnimatedOpacity(
-            duration: const Duration(
-              seconds: 4,
-            ),
-            opacity: _animationOpacityLogo,
-            curve: Curves.easeIn,
-            onEnd: () {
-              Navigator.of(context).pushAndRemoveUntil(
-                PageRouteBuilder(
-                  settings: const RouteSettings(
-                    name: '/home',
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Portfólio',
+      home: Scaffold(
+        backgroundColor: Colors.black,
+        body: Stack(
+          children: <Widget>[
+            AnimatedOpacity(
+              duration: const Duration(
+                seconds: 6,
+              ),
+              curve: Curves.easeIn,
+              opacity: _animationOpacityLogo,
+              onEnd: () {},
+              child: SizedBox.expand(
+                child: FittedBox(
+                  fit: BoxFit.cover,
+                  child: SizedBox(
+                    width: _controller.value.size.width,
+                    height: _controller.value.size.height,
+                    child: VideoPlayer(_controller),
                   ),
-                  transitionsBuilder: (
-                    context,
-                    animation,
-                    secondaryAnimation,
-                    child,
-                  ) {
-                    return FadeTransition(
-                      opacity: animation,
-                      child: child,
-                    );
-                  },
-                  pageBuilder: (
-                    context,
-                    animation,
-                    secondaryAnimation,
-                  ) {
-                    return const HomeScreen();
-                  },
                 ),
-                (route) => false,
-              );
-            },
-            child: const Text(
-              'Portfólio',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 }
