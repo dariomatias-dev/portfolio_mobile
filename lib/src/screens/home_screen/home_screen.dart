@@ -91,12 +91,6 @@ class HomeScreen extends StatelessWidget {
                             SizedBox(height: 20.0),
                             Divider(),
                             SizedBox(height: 20.0),
-                            Text(
-                              'oi',
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            )
                           ],
                         ),
                       ),
