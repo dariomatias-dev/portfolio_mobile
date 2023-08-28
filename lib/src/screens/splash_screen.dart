@@ -1,3 +1,4 @@
+import 'package:fade_out_particle/fade_out_particle.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/src/core/ui/portfolio_videos.dart';
 import 'package:video_player/video_player.dart';
@@ -13,13 +14,15 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   double _animationOpacityLogo = 0.0;
+  double _animationOpacityText = 0.0;
+  bool _disappear = false;
   late VideoPlayerController _controller;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _animationOpacityLogo = 0.4;
+      _animationOpacityLogo = 0.3;
     });
 
     _controller = VideoPlayerController.asset(PortfolioVideos.video1);
@@ -39,14 +42,19 @@ class _SplashScreenState extends State<SplashScreen> {
       home: Scaffold(
         backgroundColor: Colors.black,
         body: Stack(
+          alignment: Alignment.center,
           children: <Widget>[
             AnimatedOpacity(
               duration: const Duration(
-                seconds: 6,
+                seconds: 5,
               ),
               curve: Curves.easeIn,
               opacity: _animationOpacityLogo,
-              onEnd: () {},
+              onEnd: () {
+                setState(() {
+                  _animationOpacityText = 1.0;
+                });
+              },
               child: SizedBox.expand(
                 child: FittedBox(
                   fit: BoxFit.cover,
@@ -54,6 +62,41 @@ class _SplashScreenState extends State<SplashScreen> {
                     width: _controller.value.size.width,
                     height: _controller.value.size.height,
                     child: VideoPlayer(_controller),
+                  ),
+                ),
+              ),
+            ),
+            AnimatedOpacity(
+              duration: const Duration(
+                seconds: 4,
+              ),
+              curve: Curves.easeIn,
+              opacity: _animationOpacityText,
+              onEnd: () {
+                Future.delayed(
+                  const Duration(
+                    seconds: 1,
+                  ),
+                  () {
+                    setState(() {
+                      _disappear = true;
+                    });
+                  },
+                );
+              },
+              child: FadeOutParticle(
+                disappear: _disappear,
+                curve: Curves.easeIn,
+                duration: const Duration(
+                  seconds: 4,
+                ),
+                onAnimationEnd: () {},
+                child: const Text(
+                  'Dário Matias',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
