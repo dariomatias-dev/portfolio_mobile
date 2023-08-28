@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/core/ui/portfolio_images.dart';
+import 'package:portfolio/src/screens/home_screen/network_links_widget/network_links_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -91,6 +92,7 @@ class HomeScreen extends StatelessWidget {
                             SizedBox(height: 20.0),
                             Divider(),
                             SizedBox(height: 20.0),
+                            NetworkLinksWidget(),
                           ],
                         ),
                       ),
