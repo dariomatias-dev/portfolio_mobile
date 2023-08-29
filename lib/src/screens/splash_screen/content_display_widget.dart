@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fade_out_particle/fade_out_particle.dart';
 
-class ContentDisplayWidget extends StatefulWidget {
+class ContentDisplayWidget extends StatelessWidget {
   const ContentDisplayWidget({
     super.key,
     required this.screenContext,
@@ -16,35 +16,30 @@ class ContentDisplayWidget extends StatefulWidget {
   final VoidCallback changeDisappear;
 
   @override
-  State<ContentDisplayWidget> createState() => _ContentDisplayWidgetState();
-}
-
-class _ContentDisplayWidgetState extends State<ContentDisplayWidget> {
-  @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
       duration: const Duration(
         seconds: 4,
       ),
       curve: Curves.easeIn,
-      opacity: widget.animationOpacityText,
+      opacity: animationOpacityText,
       onEnd: () {
         Future.delayed(
           const Duration(
             seconds: 1,
           ),
-          () => widget.changeDisappear(),
+          () => changeDisappear(),
         );
       },
       child: FadeOutParticle(
-        disappear: widget.disappear,
+        disappear: disappear,
         curve: Curves.easeIn,
         duration: const Duration(
           seconds: 4,
         ),
         onAnimationEnd: () {
           Navigator.pushReplacementNamed(
-            widget.screenContext,
+            screenContext,
             '/home',
           );
         },

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
-class BackgroundVideoWidget extends StatefulWidget {
+class BackgroundVideoWidget extends StatelessWidget {
   const BackgroundVideoWidget({
     super.key,
     required this.controller,
@@ -14,21 +14,14 @@ class BackgroundVideoWidget extends StatefulWidget {
   final VoidCallback changeAnimationOpacityText;
 
   @override
-  State<BackgroundVideoWidget> createState() => _BackgroundVideoWidgetState();
-}
-
-class _BackgroundVideoWidgetState extends State<BackgroundVideoWidget> {
-  @override
   Widget build(BuildContext context) {
-    final VideoPlayerController controller = widget.controller;
-
     return AnimatedOpacity(
       duration: const Duration(
         seconds: 5,
       ),
       curve: Curves.easeIn,
-      opacity: widget.animationOpacityLogo,
-      onEnd: () => widget.changeAnimationOpacityText(),
+      opacity: animationOpacityLogo,
+      onEnd: () => changeAnimationOpacityText(),
       child: SizedBox.expand(
         child: FittedBox(
           fit: BoxFit.cover,
