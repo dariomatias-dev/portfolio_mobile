@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/screens/home_screen/network_links_widget/network_links_widget.dart';
+import 'package:portfolio/src/screens/home_screen/technologies_section_widget.dart';
 
 class BodyContentWidget extends StatelessWidget {
   const BodyContentWidget({super.key});
+
+  static const String usedTechnologiesDescription =
+      'Tecnologias que uso em meus projetos:';
+  static const String futureTechnologiesDescription =
+      'Tecnologias que pretendo estudar futuramente';
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +57,19 @@ class BodyContentWidget extends StatelessWidget {
           ),
           SizedBox(height: 20.0),
           Divider(),
-          SizedBox(height: 20.0),
+          SizedBox(height: 30.0),
           NetworkLinksWidget(),
+          SizedBox(height: 30.0),
+          Divider(),
+          SizedBox(height: 30.0),
+          TechnologiesSectionWidget(
+            description: usedTechnologiesDescription,
+          ),
+          SizedBox(height: 20.0),
+          TechnologiesSectionWidget(
+            description: futureTechnologiesDescription,
+          ),
+          SizedBox(height: 40.0),
         ],
       ),
     );
