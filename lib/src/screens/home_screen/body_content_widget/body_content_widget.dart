@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:portfolio/src/screens/home_screen/network_links_widget/network_links_widget.dart';
-import 'package:portfolio/src/screens/home_screen/technologies_section_widget.dart';
+import 'package:portfolio/src/screens/home_screen/body_content_widget/network_links_widget/network_links_widget.dart';
+import 'package:portfolio/src/screens/home_screen/body_content_widget/technologies_section_widget.dart';
 
 class BodyContentWidget extends StatelessWidget {
   const BodyContentWidget({super.key});

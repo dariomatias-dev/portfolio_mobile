@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/screens/home_screen/network_links_widget/network_links_constant.dart';
+import 'package:portfolio/src/screens/home_screen/body_content_widget/network_links_widget/network_links_constant.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NetworkLinksWidget extends StatelessWidget {

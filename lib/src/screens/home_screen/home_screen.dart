@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/core/ui/portfolio_images.dart';
 
-import 'package:portfolio/src/screens/home_screen/body_content_widget.dart';
+import 'package:portfolio/src/screens/home_screen/body_content_widget/body_content_widget.dart';
 import 'package:portfolio/src/screens/home_screen/profile_avatar_widget.dart';
 
 class HomeScreen extends StatelessWidget {
