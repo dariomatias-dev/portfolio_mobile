@@ -13,11 +13,6 @@ class BodyContentWidget extends StatelessWidget {
         right: 20.0,
         left: 20.0,
       ),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(10.0),
-        ),
-      ),
       child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

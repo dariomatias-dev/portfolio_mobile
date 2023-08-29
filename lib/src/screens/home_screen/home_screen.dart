@@ -10,39 +10,38 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double imageHeight = 130.0;
-    final double heightAvailable =
-        MediaQuery.sizeOf(context).height - imageHeight - 30.0;
-
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Stack(
             children: [
-              Stack(
-                children: <Widget>[
-                  Column(
-                    children: [
-                      Image.asset(
-                        PortfolioImages.backgroundProfile,
-                        fit: BoxFit.cover,
-                        height: imageHeight,
-                        width: double.maxFinite,
-                      ),
-                      Container(
-                        height: heightAvailable,
-                      ),
-                    ],
+              Image.asset(
+                PortfolioImages.backgroundProfile,
+                fit: BoxFit.cover,
+                height: 130.0,
+                width: double.maxFinite,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(
+                  top: 120.0,
+                ),
+                child: BodyContentWidget(),
+              ),
+              Positioned(
+                top: 120.0,
+                right: 0,
+                left: 0,
+                child: Container(
+                  height: 10.0,
+                  width: double.maxFinite,
+                  decoration: const BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(10.0),
+                    ),
                   ),
-                  const Positioned(
-                    top: 120.0,
-                    right: 0,
-                    bottom: 0,
-                    left: 0,
-                    child: BodyContentWidget(),
-                  ),
-                ],
+                ),
               ),
               const Positioned(
                 top: 78.0,
