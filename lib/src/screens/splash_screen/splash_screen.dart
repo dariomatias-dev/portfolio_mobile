@@ -4,6 +4,8 @@ import 'package:fade_out_particle/fade_out_particle.dart';
 
 import 'package:portfolio/src/core/ui/portfolio_videos.dart';
 
+import 'package:portfolio/src/screens/splash_screen/background_video_widget.dart';
+
 void main() => runApp(const SplashScreen());
 
 class SplashScreen extends StatefulWidget {
@@ -18,6 +20,12 @@ class _SplashScreenState extends State<SplashScreen> {
   double _animationOpacityText = 0.0;
   bool _disappear = false;
   late VideoPlayerController _controller;
+
+  void _changeAnimationOpacityText() {
+    setState(() {
+      _animationOpacityText = 1.0;
+    });
+  }
 
   @override
   void initState() {
@@ -43,27 +51,10 @@ class _SplashScreenState extends State<SplashScreen> {
         body: Stack(
           alignment: Alignment.center,
           children: <Widget>[
-            AnimatedOpacity(
-              duration: const Duration(
-                seconds: 5,
-              ),
-              curve: Curves.easeIn,
-              opacity: _animationOpacityLogo,
-              onEnd: () {
-                setState(() {
-                  _animationOpacityText = 1.0;
-                });
-              },
-              child: SizedBox.expand(
-                child: FittedBox(
-                  fit: BoxFit.cover,
-                  child: SizedBox(
-                    width: _controller.value.size.width,
-                    height: _controller.value.size.height,
-                    child: VideoPlayer(_controller),
-                  ),
-                ),
-              ),
+            BackgroundVideoWidget(
+              controller: _controller,
+              animationOpacityLogo: _animationOpacityLogo,
+              changeAnimationOpacityText: _changeAnimationOpacityText,
             ),
             AnimatedOpacity(
               duration: const Duration(
