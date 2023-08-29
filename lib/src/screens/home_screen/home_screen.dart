@@ -10,9 +10,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double contentHeight = 120.0;
+    const double imageHeight = 130.0;
     final double heightAvailable =
-        MediaQuery.sizeOf(context).height - contentHeight;
+        MediaQuery.sizeOf(context).height - imageHeight - 30.0;
 
     return Scaffold(
       body: SafeArea(
@@ -23,13 +23,11 @@ class HomeScreen extends StatelessWidget {
                 children: <Widget>[
                   Column(
                     children: [
-                      SizedBox(
-                        height: 130.0,
+                      Image.asset(
+                        PortfolioImages.backgroundProfile,
+                        fit: BoxFit.cover,
+                        height: imageHeight,
                         width: double.maxFinite,
-                        child: Image.asset(
-                          PortfolioImages.backgroundProfile,
-                          fit: BoxFit.cover,
-                        ),
                       ),
                       Container(
                         height: heightAvailable,
@@ -37,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   const Positioned(
-                    top: contentHeight,
+                    top: 120.0,
                     right: 0,
                     bottom: 0,
                     left: 0,
