@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-import 'package:fade_out_particle/fade_out_particle.dart';
 
 import 'package:portfolio/src/core/ui/portfolio_videos.dart';
 
 import 'package:portfolio/src/screens/splash_screen/background_video_widget.dart';
+import 'package:portfolio/src/screens/splash_screen/content_display_widget.dart';
 
 void main() => runApp(const SplashScreen());
 
@@ -27,6 +27,12 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 
+  void _changeDisappear() {
+    setState(() {
+      _disappear = true;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -39,6 +45,12 @@ class _SplashScreenState extends State<SplashScreen> {
         setState(() {});
       })
       ..play();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 
   @override
@@ -56,55 +68,15 @@ class _SplashScreenState extends State<SplashScreen> {
               animationOpacityLogo: _animationOpacityLogo,
               changeAnimationOpacityText: _changeAnimationOpacityText,
             ),
-            AnimatedOpacity(
-              duration: const Duration(
-                seconds: 4,
-              ),
-              curve: Curves.easeIn,
-              opacity: _animationOpacityText,
-              onEnd: () {
-                Future.delayed(
-                  const Duration(
-                    seconds: 1,
-                  ),
-                  () {
-                    setState(() {
-                      _disappear = true;
-                    });
-                  },
-                );
-              },
-              child: FadeOutParticle(
-                disappear: _disappear,
-                curve: Curves.easeIn,
-                duration: const Duration(
-                  seconds: 4,
-                ),
-                onAnimationEnd: () {
-                  Navigator.pushReplacementNamed(
-                    context,
-                    '/home',
-                  );
-                },
-                child: const Text(
-                  'Dário Matias',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+            ContentDisplayWidget(
+              screenContext: context,
+              animationOpacityText: _animationOpacityText,
+              disappear: _disappear,
+              changeDisappear: _changeDisappear,
             ),
           ],
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
   }
 }

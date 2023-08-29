@@ -15,6 +15,7 @@ class HomeScreen extends StatelessWidget {
         MediaQuery.sizeOf(context).height - imageHeight - 30.0;
 
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Stack(
