@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:portfolio/src/screens/home_screen/body_content_widget/network_links_widget/network_links_widget.dart';
+import 'package:portfolio/src/screens/home_screen/body_content_widget/social_media_widget.dart';
 import 'package:portfolio/src/screens/home_screen/body_content_widget/technologies_section_widget.dart';
 
 class BodyContentWidget extends StatelessWidget {
@@ -58,7 +58,7 @@ class BodyContentWidget extends StatelessWidget {
           SizedBox(height: 20.0),
           Divider(),
           SizedBox(height: 30.0),
-          NetworkLinksWidget(),
+          SocialMediaWidget(),
           SizedBox(height: 30.0),
           Divider(),
           SizedBox(height: 30.0),
