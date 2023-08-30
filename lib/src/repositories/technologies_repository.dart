@@ -1,20 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:portfolio/src/models/technology_name_model.dart';
+import 'package:portfolio/src/models/technology_model.dart';
 
-class TechnologieNamesRepository {
+class TechnologiesRepository {
   final _db = FirebaseFirestore.instance;
 
-  Future<List<TechnologyNameModel>> readTechnologie() async {
+  Future<List<TechnologyModel>> readTechnologies() async {
     try {
       final technologiesList = _db
           .collection('technologies')
           .withConverter(
             fromFirestore: (snapshot, options) {
-              return TechnologyNameModel.fromMap(snapshot.data()!);
+              return TechnologyModel.fromMap(snapshot.data()!);
             },
-            toFirestore: (technologieName, options) {
-              return technologieName.toMap();
+            toFirestore: (technology, options) {
+              return technology.toMap();
             },
           )
           .get()
@@ -25,7 +25,7 @@ class TechnologieNamesRepository {
           });
 
       return technologiesList;
-    } catch (e) {
+    } catch (err) {
       return [];
     }
   }
