@@ -37,7 +37,7 @@ class TechnologiesSectionWidget extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.all(12.0),
               child: Image.network(
-                '${dotenv.env['BASE_URL_IMAGES']}/${technologies[index]}_icon.png',
+                '${dotenv.env['BASE_URL_IMAGES']}/technologies/${technologies[index]}_logo.png',
               ),
             );
           },
