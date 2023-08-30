@@ -10,16 +10,10 @@ class SocialMediaRepository {
       final socialMediaList = _db
           .collection('social_media')
           .withConverter(
-            fromFirestore: (
-              snapshot,
-              options,
-            ) {
+            fromFirestore: (snapshot, options) {
               return SocialMediaModel.fromMap(snapshot.data()!);
             },
-            toFirestore: (
-              socialMedia,
-              options,
-            ) {
+            toFirestore: (socialMedia, options) {
               return socialMedia.toMap();
             },
           )

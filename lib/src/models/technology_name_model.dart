@@ -10,4 +10,10 @@ class TechnologyNameModel {
       name: map['name'],
     );
   }
+
+  toMap() {
+    return {
+      'name': name,
+    };
+  }
 }

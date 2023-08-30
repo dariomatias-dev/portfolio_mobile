@@ -45,4 +45,15 @@ class TechnologyModel {
       links: LinksModel.fromMap(map['links']),
     );
   }
+
+  toMap() {
+    return {
+      'name': name,
+      'description': description,
+      'gradient': gradient,
+      'createdIn': createdIn,
+      'createdBy': createdBy,
+      'links': links,
+    };
+  }
 }
