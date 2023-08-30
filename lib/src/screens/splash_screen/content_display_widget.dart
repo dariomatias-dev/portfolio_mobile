@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:fade_out_particle/fade_out_particle.dart';
+import 'package:video_player/video_player.dart';
 
 class ContentDisplayWidget extends StatelessWidget {
   const ContentDisplayWidget({
     super.key,
     required this.screenContext,
+    required this.controller,
     required this.animationOpacityText,
     required this.disappear,
     required this.changeDisappear,
   });
 
   final BuildContext screenContext;
+  final VideoPlayerController controller;
   final double animationOpacityText;
   final bool disappear;
   final VoidCallback changeDisappear;
@@ -38,6 +41,7 @@ class ContentDisplayWidget extends StatelessWidget {
           seconds: 4,
         ),
         onAnimationEnd: () {
+          controller.pause();
           Navigator.pushReplacementNamed(
             screenContext,
             '/home',

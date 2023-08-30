@@ -70,6 +70,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             ContentDisplayWidget(
               screenContext: context,
+              controller: _controller,
               animationOpacityText: _animationOpacityText,
               disappear: _disappear,
               changeDisappear: _changeDisappear,
