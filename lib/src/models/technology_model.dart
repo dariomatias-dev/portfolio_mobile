@@ -2,7 +2,7 @@ class LinksModel {
   LinksModel({
     required this.githubRepository,
     required this.officialWebsite,
-    required this.playground,
+    this.playground,
   });
 
   final String githubRepository;
@@ -16,22 +16,37 @@ class LinksModel {
       playground: map['playground'],
     );
   }
+
+  toMap() {
+    return {
+      'githubRepository': githubRepository,
+      'officialWebsite': officialWebsite,
+      'playground': playground,
+    };
+  }
 }
 
 class ImageNameModel {
   ImageNameModel({
     required this.imageStandard,
-    required this.imageDarkTheme,
+    this.imageDarkTheme,
   });
 
   final String imageStandard;
-  final String imageDarkTheme;
+  final String? imageDarkTheme;
 
   factory ImageNameModel.fromMap(Map<String, dynamic> map) {
     return ImageNameModel(
-      imageStandard: map['imageStandard'],
-      imageDarkTheme: map['imageDarkTheme'],
+      imageStandard: map['image_standard'],
+      imageDarkTheme: map['image_dark_theme'],
     );
+  }
+
+  toMap() {
+    return {
+      'imageStandard': imageStandard,
+      'imageDarkTheme': imageDarkTheme,
+    };
   }
 }
 
@@ -48,7 +63,7 @@ class TechnologyModel {
 
   final String name;
   final String description;
-  final List<int> gradient;
+  final List<String> gradient;
   final ImageNameModel imageName;
   final String createdIn;
   final String createdBy;
@@ -58,8 +73,8 @@ class TechnologyModel {
     return TechnologyModel(
       name: map['name'],
       description: map['description'],
-      gradient: map['gradient'],
-      imageName: map['imageNamee'],
+      gradient: (map['gradient'] as List<dynamic>).cast<String>(),
+      imageName: ImageNameModel.fromMap(map['image_name']),
       createdIn: map['created_in'],
       createdBy: map['created_by'],
       links: LinksModel.fromMap(map['links']),
@@ -71,10 +86,10 @@ class TechnologyModel {
       'name': name,
       'description': description,
       'gradient': gradient,
-      'imageName': imageName,
+      'imageName': imageName.toMap(),
       'createdIn': createdIn,
       'createdBy': createdBy,
-      'links': links,
+      'links': links.toMap(),
     };
   }
 }

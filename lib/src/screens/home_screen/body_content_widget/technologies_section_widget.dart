@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/models/technologies_status_model.dart';
+import 'package:portfolio/src/models/technology_model.dart';
+import 'package:portfolio/src/repositories/technologies_repository.dart';
 
 import 'package:portfolio/src/repositories/technologies_status_repository.dart';
 
@@ -16,16 +18,24 @@ class TechnologiesSectionWidget extends StatefulWidget {
 
 class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
   final technologiesStatusRepository = TechnologiesStatusRepository();
+  final technologiesRepository = TechnologiesRepository();
 
   TechnologieStatusModel? descriptionTechnologiesUsed;
   TechnologieStatusModel? descriptionFutureTechnologies;
 
   Future<void> fetchData() async {
-    final technologieStatusList =
-        await technologiesStatusRepository.readTechnologiesStatus();
+    final queries = [
+      technologiesStatusRepository.readTechnologiesStatus(),
+      technologiesRepository.readTechnologies(),
+    ];
 
+    final results = await Future.wait(queries);
+
+    final technologieStatusList = results[0] as List<TechnologieStatusModel>;
     descriptionTechnologiesUsed = technologieStatusList[0];
     descriptionFutureTechnologies = technologieStatusList[1];
+
+    final technologies = results[1] as List<TechnologyModel>;
   }
 
   @override
