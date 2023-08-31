@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:portfolio/src/models/technologies_status_model.dart';
 import 'package:portfolio/src/models/technology_model.dart';
-import 'package:portfolio/src/repositories/technologies_repository.dart';
 
+import 'package:portfolio/src/repositories/technologies_repository.dart';
 import 'package:portfolio/src/repositories/technologies_status_repository.dart';
+import 'package:portfolio/src/models/technology_category_model.dart';
 
 import 'package:portfolio/src/screens/home_screen/body_content_widget/technologies_component_widget.dart';
 
@@ -17,11 +17,12 @@ class TechnologiesSectionWidget extends StatefulWidget {
 }
 
 class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
+  bool loadedData = false;
   final technologiesStatusRepository = TechnologiesStatusRepository();
   final technologiesRepository = TechnologiesRepository();
 
-  TechnologieStatusModel? descriptionTechnologiesUsed;
-  TechnologieStatusModel? descriptionFutureTechnologies;
+  TechnologiesCategoryModel? categoryTechnologiesUsed;
+  TechnologiesCategoryModel? categoryTechnologiesFuture;
 
   Future<void> fetchData() async {
     final queries = [
@@ -31,11 +32,27 @@ class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
 
     final results = await Future.wait(queries);
 
-    final technologieStatusList = results[0] as List<TechnologieStatusModel>;
-    descriptionTechnologiesUsed = technologieStatusList[0];
-    descriptionFutureTechnologies = technologieStatusList[1];
-
     final technologies = results[1] as List<TechnologyModel>;
+    List<TechnologyModel> technologiesUsed = technologies.where((technology) {
+      return technology.status == 'using';
+    }).toList();
+    List<TechnologyModel> technologiesFuture = technologies.where((technology) {
+      return technology.status == 'planned';
+    }).toList();
+
+    final technologieStatusList = results[0] as List<String>;
+    categoryTechnologiesUsed = TechnologiesCategoryModel(
+      description: technologieStatusList[0],
+      technologies: technologiesUsed,
+    );
+    categoryTechnologiesFuture = TechnologiesCategoryModel(
+      description: technologieStatusList[1],
+      technologies: technologiesFuture,
+    );
+
+    setState(() {
+      loadedData = true;
+    });
   }
 
   @override
@@ -46,11 +63,11 @@ class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return descriptionTechnologiesUsed != null
+    return loadedData
         ? Column(
             children: [
               TechnologiesComponentWidget(
-                technologieStatus: descriptionTechnologiesUsed!,
+                categoryTechnologiesUsed: categoryTechnologiesUsed!,
               ),
               const SizedBox(height: 20.0),
             ],

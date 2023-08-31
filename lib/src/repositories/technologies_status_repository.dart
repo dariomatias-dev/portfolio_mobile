@@ -5,7 +5,7 @@ import 'package:portfolio/src/models/technologies_status_model.dart';
 class TechnologiesStatusRepository {
   final _db = FirebaseFirestore.instance;
 
-  Future<List<TechnologieStatusModel>> readTechnologiesStatus() async {
+  Future<List<String>> readTechnologiesStatus() async {
     try {
       final technologieStatusList = _db
           .collection('technologies_status')
@@ -20,7 +20,7 @@ class TechnologiesStatusRepository {
           .get()
           .then((querySnapshot) {
             return querySnapshot.docs.map((documentSnapshot) {
-              return documentSnapshot.data();
+              return documentSnapshot.data().description;
             }).toList();
           });
 

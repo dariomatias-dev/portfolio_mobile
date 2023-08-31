@@ -56,6 +56,7 @@ class TechnologyModel {
     required this.description,
     required this.gradient,
     required this.imageName,
+    required this.status,
     required this.createdIn,
     required this.createdBy,
     required this.links,
@@ -65,6 +66,7 @@ class TechnologyModel {
   final String description;
   final List<String> gradient;
   final ImageNameModel imageName;
+  final String status;
   final String createdIn;
   final String createdBy;
   final LinksModel links;
@@ -75,6 +77,7 @@ class TechnologyModel {
       description: map['description'],
       gradient: (map['gradient'] as List<dynamic>).cast<String>(),
       imageName: ImageNameModel.fromMap(map['image_name']),
+      status: map['status'],
       createdIn: map['created_in'],
       createdBy: map['created_by'],
       links: LinksModel.fromMap(map['links']),
@@ -87,6 +90,7 @@ class TechnologyModel {
       'description': description,
       'gradient': gradient,
       'imageName': imageName.toMap(),
+      'status': status,
       'createdIn': createdIn,
       'createdBy': createdBy,
       'links': links.toMap(),

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'package:portfolio/src/models/technologies_status_model.dart';
+import 'package:portfolio/src/models/technology_category_model.dart';
 
 class TechnologiesComponentWidget extends StatelessWidget {
   const TechnologiesComponentWidget({
     super.key,
-    required this.technologieStatus,
+    required this.categoryTechnologiesUsed,
   });
 
-  final TechnologieStatusModel technologieStatus;
+  final TechnologiesCategoryModel categoryTechnologiesUsed;
 
   @override
   Widget build(BuildContext context) {
