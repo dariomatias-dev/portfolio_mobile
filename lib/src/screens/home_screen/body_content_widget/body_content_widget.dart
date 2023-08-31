@@ -6,11 +6,6 @@ import 'package:portfolio/src/screens/home_screen/body_content_widget/technologi
 class BodyContentWidget extends StatelessWidget {
   const BodyContentWidget({super.key});
 
-  static const String usedTechnologiesDescription =
-      'Tecnologias que uso em meus projetos:';
-  static const String futureTechnologiesDescription =
-      'Tecnologias que pretendo estudar futuramente';
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -62,13 +57,7 @@ class BodyContentWidget extends StatelessWidget {
           SizedBox(height: 30.0),
           Divider(),
           SizedBox(height: 30.0),
-          TechnologiesSectionWidget(
-            description: usedTechnologiesDescription,
-          ),
-          SizedBox(height: 20.0),
-          TechnologiesSectionWidget(
-            description: futureTechnologiesDescription,
-          ),
+          TechnologiesSectionWidget(),
           SizedBox(height: 40.0),
         ],
       ),
