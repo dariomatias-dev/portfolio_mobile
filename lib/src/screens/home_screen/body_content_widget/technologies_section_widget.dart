@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:portfolio/src/models/technology_category_model.dart';
 import 'package:portfolio/src/models/technology_model.dart';
 
 import 'package:portfolio/src/repositories/technologies_repository.dart';
-import 'package:portfolio/src/repositories/technologies_status_repository.dart';
-import 'package:portfolio/src/models/technology_category_model.dart';
+import 'package:portfolio/src/repositories/technologies_category_repository.dart';
 
 import 'package:portfolio/src/screens/home_screen/body_content_widget/technologies_component_widget.dart';
 
@@ -18,7 +18,7 @@ class TechnologiesSectionWidget extends StatefulWidget {
 
 class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
   bool loadedData = false;
-  final technologiesStatusRepository = TechnologiesStatusRepository();
+  final technologiesCategoryRepository = TechnologiesCategoryRepository();
   final technologiesRepository = TechnologiesRepository();
 
   TechnologiesCategoryModel? categoryTechnologiesUsed;
@@ -26,7 +26,7 @@ class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
 
   Future<void> fetchData() async {
     final queries = [
-      technologiesStatusRepository.readTechnologiesStatus(),
+      technologiesCategoryRepository.readTechnologiesStatus(),
       technologiesRepository.readTechnologies(),
     ];
 
@@ -42,11 +42,11 @@ class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
 
     final technologieStatusList = results[0] as List<String>;
     categoryTechnologiesUsed = TechnologiesCategoryModel(
-      description: technologieStatusList[0],
+      description: technologieStatusList[1],
       technologies: technologiesUsed,
     );
     categoryTechnologiesFuture = TechnologiesCategoryModel(
-      description: technologieStatusList[1],
+      description: technologieStatusList[0],
       technologies: technologiesFuture,
     );
 
@@ -69,7 +69,10 @@ class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
               TechnologiesComponentWidget(
                 categoryTechnologiesUsed: categoryTechnologiesUsed!,
               ),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 24.0),
+              TechnologiesComponentWidget(
+                categoryTechnologiesUsed: categoryTechnologiesFuture!,
+              ),
             ],
           )
         : const Center(

@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:portfolio/src/models/technologies_status_model.dart';
+import 'package:portfolio/src/models/technologies_category_model.dart';
 
-class TechnologiesStatusRepository {
+class TechnologiesCategoryRepository {
   final _db = FirebaseFirestore.instance;
 
   Future<List<String>> readTechnologiesStatus() async {
@@ -11,7 +11,7 @@ class TechnologiesStatusRepository {
           .collection('technologies_status')
           .withConverter(
             fromFirestore: (snapshot, options) {
-              return TechnologieStatusModel.fromMap(snapshot.data()!);
+              return TechnologiesCategoryModel.fromMap(snapshot.data()!);
             },
             toFirestore: (technologieStatus, options) {
               return technologieStatus.toMap();

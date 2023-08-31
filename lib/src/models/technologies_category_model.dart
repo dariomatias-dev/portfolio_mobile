@@ -1,12 +1,12 @@
-class TechnologieStatusModel {
-  TechnologieStatusModel({
+class TechnologiesCategoryModel {
+  TechnologiesCategoryModel({
     required this.description,
   });
 
   final String description;
 
-  factory TechnologieStatusModel.fromMap(Map<String, dynamic> map) {
-    return TechnologieStatusModel(
+  factory TechnologiesCategoryModel.fromMap(Map<String, dynamic> map) {
+    return TechnologiesCategoryModel(
       description: map['description'],
     );
   }
