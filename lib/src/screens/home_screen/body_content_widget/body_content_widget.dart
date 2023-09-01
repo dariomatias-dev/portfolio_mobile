@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/src/screens/home_screen/body_content_widget/projects_section_widget/projects_section_widget.dart';
 
-import 'package:portfolio/src/screens/home_screen/body_content_widget/social_media_widget.dart';
+import 'package:portfolio/src/screens/home_screen/body_content_widget/social_media_widget/social_media_widget.dart';
 import 'package:portfolio/src/screens/home_screen/body_content_widget/technologies_section_widget.dart';
 
 class BodyContentWidget extends StatelessWidget {
