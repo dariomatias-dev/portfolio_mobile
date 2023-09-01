@@ -1,20 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:portfolio/src/models/social_media_model.dart';
+import 'package:portfolio/src/models/social_network_model.dart';
 
-class SocialMediaRepository {
+class SocialNetworkRepository {
   final _db = FirebaseFirestore.instance;
 
-  Future<List<SocialMediaModel>> readSocialMedia() async {
+  Future<List<SocialNetworkModel>> readSocialNetworks() async {
     try {
-      final socialMediaList = _db
-          .collection('social_media')
+      final socialNetworksList = _db
+          .collection('social_networks')
           .withConverter(
             fromFirestore: (snapshot, options) {
-              return SocialMediaModel.fromMap(snapshot.data()!);
+              return SocialNetworkModel.fromMap(snapshot.data()!);
             },
-            toFirestore: (socialMedia, options) {
-              return socialMedia.toMap();
+            toFirestore: (socialNetwork, options) {
+              return socialNetwork.toMap();
             },
           )
           .get()
@@ -24,7 +24,7 @@ class SocialMediaRepository {
             }).toList();
           });
 
-      return socialMediaList;
+      return socialNetworksList;
     } catch (err) {
       return [];
     }

@@ -2,32 +2,32 @@ import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/core/ui/helpers/snapshot_widget_builder.dart';
 
-import 'package:portfolio/src/models/social_media_model.dart';
+import 'package:portfolio/src/models/social_network_model.dart';
 
-import 'package:portfolio/src/screens/home_screen/body_content_widget/social_media_widget/social_media_card_widget.dart';
+import 'package:portfolio/src/screens/home_screen/body_content_widget/social_network_widget/social_network_card_widget.dart';
 
-import 'package:portfolio/src/repositories/social_media_repository.dart';
+import 'package:portfolio/src/repositories/social_network_repository.dart';
 
-class SocialMediaWidget extends StatefulWidget {
-  const SocialMediaWidget({super.key});
+class SocialNetworkWidget extends StatefulWidget {
+  const SocialNetworkWidget({super.key});
 
   @override
-  State<SocialMediaWidget> createState() => _SocialMediaWidgetState();
+  State<SocialNetworkWidget> createState() => _SocialNetworkWidgetState();
 }
 
-class _SocialMediaWidgetState extends State<SocialMediaWidget> {
-  final socialMediaRepository = SocialMediaRepository();
+class _SocialNetworkWidgetState extends State<SocialNetworkWidget> {
+  final socialMediaRepository = SocialNetworkRepository();
   final SnapshotWidgetBuilder snapshotWidgetBuilder = SnapshotWidgetBuilder();
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: socialMediaRepository.readSocialMedia(),
+      future: socialMediaRepository.readSocialNetworks(),
       builder: (context, snapshot) {
         const sectionType = 'redes sociais';
 
         Widget contentWidget(List<dynamic> data) {
-          final socialMedia = data.cast<SocialMediaModel>();
+          final socialNetworks = data.cast<SocialNetworkModel>();
 
           return Container(
             padding: const EdgeInsets.symmetric(
@@ -43,11 +43,13 @@ class _SocialMediaWidgetState extends State<SocialMediaWidget> {
             child: ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: socialMedia.length,
+              itemCount: socialNetworks.length,
               itemBuilder: (context, index) {
-                return SocialMediaCardWidget(
-                  socialMediaName: socialMedia[index].name,
-                  socialMediaLink: socialMedia[index].link,
+                final socialNetwork = socialNetworks[index];
+
+                return SocialNetworkCardWidget(
+                  socialNetworkName: socialNetwork.name,
+                  socialNetworkLink: socialNetwork.link,
                 );
               },
             ),

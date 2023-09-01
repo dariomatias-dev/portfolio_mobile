@@ -1,5 +1,5 @@
-class SocialMediaModel {
-  SocialMediaModel({
+class SocialNetworkModel {
+  SocialNetworkModel({
     required this.link,
     required this.name,
   });
@@ -7,8 +7,8 @@ class SocialMediaModel {
   final String name;
   final String link;
 
-  factory SocialMediaModel.fromMap(Map<String, dynamic> map) {
-    return SocialMediaModel(
+  factory SocialNetworkModel.fromMap(Map<String, dynamic> map) {
+    return SocialNetworkModel(
       link: map['link'],
       name: map['name'],
     );
