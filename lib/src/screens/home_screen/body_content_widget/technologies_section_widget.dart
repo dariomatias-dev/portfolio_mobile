@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/models/technology_category_model.dart';
-import 'package:portfolio/src/models/technology_model.dart';
+import 'package:portfolio/src/models/technology/technology_model.dart';
 
 import 'package:portfolio/src/repositories/technologies_repository.dart';
 import 'package:portfolio/src/repositories/technologies_category_repository.dart';

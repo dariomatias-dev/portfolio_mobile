@@ -1,4 +1,4 @@
-import 'package:portfolio/src/models/technology_model.dart';
+import 'package:portfolio/src/models/technology/technology_model.dart';
 
 class TechnologiesCategoryModel {
   TechnologiesCategoryModel({

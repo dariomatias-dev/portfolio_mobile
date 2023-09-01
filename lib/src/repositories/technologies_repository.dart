@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:portfolio/src/models/technology_model.dart';
+import 'package:portfolio/src/models/technology/technology_model.dart';
 
 class TechnologiesRepository {
   final _db = FirebaseFirestore.instance;
