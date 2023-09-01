@@ -4,18 +4,18 @@ import 'package:portfolio/src/core/ui/helpers/snapshot_widget_builder.dart';
 
 import 'package:portfolio/src/models/social_network_model.dart';
 
-import 'package:portfolio/src/screens/home_screen/body_content_widget/social_network_widget/social_network_card_widget.dart';
+import 'package:portfolio/src/screens/home_screen/body_content_widget/social_networks_section_widget/social_network_card_widget.dart';
 
 import 'package:portfolio/src/repositories/social_network_repository.dart';
 
-class SocialNetworkWidget extends StatefulWidget {
-  const SocialNetworkWidget({super.key});
+class SocialNetworksSectionWidget extends StatefulWidget {
+  const SocialNetworksSectionWidget({super.key});
 
   @override
-  State<SocialNetworkWidget> createState() => _SocialNetworkWidgetState();
+  State<SocialNetworksSectionWidget> createState() => _SocialNetworksSectionWidgetState();
 }
 
-class _SocialNetworkWidgetState extends State<SocialNetworkWidget> {
+class _SocialNetworksSectionWidgetState extends State<SocialNetworksSectionWidget> {
   final socialMediaRepository = SocialNetworkRepository();
   final SnapshotWidgetBuilder snapshotWidgetBuilder = SnapshotWidgetBuilder();
 

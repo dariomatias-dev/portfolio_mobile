@@ -7,7 +7,7 @@ import 'package:portfolio/src/models/technology/technology_model.dart';
 import 'package:portfolio/src/repositories/technologies_repository.dart';
 import 'package:portfolio/src/repositories/technologies_category_repository.dart';
 
-import 'package:portfolio/src/screens/home_screen/body_content_widget/technologies_component_widget.dart';
+import 'package:portfolio/src/screens/home_screen/body_content_widget/technologies_section_widget/technologies_component_widget.dart';
 
 class TechnologiesSectionWidget extends StatefulWidget {
   const TechnologiesSectionWidget({super.key});
