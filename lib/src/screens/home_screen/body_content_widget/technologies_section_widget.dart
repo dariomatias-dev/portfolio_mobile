@@ -40,13 +40,13 @@ class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
       return technology.status == 'planned';
     }).toList();
 
-    final technologieStatusList = results[0] as List<String>;
+    final technologieCategoriesList = results[0] as List<String>;
     categoryTechnologiesUsed = TechnologiesCategoryModel(
-      description: technologieStatusList[1],
+      description: technologieCategoriesList[1],
       technologies: technologiesUsed,
     );
     categoryTechnologiesFuture = TechnologiesCategoryModel(
-      description: technologieStatusList[0],
+      description: technologieCategoriesList[0],
       technologies: technologiesFuture,
     );
 

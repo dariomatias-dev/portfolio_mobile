@@ -7,14 +7,14 @@ class TechnologiesCategoryRepository {
 
   Future<List<String>> readTechnologiesStatus() async {
     try {
-      final technologieStatusList = _db
-          .collection('technologies_status')
+      final technologiesCategoriesList = _db
+          .collection('technologies_categories')
           .withConverter(
             fromFirestore: (snapshot, options) {
               return TechnologiesCategoryModel.fromMap(snapshot.data()!);
             },
-            toFirestore: (technologieStatus, options) {
-              return technologieStatus.toMap();
+            toFirestore: (technologieCategory, options) {
+              return technologieCategory.toMap();
             },
           )
           .get()
@@ -24,7 +24,7 @@ class TechnologiesCategoryRepository {
             }).toList();
           });
 
-      return technologieStatusList;
+      return technologiesCategoriesList;
     } catch (err) {
       return [];
     }
