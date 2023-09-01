@@ -6,23 +6,27 @@ class ProjectRepository {
   final _db = FirebaseFirestore.instance;
 
   Future<List<ProjectModel>> readProjects() async {
-    final projectsList = _db
-        .collection('projects')
-        .withConverter(
-          fromFirestore: (snapshot, options) {
-            return ProjectModel.fromMap(snapshot.data()!);
-          },
-          toFirestore: (project, options) {
-            return project.toMap();
-          },
-        )
-        .get()
-        .then((querySnapshot) {
-          return querySnapshot.docs.map((documentSnapshot) {
-            return documentSnapshot.data();
-          }).toList();
-        });
+    try {
+      final projectsList = _db
+          .collection('projects')
+          .withConverter(
+            fromFirestore: (snapshot, options) {
+              return ProjectModel.fromMap(snapshot.data()!);
+            },
+            toFirestore: (project, options) {
+              return project.toMap();
+            },
+          )
+          .get()
+          .then((querySnapshot) {
+            return querySnapshot.docs.map((documentSnapshot) {
+              return documentSnapshot.data();
+            }).toList();
+          });
 
-    return projectsList;
+      return projectsList;
+    } catch (err) {
+      return [];
+    }
   }
 }

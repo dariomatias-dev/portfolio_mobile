@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/core/ui/portfolio_colors.dart';
 
 import 'package:portfolio/src/models/project/project_model.dart';
 
 import 'package:portfolio/src/repositories/project_repository.dart';
+
+import 'package:portfolio/src/screens/home_screen/body_content_widget/projects_section_widget/project_card_widget.dart';
 
 class ProjectsSectionWidget extends StatefulWidget {
   const ProjectsSectionWidget({super.key});
@@ -41,7 +42,7 @@ class _ProjectsSectionWidgetState extends State<ProjectsSectionWidget> {
                 ),
               ),
             );
-          } else if (!snapshot.hasData) {
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return const Center(
               child: Text(
                 'Secão de projetos indisponível.',
@@ -53,7 +54,6 @@ class _ProjectsSectionWidgetState extends State<ProjectsSectionWidget> {
           }
 
           final projects = snapshot.data!;
-          const borderRadiusValue = 10.0;
 
           return ListView.separated(
             itemCount: projects.length,
@@ -64,39 +64,9 @@ class _ProjectsSectionWidgetState extends State<ProjectsSectionWidget> {
             itemBuilder: (context, index) {
               final project = projects[index];
 
-              return ConstrainedBox(
-                constraints: const BoxConstraints(
-                  maxWidth: 250.0,
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: PortfolioColors.darkGrey,
-                    borderRadius: BorderRadius.circular(borderRadiusValue),
-                  ),
-                  child: Column(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(borderRadiusValue),
-                        child: AspectRatio(
-                          aspectRatio: 16 / 9,
-                          child: Image.network(
-                            project.files[0].url,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Center(
-                          child: Text(
-                            project.name,
-                            style: const TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+              return ProjectCardWidget(
+                projectName: project.name,
+                projectImageUrl: project.files[0].url,
               );
             },
           );
