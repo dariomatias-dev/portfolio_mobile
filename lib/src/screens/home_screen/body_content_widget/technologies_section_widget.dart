@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/core/ui/helpers/snapshot_widget_builder.dart';
 
 import 'package:portfolio/src/models/technology_category_model.dart';
 import 'package:portfolio/src/models/technology/technology_model.dart';
@@ -17,42 +18,17 @@ class TechnologiesSectionWidget extends StatefulWidget {
 }
 
 class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
-  bool loadedData = false;
   final technologiesCategoryRepository = TechnologiesCategoryRepository();
   final technologiesRepository = TechnologiesRepository();
+  final snapshotWidgetBuilder = SnapshotWidgetBuilder();
 
-  TechnologiesCategoryModel? categoryTechnologiesUsed;
-  TechnologiesCategoryModel? categoryTechnologiesFuture;
-
-  Future<void> fetchData() async {
+  Future<List<Object>> fetchData() async {
     final queries = [
       technologiesCategoryRepository.readTechnologiesStatus(),
       technologiesRepository.readTechnologies(),
     ];
 
-    final results = await Future.wait(queries);
-
-    final technologies = results[1] as List<TechnologyModel>;
-    List<TechnologyModel> technologiesUsed = technologies.where((technology) {
-      return technology.status == 'using';
-    }).toList();
-    List<TechnologyModel> technologiesFuture = technologies.where((technology) {
-      return technology.status == 'planned';
-    }).toList();
-
-    final technologieCategoriesList = results[0] as List<String>;
-    categoryTechnologiesUsed = TechnologiesCategoryModel(
-      description: technologieCategoriesList[1],
-      technologies: technologiesUsed,
-    );
-    categoryTechnologiesFuture = TechnologiesCategoryModel(
-      description: technologieCategoriesList[0],
-      technologies: technologiesFuture,
-    );
-
-    setState(() {
-      loadedData = true;
-    });
+    return await Future.wait(queries);
   }
 
   @override
@@ -63,25 +39,51 @@ class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return loadedData
-        ? Column(
+    return FutureBuilder(
+      future: fetchData(),
+      builder: (context, snapshot) {
+        const sectionType = 'tecnologias';
+
+        Widget contentWidget(List<dynamic> data) {
+          final technologies = data[1] as List<TechnologyModel>;
+          final List<TechnologyModel> technologiesUsed =
+              technologies.where((technology) {
+            return technology.status == 'using';
+          }).toList();
+          final List<TechnologyModel> technologiesFuture =
+              technologies.where((technology) {
+            return technology.status == 'planned';
+          }).toList();
+
+          final technologieCategoriesList = data[0] as List<String>;
+          final categoryTechnologiesUsed = TechnologiesCategoryModel(
+            description: technologieCategoriesList[1],
+            technologies: technologiesUsed,
+          );
+          final categoryTechnologiesFuture = TechnologiesCategoryModel(
+            description: technologieCategoriesList[0],
+            technologies: technologiesFuture,
+          );
+
+          return Column(
             children: [
               TechnologiesComponentWidget(
-                categoryTechnologiesUsed: categoryTechnologiesUsed!,
+                categoryTechnologiesUsed: categoryTechnologiesUsed,
               ),
               const SizedBox(height: 24.0),
               TechnologiesComponentWidget(
-                categoryTechnologiesUsed: categoryTechnologiesFuture!,
+                categoryTechnologiesUsed: categoryTechnologiesFuture,
               ),
             ],
-          )
-        : const Center(
-            child: Text(
-              'Não foi possível carregar a seção de tecnologias',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
           );
+        }
+
+        return snapshotWidgetBuilder.builder(
+          snapshot,
+          sectionType,
+          contentWidget,
+        );
+      },
+    );
   }
 }
