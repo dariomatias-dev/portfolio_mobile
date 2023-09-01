@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:portfolio/src/core/ui/helpers/snapshot_widget_builder.dart';
+
 import 'package:portfolio/src/models/project/project_model.dart';
 
 import 'package:portfolio/src/repositories/project_repository.dart';
@@ -15,6 +17,7 @@ class ProjectsSectionWidget extends StatefulWidget {
 
 class _ProjectsSectionWidgetState extends State<ProjectsSectionWidget> {
   final ProjectRepository projectRepository = ProjectRepository();
+  final SnapshotWidgetBuilder snapshotWidgetBuilder = SnapshotWidgetBuilder();
 
   Future<List<ProjectModel>> fetchData() async {
     return await projectRepository.readProjects();
@@ -25,53 +28,36 @@ class _ProjectsSectionWidgetState extends State<ProjectsSectionWidget> {
     return SizedBox(
       height: 170.0,
       child: FutureBuilder(
-        future: fetchData(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(
-                color: Colors.blue,
-              ),
-            );
-          } else if (snapshot.hasError) {
-            return const Center(
-              child: Text(
-                'Não foi possível carregar a seção de projetos.',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            );
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(
-              child: Text(
-                'Secão de projetos indisponível.',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            );
-          }
+          future: fetchData(),
+          builder: (context, snapshot) {
+            const sectionType = 'projetos';
 
-          final projects = snapshot.data!;
+            Widget contentWidget(List<dynamic> data) {
+              final projects = data.cast<ProjectModel>();
 
-          return ListView.separated(
-            itemCount: projects.length,
-            scrollDirection: Axis.horizontal,
-            separatorBuilder: (context, index) {
-              return const SizedBox(width: 20.0);
-            },
-            itemBuilder: (context, index) {
-              final project = projects[index];
+              return ListView.separated(
+                itemCount: projects.length,
+                scrollDirection: Axis.horizontal,
+                separatorBuilder: (context, index) {
+                  return const SizedBox(width: 20.0);
+                },
+                itemBuilder: (context, index) {
+                  final project = projects[index];
 
-              return ProjectCardWidget(
-                projectName: project.name,
-                projectImageUrl: project.files[0].url,
+                  return ProjectCardWidget(
+                    projectName: project.name,
+                    projectImageUrl: project.files[0].url,
+                  );
+                },
               );
-            },
-          );
-        },
-      ),
+            }
+
+            return snapshotWidgetBuilder.builder(
+              snapshot,
+              sectionType,
+              contentWidget,
+            );
+          }),
     );
   }
 }

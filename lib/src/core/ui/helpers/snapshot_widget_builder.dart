@@ -4,7 +4,7 @@ class SnapshotWidgetBuilder {
   Widget builder(
     AsyncSnapshot<List<dynamic>> snapshot,
     String sectionType,
-    Widget contentWidget,
+    Widget Function(List<dynamic> data) contentWidget,
   ) {
     if (snapshot.connectionState == ConnectionState.waiting) {
       return const Center(
@@ -32,6 +32,8 @@ class SnapshotWidgetBuilder {
       );
     }
 
-    return contentWidget;
+    final data = snapshot.data!;
+
+    return contentWidget(data);
   }
 }
