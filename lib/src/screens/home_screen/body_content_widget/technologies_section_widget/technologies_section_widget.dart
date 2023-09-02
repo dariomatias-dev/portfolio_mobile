@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/core/constants/section_descriptions_constant.dart';
 import 'package:portfolio/src/core/ui/helpers/snapshot_widget_builder.dart';
 
-import 'package:portfolio/src/models/technology_category_model.dart';
 import 'package:portfolio/src/models/technology/technology_model.dart';
 
 import 'package:portfolio/src/repositories/technologies_repository.dart';
-import 'package:portfolio/src/repositories/technologies_category_repository.dart';
 
 import 'package:portfolio/src/screens/home_screen/body_content_widget/technologies_section_widget/technologies_component_widget.dart';
 
@@ -18,17 +17,11 @@ class TechnologiesSectionWidget extends StatefulWidget {
 }
 
 class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
-  final technologiesCategoryRepository = TechnologiesCategoryRepository();
   final technologiesRepository = TechnologiesRepository();
   final snapshotWidgetBuilder = SnapshotWidgetBuilder();
 
   Future<List<Object>> fetchData() async {
-    final queries = [
-      technologiesCategoryRepository.readTechnologiesStatus(),
-      technologiesRepository.readTechnologies(),
-    ];
-
-    return await Future.wait(queries);
+    return await technologiesRepository.readTechnologies();
   }
 
   @override
@@ -45,34 +38,29 @@ class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
         const sectionType = 'tecnologias';
 
         Widget contentWidget(List<dynamic> data) {
-          final technologies = data[1] as List<TechnologyModel>;
-          final List<TechnologyModel> technologiesUsed =
+          final technologies = data as List<TechnologyModel>;
+          final List<TechnologyModel> knownTechnologies =
               technologies.where((technology) {
             return technology.status == 'using';
           }).toList();
-          final List<TechnologyModel> technologiesFuture =
+          final List<TechnologyModel> plannedTechnologies =
               technologies.where((technology) {
             return technology.status == 'planned';
           }).toList();
 
-          final technologieCategoriesList = data[0] as List<String>;
-          final categoryTechnologiesUsed = TechnologiesCategoryModel(
-            description: technologieCategoriesList[1],
-            technologies: technologiesUsed,
-          );
-          final categoryTechnologiesFuture = TechnologiesCategoryModel(
-            description: technologieCategoriesList[0],
-            technologies: technologiesFuture,
-          );
+          final sectionTechnologiesDescription =
+              sectionDescriptionsContant.technologies;
 
           return Column(
             children: [
               TechnologiesComponentWidget(
-                categoryTechnologiesUsed: categoryTechnologiesUsed,
+                description: sectionTechnologiesDescription.knownTechnologies,
+                technologies: knownTechnologies,
               ),
-              const SizedBox(height: 24.0),
+              const SizedBox(height: 32.0),
               TechnologiesComponentWidget(
-                categoryTechnologiesUsed: categoryTechnologiesFuture,
+                description: sectionTechnologiesDescription.plannedTechnologies,
+                technologies: plannedTechnologies,
               ),
             ],
           );
