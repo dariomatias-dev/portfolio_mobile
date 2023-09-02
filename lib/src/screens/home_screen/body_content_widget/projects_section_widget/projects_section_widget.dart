@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:portfolio/src/core/constants/section_descriptions_constant.dart';
 import 'package:portfolio/src/core/ui/helpers/snapshot_widget_builder.dart';
 
 import 'package:portfolio/src/models/project/project_model.dart';
@@ -7,6 +8,8 @@ import 'package:portfolio/src/models/project/project_model.dart';
 import 'package:portfolio/src/repositories/project_repository.dart';
 
 import 'package:portfolio/src/screens/home_screen/body_content_widget/projects_section_widget/project_card_widget.dart';
+
+import 'package:portfolio/src/widgets/section_header_widget.dart';
 
 class ProjectsSectionWidget extends StatefulWidget {
   const ProjectsSectionWidget({super.key});
@@ -32,40 +35,25 @@ class _ProjectsSectionWidgetState extends State<ProjectsSectionWidget> {
       child: FutureBuilder(
           future: fetchData(),
           builder: (context, snapshot) {
-            const sectionType = 'projetos';
+            const sectionTitle = 'Projetos';
+            final sectionType = sectionTitle.toUpperCase();
 
             Widget contentWidget(List<dynamic> data) {
               final projects = data.cast<ProjectModel>();
 
               return Column(
                 children: [
-                  SizedBox(
-                    width: double.infinity,
-                    height: 100.0,
-                    child: Stack(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(16.0),
-                          child: Opacity(
-                            opacity: 0.6,
-                            child: Image.network(
-                              'https://c0.wallpaperflare.com/preview/524/860/912/screen-code-coding-programming.jpg',
-                              fit: BoxFit.cover,
-                              width: double.infinity,
-                            ),
-                          ),
-                        ),
-                        const Center(
-                          child: Text(
-                            'Projetos',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ],
+                  SectionHeaderWidget(
+                    sectionTitle: sectionType,
+                    imageUrl:
+                        'https://c0.wallpaperflare.com/preview/524/860/912/screen-code-coding-programming.jpg',
+                  ),
+                  const SizedBox(height: 20.0),
+                  Text(
+                    sectionDescriptionsContant.projects,
+                    textAlign: TextAlign.justify,
+                    style: const TextStyle(
+                      color: Colors.white,
                     ),
                   ),
                   const SizedBox(height: 40.0),
