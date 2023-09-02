@@ -31,6 +31,7 @@ class _SocialNetworksSectionWidgetState
       builder: (context, snapshot) {
         const sectionTitle = 'Redes Sociais';
         final sectionType = sectionTitle.toLowerCase();
+        const imageName = 'social_networks';
 
         Widget contentWidget(List<dynamic> data) {
           final socialNetworks = data.cast<SocialNetworkModel>();
@@ -39,7 +40,7 @@ class _SocialNetworksSectionWidgetState
             children: [
               const SectionHeaderWidget(
                 sectionTitle: sectionTitle,
-                imageUrl: 'https://wallpaperaccess.com//full/1445467.jpg',
+                imageName: imageName,
               ),
               const SizedBox(height: 20.0),
               Text(

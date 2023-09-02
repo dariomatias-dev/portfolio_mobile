@@ -37,6 +37,7 @@ class _ProjectsSectionWidgetState extends State<ProjectsSectionWidget> {
           builder: (context, snapshot) {
             const sectionTitle = 'Projetos';
             final sectionType = sectionTitle.toUpperCase();
+            const imageName = 'projects';
 
             Widget contentWidget(List<dynamic> data) {
               final projects = data.cast<ProjectModel>();
@@ -45,8 +46,7 @@ class _ProjectsSectionWidgetState extends State<ProjectsSectionWidget> {
                 children: [
                   SectionHeaderWidget(
                     sectionTitle: sectionType,
-                    imageUrl:
-                        'https://static.vecteezy.com/ti/vetor-gratis/p1/664173-abstratos-tecnologia-fundo-gratis-vetor.jpg',
+                    imageName: imageName,
                   ),
                   const SizedBox(height: 20.0),
                   Text(

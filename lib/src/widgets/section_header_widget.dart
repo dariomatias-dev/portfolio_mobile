@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class SectionHeaderWidget extends StatelessWidget {
   const SectionHeaderWidget({
     super.key,
     required this.sectionTitle,
-    required this.imageUrl,
+    required this.imageName,
   });
 
   final String sectionTitle;
-  final String imageUrl;
+  final String imageName;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class SectionHeaderWidget extends StatelessWidget {
             child: Opacity(
               opacity: 0.6,
               child: Image.network(
-                imageUrl,
+                '${dotenv.env['BASE_URL_IMAGES']}/background_image_sections/$imageName.png',
                 fit: BoxFit.cover,
                 width: double.infinity,
               ),

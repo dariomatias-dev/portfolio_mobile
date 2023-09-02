@@ -40,6 +40,7 @@ class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
       builder: (context, snapshot) {
         const sectionTitle = 'Tecnologias';
         final sectionType = sectionTitle.toLowerCase();
+        const imageName = 'technologies';
 
         Widget contentWidget(List<dynamic> data) {
           final technologies = data as List<TechnologyModel>;
@@ -59,8 +60,7 @@ class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
             children: [
               const SectionHeaderWidget(
                 sectionTitle: sectionTitle,
-                imageUrl:
-                    'https://c4.wallpaperflare.com/wallpaper/956/998/449/binary-technology-code-numbers-hd-wallpaper-preview.jpg',
+                imageName: imageName,
               ),
               const SizedBox(height: 20.0),
               TechnologiesComponentWidget(
