@@ -46,7 +46,7 @@ class _ProjectsSectionWidgetState extends State<ProjectsSectionWidget> {
                   SectionHeaderWidget(
                     sectionTitle: sectionType,
                     imageUrl:
-                        'https://c0.wallpaperflare.com/preview/524/860/912/screen-code-coding-programming.jpg',
+                        'https://static.vecteezy.com/ti/vetor-gratis/p1/664173-abstratos-tecnologia-fundo-gratis-vetor.jpg',
                   ),
                   const SizedBox(height: 20.0),
                   Text(

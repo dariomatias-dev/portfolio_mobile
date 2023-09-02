@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:portfolio/src/core/constants/section_descriptions_constant.dart';
 import 'package:portfolio/src/core/ui/helpers/snapshot_widget_builder.dart';
 
@@ -7,6 +8,8 @@ import 'package:portfolio/src/models/technology/technology_model.dart';
 import 'package:portfolio/src/repositories/technologies_repository.dart';
 
 import 'package:portfolio/src/screens/home_screen/body_content_widget/technologies_section_widget/technologies_component_widget.dart';
+
+import 'package:portfolio/src/widgets/section_header_widget.dart';
 
 class TechnologiesSectionWidget extends StatefulWidget {
   const TechnologiesSectionWidget({super.key});
@@ -35,7 +38,8 @@ class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
     return FutureBuilder(
       future: fetchData(),
       builder: (context, snapshot) {
-        const sectionType = 'tecnologias';
+        const sectionTitle = 'Tecnologias';
+        final sectionType = sectionTitle.toLowerCase();
 
         Widget contentWidget(List<dynamic> data) {
           final technologies = data as List<TechnologyModel>;
@@ -53,6 +57,12 @@ class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
 
           return Column(
             children: [
+              const SectionHeaderWidget(
+                sectionTitle: sectionTitle,
+                imageUrl:
+                    'https://c4.wallpaperflare.com/wallpaper/956/998/449/binary-technology-code-numbers-hd-wallpaper-preview.jpg',
+              ),
+              const SizedBox(height: 20.0),
               TechnologiesComponentWidget(
                 description: sectionTechnologiesDescription.knownTechnologies,
                 technologies: knownTechnologies,
