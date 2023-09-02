@@ -19,7 +19,7 @@ class SectionHeaderWidget extends StatelessWidget {
       child: Stack(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(16.0),
+            borderRadius: BorderRadius.circular(12.0),
             child: Opacity(
               opacity: 0.6,
               child: Image.network(

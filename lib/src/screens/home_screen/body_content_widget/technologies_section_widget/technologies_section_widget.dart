@@ -67,7 +67,7 @@ class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
                 description: sectionTechnologiesDescription.knownTechnologies,
                 technologies: knownTechnologies,
               ),
-              const SizedBox(height: 32.0),
+              const SizedBox(height: 30.0),
               TechnologiesComponentWidget(
                 description: sectionTechnologiesDescription.plannedTechnologies,
                 technologies: plannedTechnologies,

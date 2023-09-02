@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/screens/home_screen/body_content_widget/email_widget.dart';
 import 'package:portfolio/src/screens/home_screen/body_content_widget/projects_section_widget/projects_section_widget.dart';
 
 import 'package:portfolio/src/screens/home_screen/body_content_widget/social_networks_section_widget/social_networks_section_widget.dart';
@@ -9,6 +10,8 @@ class BodyContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const String email = 'matiasdario75@gmail.com';
+
     return Container(
       padding: const EdgeInsets.only(
         top: 60.0,
@@ -18,13 +21,21 @@ class BodyContentWidget extends StatelessWidget {
       child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Dário Matias',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Dário Matias',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              EmailWidget(
+                email: email,
+              ),
+            ],
           ),
           SizedBox(height: 4.0),
           Row(
@@ -42,7 +53,7 @@ class BodyContentWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 10.0),
+          SizedBox(height: 20.0),
           Text(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
             textAlign: TextAlign.justify,
@@ -53,13 +64,13 @@ class BodyContentWidget extends StatelessWidget {
           ),
           SizedBox(height: 20.0),
           Divider(),
-          SizedBox(height: 20.0),
+          SizedBox(height: 30.0),
           ProjectsSectionWidget(),
-          SizedBox(height: 20.0),
+          SizedBox(height: 30.0),
           Divider(),
-          SizedBox(height: 20.0),
+          SizedBox(height: 30.0),
           TechnologiesSectionWidget(),
-          SizedBox(height: 20.0),
+          SizedBox(height: 30.0),
           Divider(),
           SizedBox(height: 30.0),
           SocialNetworksSectionWidget(),

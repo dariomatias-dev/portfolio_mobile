@@ -26,15 +26,15 @@ class TechnologiesComponentWidget extends StatelessWidget {
             fontSize: 14,
           ),
         ),
-        const SizedBox(height: 20.0),
+        const SizedBox(height: 30.0),
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemCount: technologies.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 5,
-            mainAxisSpacing: 32.0,
-            crossAxisSpacing: 44.0,
+            mainAxisSpacing: 20.0,
+            crossAxisSpacing: 40.0,
           ),
           itemBuilder: (context, index) {
             final technology = technologies[index];

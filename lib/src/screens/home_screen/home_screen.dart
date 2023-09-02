@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
                 right: 0,
                 left: 0,
                 child: Container(
-                  height: 10.0,
+                  height: 30.0,
                   width: double.maxFinite,
                   decoration: const BoxDecoration(
                     color: Colors.black,
