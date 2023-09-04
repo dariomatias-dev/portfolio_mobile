@@ -55,7 +55,7 @@ class BodyContentWidget extends StatelessWidget {
           ),
           SizedBox(height: 20.0),
           Text(
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            'A possibilidade de poder criar o que eu quiser sem a ajuda de ninguém, através do meu próprio esforço e dedicação, me motiva a estudar cada vez mais. Por essa razão estou sempre buscando novas experiências e conhecimentos para me aprimorar o máximo possível.',
             textAlign: TextAlign.justify,
             softWrap: true,
             style: TextStyle(
