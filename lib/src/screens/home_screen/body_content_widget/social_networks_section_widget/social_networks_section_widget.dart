@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/core/constants/section_descriptions_constant.dart';
 import 'package:portfolio/src/core/ui/widgets/section_data_unavailable_widget.dart';
+
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 
 import 'package:portfolio/src/screens/home_screen/body_content_widget/social_networks_section_widget/social_network_card_widget.dart';

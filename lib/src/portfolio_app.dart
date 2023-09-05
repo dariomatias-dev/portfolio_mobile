@@ -16,7 +16,6 @@ import 'package:portfolio/src/repositories/social_networks_repository.dart';
 import 'package:portfolio/src/repositories/technologies_repository.dart';
 
 import 'package:portfolio/src/screens/home_screen/home_screen.dart';
-
 import 'package:portfolio/src/screens/splash_screen/splash_screen.dart';
 
 class PortfolioApp extends StatefulWidget {
@@ -33,8 +32,10 @@ class _PortfolioAppState extends State<PortfolioApp> {
   AsyncLoaderHandler? handler;
 
   final ProjectsRepository projectRepository = ProjectsRepository();
-  final TechnologiesRepository technologiesRepository = TechnologiesRepository();
-  final SocialNetworksRepository socialNetworksRepository = SocialNetworksRepository();
+  final TechnologiesRepository technologiesRepository =
+      TechnologiesRepository();
+  final SocialNetworksRepository socialNetworksRepository =
+      SocialNetworksRepository();
 
   List<ProjectModel>? projects;
   List<TechnologyModel>? technologies;

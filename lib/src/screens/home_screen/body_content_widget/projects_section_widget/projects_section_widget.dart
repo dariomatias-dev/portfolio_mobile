@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/core/constants/section_descriptions_constant.dart';
-import 'package:portfolio/src/core/ui/helpers/snapshot_widget_builder.dart';
 import 'package:portfolio/src/core/ui/widgets/section_data_unavailable_widget.dart';
 
 import 'package:portfolio/src/models/project/project_model.dart';
@@ -23,7 +22,6 @@ class ProjectsSectionWidget extends StatefulWidget {
 
 class _ProjectsSectionWidgetState extends State<ProjectsSectionWidget> {
   final ProjectsRepository projectRepository = ProjectsRepository();
-  final SnapshotWidgetBuilder snapshotWidgetBuilder = SnapshotWidgetBuilder();
 
   Future<List<ProjectModel>> fetchData() async {
     return await projectRepository.readProjects();

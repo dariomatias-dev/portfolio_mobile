@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/core/constants/section_descriptions_constant.dart';
-import 'package:portfolio/src/core/ui/helpers/snapshot_widget_builder.dart';
 import 'package:portfolio/src/core/ui/widgets/section_data_unavailable_widget.dart';
 
 import 'package:portfolio/src/models/technology/technology_model.dart';
+
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 
 import 'package:portfolio/src/repositories/technologies_repository.dart';
@@ -23,7 +23,6 @@ class TechnologiesSectionWidget extends StatefulWidget {
 
 class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
   final technologiesRepository = TechnologiesRepository();
-  final snapshotWidgetBuilder = SnapshotWidgetBuilder();
 
   Future<List<Object>> fetchData() async {
     return await technologiesRepository.readTechnologies();
