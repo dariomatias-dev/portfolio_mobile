@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/core/constants/section_descriptions_constant.dart';
 import 'package:portfolio/src/core/ui/helpers/snapshot_widget_builder.dart';
+import 'package:portfolio/src/core/ui/widgets/section_data_unavailable_widget.dart';
 
 import 'package:portfolio/src/models/project/project_model.dart';
+
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 
 import 'package:portfolio/src/repositories/projects_repository.dart';
@@ -29,25 +31,19 @@ class _ProjectsSectionWidgetState extends State<ProjectsSectionWidget> {
 
   @override
   Widget build(BuildContext context) {
-    const sectionTitle = 'Projetos';
-    final sectionType = sectionTitle.toLowerCase();
+    const sectionName = 'Projetos';
     const imageName = 'projects';
 
     final projects = DataProviderInheritedWidget.of(context)?.projects;
 
     return projects == null
-        ? Center(
-            child: Text(
-              'Não foi possível carregar a seção $sectionType.',
-              style: const TextStyle(
-                color: Colors.white,
-              ),
-            ),
+        ? const SectionDataUnavailableWidget(
+            sectionName: sectionName,
           )
         : Column(
             children: [
-              SectionHeaderWidget(
-                sectionTitle: sectionType,
+              const SectionHeaderWidget(
+                sectionName: sectionName,
                 imageName: imageName,
               ),
               const SizedBox(height: 20.0),

@@ -59,7 +59,7 @@ class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
           return Column(
             children: [
               const SectionHeaderWidget(
-                sectionTitle: sectionTitle,
+                sectionName: sectionTitle,
                 imageName: imageName,
               ),
               const SizedBox(height: 20.0),

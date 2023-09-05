@@ -4,11 +4,11 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 class SectionHeaderWidget extends StatelessWidget {
   const SectionHeaderWidget({
     super.key,
-    required this.sectionTitle,
+    required this.sectionName,
     required this.imageName,
   });
 
-  final String sectionTitle;
+  final String sectionName;
   final String imageName;
 
   @override
@@ -31,7 +31,7 @@ class SectionHeaderWidget extends StatelessWidget {
           ),
           Center(
             child: Text(
-              sectionTitle,
+              sectionName,
               style: const TextStyle(
                 color: Colors.white,
                 letterSpacing: 4,
