@@ -4,12 +4,14 @@ import 'package:asyncstate/widget/async_state_builder.dart';
 
 import 'package:portfolio/src/core/ui/portfolio_theme.dart';
 import 'package:portfolio/src/core/ui/widgets/portfolio_loader.dart';
+import 'package:portfolio/src/models/profile_model.dart';
 
 import 'package:portfolio/src/models/project/project_model.dart';
 import 'package:portfolio/src/models/social_network_model.dart';
 import 'package:portfolio/src/models/technology/technology_model.dart';
 
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
+import 'package:portfolio/src/repositories/profile_repository.dart';
 
 import 'package:portfolio/src/repositories/projects_repository.dart';
 import 'package:portfolio/src/repositories/social_networks_repository.dart';
@@ -31,12 +33,14 @@ class _PortfolioAppState extends State<PortfolioApp> {
   ValueNotifier<bool> loadedData = ValueNotifier<bool>(false);
   AsyncLoaderHandler? handler;
 
+  final ProfileRepository profileRepository = ProfileRepository();
   final ProjectsRepository projectRepository = ProjectsRepository();
   final TechnologiesRepository technologiesRepository =
       TechnologiesRepository();
   final SocialNetworksRepository socialNetworksRepository =
       SocialNetworksRepository();
 
+  ProfileModel? profile;
   List<ProjectModel>? projects;
   List<TechnologyModel>? technologies;
   List<SocialNetworkModel>? socialNetworks;
@@ -52,7 +56,8 @@ class _PortfolioAppState extends State<PortfolioApp> {
   }
 
   Future<void> fetchData() async {
-    final List<Future<List<dynamic>>> requests = [
+    final List<Future> requests = [
+      profileRepository.readProfile(),
       projectRepository.readProjects(),
       technologiesRepository.readTechnologies(),
       socialNetworksRepository.readSocialNetworks(),
@@ -60,9 +65,10 @@ class _PortfolioAppState extends State<PortfolioApp> {
 
     final results = await Future.wait(requests);
 
-    projects = results[0].cast<ProjectModel>();
-    technologies = results[1].cast<TechnologyModel>();
-    socialNetworks = results[2].cast<SocialNetworkModel>();
+    profile = results[0];
+    projects = results[1];
+    technologies = results[2];
+    socialNetworks = results[3];
 
     setState(() {
       loadedData.value = true;
@@ -110,6 +116,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
       setSplashScreenContext: setSplashScreenContext,
       splashAnimationCompleted: splashAnimationCompleted.value,
       updateSplashAnimationCompleted: updateSplashAnimationCompleted,
+      profile: profile,
       projects: projects,
       technologies: technologies,
       socialNetworks: socialNetworks,

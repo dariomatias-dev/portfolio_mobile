@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
+import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
+
 import 'package:portfolio/src/screens/home_screen/body_content_widget/email_widget.dart';
 import 'package:portfolio/src/screens/home_screen/body_content_widget/projects_section_widget/projects_section_widget.dart';
-
 import 'package:portfolio/src/screens/home_screen/body_content_widget/social_networks_section_widget/social_networks_section_widget.dart';
 import 'package:portfolio/src/screens/home_screen/body_content_widget/technologies_section_widget/technologies_section_widget.dart';
 
@@ -10,73 +12,82 @@ class BodyContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const String email = 'matiasdario75@gmail.com';
+    final profile = DataProviderInheritedWidget.of(context)?.profile;
 
-    return Container(
-      padding: const EdgeInsets.only(
-        top: 60.0,
-        right: 20.0,
-        left: 20.0,
-      ),
-      child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Dário Matias',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                ),
+    return profile == null
+        ? const Center(
+            child: Text(
+              'Não foi possível carregar as informações do perfil',
+              style: TextStyle(
+                color: Colors.white,
               ),
-              EmailWidget(
-                email: email,
-              ),
-            ],
-          ),
-          SizedBox(height: 4.0),
-          Row(
-            children: [
-              Icon(
-                Icons.location_on_outlined,
-                color: Colors.white54,
-              ),
-              Text(
-                'Areial, PB - Brasil',
-                style: TextStyle(
-                  color: Colors.white54,
-                  fontSize: 12,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 20.0),
-          Text(
-            'A possibilidade de poder criar o que eu quiser sem a ajuda de ninguém, através do meu próprio esforço e dedicação, me motiva a estudar cada vez mais. Por essa razão estou sempre buscando novas experiências e conhecimentos para me aprimorar o máximo possível.',
-            textAlign: TextAlign.justify,
-            softWrap: true,
-            style: TextStyle(
-              color: Colors.white,
             ),
-          ),
-          SizedBox(height: 20.0),
-          Divider(),
-          SizedBox(height: 30.0),
-          ProjectsSectionWidget(),
-          SizedBox(height: 30.0),
-          Divider(),
-          SizedBox(height: 30.0),
-          TechnologiesSectionWidget(),
-          SizedBox(height: 30.0),
-          Divider(),
-          SizedBox(height: 30.0),
-          SocialNetworksSectionWidget(),
-          SizedBox(height: 40.0),
-        ],
-      ),
-    );
+          )
+        : Container(
+            padding: const EdgeInsets.only(
+              top: 60.0,
+              right: 20.0,
+              left: 20.0,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      profile.name,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    EmailWidget(
+                      email: profile.email,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 4.0),
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.location_on_outlined,
+                      color: Colors.white54,
+                    ),
+                    Text(
+                      profile.location,
+                      style: const TextStyle(
+                        color: Colors.white54,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20.0),
+                Text(
+                  profile.description,
+                  textAlign: TextAlign.justify,
+                  softWrap: true,
+                  style: const TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 20.0),
+                const Divider(),
+                const SizedBox(height: 30.0),
+                const ProjectsSectionWidget(),
+                const SizedBox(height: 30.0),
+                const Divider(),
+                const SizedBox(height: 30.0),
+                const TechnologiesSectionWidget(),
+                const SizedBox(height: 30.0),
+                const Divider(),
+                const SizedBox(height: 30.0),
+                const SocialNetworksSectionWidget(),
+                const SizedBox(height: 40.0),
+              ],
+            ),
+          );
   }
 }

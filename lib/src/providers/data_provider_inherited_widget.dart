@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/models/profile_model.dart';
 
 import 'package:portfolio/src/models/project/project_model.dart';
 import 'package:portfolio/src/models/social_network_model.dart';
@@ -11,6 +12,7 @@ class DataProviderInheritedWidget extends InheritedWidget {
     required this.setSplashScreenContext,
     required this.splashAnimationCompleted,
     required this.updateSplashAnimationCompleted,
+    required this.profile,
     required this.projects,
     required this.technologies,
     required this.socialNetworks,
@@ -22,6 +24,7 @@ class DataProviderInheritedWidget extends InheritedWidget {
   final bool splashAnimationCompleted;
   final VoidCallback updateSplashAnimationCompleted;
 
+  final ProfileModel? profile;
   final List<ProjectModel>? projects;
   final List<TechnologyModel>? technologies;
   final List<SocialNetworkModel>? socialNetworks;
