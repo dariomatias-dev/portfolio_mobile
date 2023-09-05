@@ -4,12 +4,15 @@ import 'package:asyncstate/widget/async_state_builder.dart';
 
 import 'package:portfolio/src/core/ui/portfolio_theme.dart';
 import 'package:portfolio/src/core/ui/widgets/portfolio_loader.dart';
+
 import 'package:portfolio/src/models/project/project_model.dart';
+import 'package:portfolio/src/models/social_network_model.dart';
 import 'package:portfolio/src/models/technology/technology_model.dart';
 
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 
 import 'package:portfolio/src/repositories/projects_repository.dart';
+import 'package:portfolio/src/repositories/social_networks_repository.dart';
 import 'package:portfolio/src/repositories/technologies_repository.dart';
 
 import 'package:portfolio/src/screens/home_screen/home_screen.dart';
@@ -31,9 +34,11 @@ class _PortfolioAppState extends State<PortfolioApp> {
 
   final ProjectsRepository projectRepository = ProjectsRepository();
   final TechnologiesRepository technologiesRepository = TechnologiesRepository();
+  final SocialNetworksRepository socialNetworksRepository = SocialNetworksRepository();
 
   List<ProjectModel>? projects;
   List<TechnologyModel>? technologies;
+  List<SocialNetworkModel>? socialNetworks;
 
   void setSplashScreenContext(BuildContext screenContext) {
     splashScreenContext = screenContext;
@@ -49,12 +54,14 @@ class _PortfolioAppState extends State<PortfolioApp> {
     final List<Future<List<dynamic>>> requests = [
       projectRepository.readProjects(),
       technologiesRepository.readTechnologies(),
+      socialNetworksRepository.readSocialNetworks(),
     ];
 
     final results = await Future.wait(requests);
 
     projects = results[0].cast<ProjectModel>();
     technologies = results[1].cast<TechnologyModel>();
+    socialNetworks = results[2].cast<SocialNetworkModel>();
 
     setState(() {
       loadedData.value = true;
@@ -104,6 +111,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
       updateSplashAnimationCompleted: updateSplashAnimationCompleted,
       projects: projects,
       technologies: technologies,
+      socialNetworks: socialNetworks,
       child: AsyncStateBuilder(
         customLoader: const PortfolioLoader(),
         builder: (asyncNavigatorObserver) {

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:portfolio/src/models/social_network_model.dart';
 
-class SocialNetworkRepository {
+class SocialNetworksRepository {
   final _db = FirebaseFirestore.instance;
 
   Future<List<SocialNetworkModel>> readSocialNetworks() async {
