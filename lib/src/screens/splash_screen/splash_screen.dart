@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 import 'package:video_player/video_player.dart';
 
 import 'package:portfolio/src/core/ui/portfolio_videos.dart';
@@ -55,6 +56,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    DataProviderInheritedWidget.of(context)?.setSplashScreenContext(context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Portfólio',

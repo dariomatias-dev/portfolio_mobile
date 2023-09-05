@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fade_out_particle/fade_out_particle.dart';
+import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 import 'package:video_player/video_player.dart';
 
 class ContentDisplayWidget extends StatelessWidget {
@@ -20,6 +21,9 @@ class ContentDisplayWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final updateSplashAnimationCompleted =
+        DataProviderInheritedWidget.of(context)!.updateSplashAnimationCompleted;
+
     return AnimatedOpacity(
       duration: const Duration(
         seconds: 4,
@@ -42,10 +46,8 @@ class ContentDisplayWidget extends StatelessWidget {
         ),
         onAnimationEnd: () {
           controller.pause();
-          Navigator.pushReplacementNamed(
-            screenContext,
-            '/home',
-          );
+
+          updateSplashAnimationCompleted();
         },
         child: const Text(
           'Dário Matias',

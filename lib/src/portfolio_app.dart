@@ -18,7 +18,38 @@ class PortfolioApp extends StatefulWidget {
 }
 
 class _PortfolioAppState extends State<PortfolioApp> {
-  void fetchData() {}
+  BuildContext? splashScreenContext;
+  bool splashAnimationCompleted = false;
+  bool loadedData = false;
+
+  void setSplashScreenContext(BuildContext screenContext) {
+    splashScreenContext = screenContext;
+  }
+
+  void updateSplashAnimationCompleted() {
+    splashAnimationCompleted = true;
+    navigateToHomeScreen();
+  }
+
+  Future<void> fetchData() async {
+    await Future.delayed(
+      const Duration(seconds: 30),
+      () {
+        loadedData = true;
+      },
+    );
+
+    navigateToHomeScreen();
+  }
+
+  void navigateToHomeScreen() {
+    if (splashAnimationCompleted && loadedData) {
+      Navigator.pushReplacementNamed(
+        splashScreenContext!,
+        '/home',
+      );
+    }
+  }
 
   @override
   void initState() {
@@ -29,6 +60,10 @@ class _PortfolioAppState extends State<PortfolioApp> {
   @override
   Widget build(BuildContext context) {
     return DataProviderInheritedWidget(
+      splashScreenContext: splashScreenContext,
+      setSplashScreenContext: setSplashScreenContext,
+      splashAnimationCompleted: splashAnimationCompleted,
+      updateSplashAnimationCompleted: updateSplashAnimationCompleted,
       child: AsyncStateBuilder(
         customLoader: const PortfolioLoader(),
         builder: (asyncNavigatorObserver) {
