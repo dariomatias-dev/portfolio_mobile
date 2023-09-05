@@ -5,10 +5,12 @@ import 'package:asyncstate/widget/async_state_builder.dart';
 import 'package:portfolio/src/core/ui/portfolio_theme.dart';
 import 'package:portfolio/src/core/ui/widgets/portfolio_loader.dart';
 import 'package:portfolio/src/models/project/project_model.dart';
+import 'package:portfolio/src/models/technology/technology_model.dart';
 
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 
 import 'package:portfolio/src/repositories/projects_repository.dart';
+import 'package:portfolio/src/repositories/technologies_repository.dart';
 
 import 'package:portfolio/src/screens/home_screen/home_screen.dart';
 
@@ -28,8 +30,10 @@ class _PortfolioAppState extends State<PortfolioApp> {
   AsyncLoaderHandler? handler;
 
   final ProjectsRepository projectRepository = ProjectsRepository();
+  final TechnologiesRepository technologiesRepository = TechnologiesRepository();
 
   List<ProjectModel>? projects;
+  List<TechnologyModel>? technologies;
 
   void setSplashScreenContext(BuildContext screenContext) {
     splashScreenContext = screenContext;
@@ -44,15 +48,17 @@ class _PortfolioAppState extends State<PortfolioApp> {
   Future<void> fetchData() async {
     final List<Future<List<dynamic>>> requests = [
       projectRepository.readProjects(),
+      technologiesRepository.readTechnologies(),
     ];
 
     final results = await Future.wait(requests);
 
-    setState(() {
-      projects = results[0].cast<ProjectModel>();
-    });
+    projects = results[0].cast<ProjectModel>();
+    technologies = results[1].cast<TechnologyModel>();
 
-    loadedData.value = true;
+    setState(() {
+      loadedData.value = true;
+    });
 
     navigateToHomeScreen();
   }
@@ -97,6 +103,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
       splashAnimationCompleted: splashAnimationCompleted.value,
       updateSplashAnimationCompleted: updateSplashAnimationCompleted,
       projects: projects,
+      technologies: technologies,
       child: AsyncStateBuilder(
         customLoader: const PortfolioLoader(),
         builder: (asyncNavigatorObserver) {
