@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:asyncstate/class/async_loader_handler.dart';
 import 'package:asyncstate/widget/async_state_builder.dart';
 
 import 'package:portfolio/src/core/ui/portfolio_theme.dart';
@@ -18,24 +19,26 @@ class PortfolioApp extends StatefulWidget {
 }
 
 class _PortfolioAppState extends State<PortfolioApp> {
+  ValueNotifier<int?> data = ValueNotifier<int?>(null);
   BuildContext? splashScreenContext;
-  bool splashAnimationCompleted = false;
-  bool loadedData = false;
+  ValueNotifier<bool> splashAnimationCompleted = ValueNotifier<bool>(false);
+  AsyncLoaderHandler? handler;
 
   void setSplashScreenContext(BuildContext screenContext) {
     splashScreenContext = screenContext;
   }
 
   void updateSplashAnimationCompleted() {
-    splashAnimationCompleted = true;
+    splashAnimationCompleted.value = true;
+
     navigateToHomeScreen();
   }
 
   Future<void> fetchData() async {
-    await Future.delayed(
-      const Duration(seconds: 30),
+    data.value = await Future.delayed(
+      const Duration(seconds: 20),
       () {
-        loadedData = true;
+        return 0;
       },
     );
 
@@ -43,7 +46,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
   }
 
   void navigateToHomeScreen() {
-    if (splashAnimationCompleted && loadedData) {
+    if (splashAnimationCompleted.value && data.value != null) {
       Navigator.pushReplacementNamed(
         splashScreenContext!,
         '/home',
@@ -53,8 +56,24 @@ class _PortfolioAppState extends State<PortfolioApp> {
 
   @override
   void initState() {
+    splashAnimationCompleted.addListener(
+      () {
+        if (splashAnimationCompleted.value && data.value == null) {
+          handler = AsyncLoaderHandler.start();
+        } else if (splashAnimationCompleted.value && data.value != null) {
+          handler?.close();
+        }
+      },
+    );
+
     fetchData();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    splashAnimationCompleted.dispose();
+    super.dispose();
   }
 
   @override
@@ -62,7 +81,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
     return DataProviderInheritedWidget(
       splashScreenContext: splashScreenContext,
       setSplashScreenContext: setSplashScreenContext,
-      splashAnimationCompleted: splashAnimationCompleted,
+      splashAnimationCompleted: splashAnimationCompleted.value,
       updateSplashAnimationCompleted: updateSplashAnimationCompleted,
       child: AsyncStateBuilder(
         customLoader: const PortfolioLoader(),
