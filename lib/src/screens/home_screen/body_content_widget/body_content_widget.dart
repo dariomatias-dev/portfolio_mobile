@@ -14,22 +14,22 @@ class BodyContentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final profile = DataProviderInheritedWidget.of(context)?.profile;
 
-    return profile == null
-        ? const Center(
-            child: Text(
-              'Não foi possível carregar as informações do perfil',
-              style: TextStyle(
-                color: Colors.white,
+    return Container(
+      padding: const EdgeInsets.only(
+        top: 60.0,
+        right: 20.0,
+        left: 20.0,
+      ),
+      child: profile == null
+          ? const Center(
+              child: Text(
+                'Não foi possível carregar as informações do perfil',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
-            ),
-          )
-        : Container(
-            padding: const EdgeInsets.only(
-              top: 60.0,
-              right: 20.0,
-              left: 20.0,
-            ),
-            child: Column(
+            )
+          : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
@@ -88,6 +88,6 @@ class BodyContentWidget extends StatelessWidget {
                 const SizedBox(height: 40.0),
               ],
             ),
-          );
+    );
   }
 }

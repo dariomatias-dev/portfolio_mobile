@@ -5,7 +5,7 @@ import 'package:portfolio/src/models/project/project_model.dart';
 class ProjectsRepository {
   final _db = FirebaseFirestore.instance;
 
-  Future<List<ProjectModel>> readProjects() async {
+  Future<List<ProjectModel>?> readProjects() async {
     try {
       final projectsList = _db
           .collection('projects')
@@ -26,7 +26,7 @@ class ProjectsRepository {
 
       return projectsList;
     } catch (err) {
-      return [];
+      return null;
     }
   }
 }

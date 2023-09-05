@@ -5,7 +5,7 @@ import 'package:portfolio/src/models/technology/technology_model.dart';
 class TechnologiesRepository {
   final _db = FirebaseFirestore.instance;
 
-  Future<List<TechnologyModel>> readTechnologies() async {
+  Future<List<TechnologyModel>?> readTechnologies() async {
     try {
       final technologiesList = _db
           .collection('technologies')
@@ -26,7 +26,7 @@ class TechnologiesRepository {
 
       return technologiesList;
     } catch (err) {
-      return [];
+      return null;
     }
   }
 }

@@ -7,8 +7,6 @@ import 'package:portfolio/src/models/technology/technology_model.dart';
 
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 
-import 'package:portfolio/src/repositories/technologies_repository.dart';
-
 import 'package:portfolio/src/screens/home_screen/body_content_widget/technologies_section_widget/technologies_component_widget.dart';
 
 import 'package:portfolio/src/widgets/section_header_widget.dart';
@@ -22,18 +20,6 @@ class TechnologiesSectionWidget extends StatefulWidget {
 }
 
 class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
-  final technologiesRepository = TechnologiesRepository();
-
-  Future<List<Object>> fetchData() async {
-    return await technologiesRepository.readTechnologies();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    fetchData();
-  }
-
   @override
   Widget build(BuildContext context) {
     const sectionName = 'Tecnologias';

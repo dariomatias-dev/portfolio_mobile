@@ -5,7 +5,7 @@ import 'package:portfolio/src/models/social_network_model.dart';
 class SocialNetworksRepository {
   final _db = FirebaseFirestore.instance;
 
-  Future<List<SocialNetworkModel>> readSocialNetworks() async {
+  Future<List<SocialNetworkModel>?> readSocialNetworks() async {
     try {
       final socialNetworksList = _db
           .collection('social_networks')
@@ -26,7 +26,7 @@ class SocialNetworksRepository {
 
       return socialNetworksList;
     } catch (err) {
-      return [];
+      return null;
     }
   }
 }
