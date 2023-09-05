@@ -4,8 +4,11 @@ import 'package:asyncstate/widget/async_state_builder.dart';
 
 import 'package:portfolio/src/core/ui/portfolio_theme.dart';
 import 'package:portfolio/src/core/ui/widgets/portfolio_loader.dart';
+import 'package:portfolio/src/models/project/project_model.dart';
 
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
+
+import 'package:portfolio/src/repositories/projects_repository.dart';
 
 import 'package:portfolio/src/screens/home_screen/home_screen.dart';
 
@@ -19,10 +22,14 @@ class PortfolioApp extends StatefulWidget {
 }
 
 class _PortfolioAppState extends State<PortfolioApp> {
-  ValueNotifier<int?> data = ValueNotifier<int?>(null);
   BuildContext? splashScreenContext;
   ValueNotifier<bool> splashAnimationCompleted = ValueNotifier<bool>(false);
+  ValueNotifier<bool> loadedData = ValueNotifier<bool>(false);
   AsyncLoaderHandler? handler;
+
+  final ProjectsRepository projectRepository = ProjectsRepository();
+
+  List<ProjectModel>? projects;
 
   void setSplashScreenContext(BuildContext screenContext) {
     splashScreenContext = screenContext;
@@ -35,18 +42,23 @@ class _PortfolioAppState extends State<PortfolioApp> {
   }
 
   Future<void> fetchData() async {
-    data.value = await Future.delayed(
-      const Duration(seconds: 20),
-      () {
-        return 0;
-      },
-    );
+    final List<Future<List<dynamic>>> requests = [
+      projectRepository.readProjects(),
+    ];
+
+    final results = await Future.wait(requests);
+
+    setState(() {
+      projects = results[0].cast<ProjectModel>();
+    });
+
+    loadedData.value = true;
 
     navigateToHomeScreen();
   }
 
   void navigateToHomeScreen() {
-    if (splashAnimationCompleted.value && data.value != null) {
+    if (splashAnimationCompleted.value && loadedData.value) {
       Navigator.pushReplacementNamed(
         splashScreenContext!,
         '/home',
@@ -58,9 +70,9 @@ class _PortfolioAppState extends State<PortfolioApp> {
   void initState() {
     splashAnimationCompleted.addListener(
       () {
-        if (splashAnimationCompleted.value && data.value == null) {
+        if (splashAnimationCompleted.value && !loadedData.value) {
           handler = AsyncLoaderHandler.start();
-        } else if (splashAnimationCompleted.value && data.value != null) {
+        } else if (splashAnimationCompleted.value && loadedData.value) {
           handler?.close();
         }
       },
@@ -73,6 +85,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
   @override
   void dispose() {
     splashAnimationCompleted.dispose();
+    loadedData.dispose();
     super.dispose();
   }
 
@@ -83,6 +96,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
       setSplashScreenContext: setSplashScreenContext,
       splashAnimationCompleted: splashAnimationCompleted.value,
       updateSplashAnimationCompleted: updateSplashAnimationCompleted,
+      projects: projects,
       child: AsyncStateBuilder(
         customLoader: const PortfolioLoader(),
         builder: (asyncNavigatorObserver) {

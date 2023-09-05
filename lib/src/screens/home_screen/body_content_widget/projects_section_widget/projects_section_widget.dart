@@ -4,8 +4,9 @@ import 'package:portfolio/src/core/constants/section_descriptions_constant.dart'
 import 'package:portfolio/src/core/ui/helpers/snapshot_widget_builder.dart';
 
 import 'package:portfolio/src/models/project/project_model.dart';
+import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 
-import 'package:portfolio/src/repositories/project_repository.dart';
+import 'package:portfolio/src/repositories/projects_repository.dart';
 
 import 'package:portfolio/src/screens/home_screen/body_content_widget/projects_section_widget/project_card_widget.dart';
 
@@ -19,7 +20,7 @@ class ProjectsSectionWidget extends StatefulWidget {
 }
 
 class _ProjectsSectionWidgetState extends State<ProjectsSectionWidget> {
-  final ProjectRepository projectRepository = ProjectRepository();
+  final ProjectsRepository projectRepository = ProjectsRepository();
   final SnapshotWidgetBuilder snapshotWidgetBuilder = SnapshotWidgetBuilder();
 
   Future<List<ProjectModel>> fetchData() async {
@@ -28,63 +29,55 @@ class _ProjectsSectionWidgetState extends State<ProjectsSectionWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 10.0,
-      ),
-      child: FutureBuilder(
-          future: fetchData(),
-          builder: (context, snapshot) {
-            const sectionTitle = 'Projetos';
-            final sectionType = sectionTitle.toUpperCase();
-            const imageName = 'projects';
+    const sectionTitle = 'Projetos';
+    final sectionType = sectionTitle.toLowerCase();
+    const imageName = 'projects';
 
-            Widget contentWidget(List<dynamic> data) {
-              final projects = data.cast<ProjectModel>();
+    final projects = DataProviderInheritedWidget.of(context)?.projects;
 
-              return Column(
-                children: [
-                  SectionHeaderWidget(
-                    sectionTitle: sectionType,
-                    imageName: imageName,
-                  ),
-                  const SizedBox(height: 20.0),
-                  Text(
-                    sectionDescriptionsContant.projects,
-                    textAlign: TextAlign.justify,
-                    style: const TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 40.0),
-                  SizedBox(
-                    height: 170.0,
-                    child: ListView.separated(
-                      itemCount: projects.length,
-                      scrollDirection: Axis.horizontal,
-                      separatorBuilder: (context, index) {
-                        return const SizedBox(width: 20.0);
-                      },
-                      itemBuilder: (context, index) {
-                        final project = projects[index];
+    return projects == null
+        ? Center(
+            child: Text(
+              'Não foi possível carregar a seção $sectionType.',
+              style: const TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          )
+        : Column(
+            children: [
+              SectionHeaderWidget(
+                sectionTitle: sectionType,
+                imageName: imageName,
+              ),
+              const SizedBox(height: 20.0),
+              Text(
+                sectionDescriptionsContant.projects,
+                textAlign: TextAlign.justify,
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 40.0),
+              SizedBox(
+                height: 170.0,
+                child: ListView.separated(
+                  itemCount: projects.length,
+                  scrollDirection: Axis.horizontal,
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(width: 20.0);
+                  },
+                  itemBuilder: (context, index) {
+                    final project = projects[index];
 
-                        return ProjectCardWidget(
-                          projectName: project.name,
-                          projectImageUrl: project.files[0].url,
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              );
-            }
-
-            return snapshotWidgetBuilder.builder(
-              snapshot,
-              sectionType,
-              contentWidget,
-            );
-          }),
-    );
+                    return ProjectCardWidget(
+                      projectName: project.name,
+                      projectImageUrl: project.files[0].url,
+                    );
+                  },
+                ),
+              ),
+            ],
+          );
   }
 }

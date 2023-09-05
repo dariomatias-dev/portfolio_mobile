@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:portfolio/src/models/project/project_model.dart';
 
-class ProjectRepository {
+class ProjectsRepository {
   final _db = FirebaseFirestore.instance;
 
   Future<List<ProjectModel>> readProjects() async {
