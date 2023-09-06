@@ -32,7 +32,9 @@ class ProjectCardWidget extends StatelessWidget {
               animation,
               secondaryAnimation,
             ) {
-              return const ProjectScreen();
+              return ProjectScreen(
+                projectName: projectName,
+              );
             },
             transitionsBuilder: (
               context,
