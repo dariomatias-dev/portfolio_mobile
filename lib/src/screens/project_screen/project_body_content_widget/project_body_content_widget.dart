@@ -21,7 +21,7 @@ class ProjectBodyContentWidget extends StatelessWidget {
         return AlertDialog(
           title: const Text('Informação'),
           content: const Text(
-            'Caso esteja em um vídeo e queira ver o restante do conteúdo, deslize na parte inferior esquerda ou direita para voltar ou seguir adiante.',
+            'Se estiver assistindo a um vídeo e desejar ver outros conteúdos, basta deslizar para a esquerda ou direita na parte inferior para retroceder ou avançar.',
           ),
           actions: [
             TextButton(
@@ -38,7 +38,7 @@ class ProjectBodyContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final files = project.files;
+    final files = project.media;
 
     return Stack(
       children: [

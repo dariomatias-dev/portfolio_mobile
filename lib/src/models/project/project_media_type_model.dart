@@ -1,5 +1,5 @@
-class ProjectFileTypeModel {
-  ProjectFileTypeModel({
+class ProjectMediaTypeModel {
+  ProjectMediaTypeModel({
     required this.type,
     required this.url,
   });
@@ -7,8 +7,8 @@ class ProjectFileTypeModel {
   final String type;
   final String url;
 
-  factory ProjectFileTypeModel.fromMap(Map<String, dynamic> map) {
-    return ProjectFileTypeModel(
+  factory ProjectMediaTypeModel.fromMap(Map<String, dynamic> map) {
+    return ProjectMediaTypeModel(
       type: map['type'],
       url: map['url'],
     );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-import 'package:portfolio/src/models/project/project_file_type_model.dart';
+import 'package:portfolio/src/models/project/project_media_type_model.dart';
 
 class MediaCarouselWidget extends StatefulWidget {
   const MediaCarouselWidget({
@@ -10,7 +10,7 @@ class MediaCarouselWidget extends StatefulWidget {
     required this.files,
   });
 
-  final List<ProjectFileTypeModel> files;
+  final List<ProjectMediaTypeModel> files;
 
   @override
   State<MediaCarouselWidget> createState() => _MediaCarouselWidgetState();
@@ -42,7 +42,7 @@ class _MediaCarouselWidgetState extends State<MediaCarouselWidget> {
       itemBuilder: (context, index, realIndex) {
         final file = files[index];
 
-        if (file.type == 'img') {
+        if (file.type == 'image') {
           return Image.network(
             file.url,
           );

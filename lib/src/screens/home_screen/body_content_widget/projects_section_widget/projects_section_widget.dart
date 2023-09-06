@@ -56,7 +56,7 @@ class _ProjectsSectionWidgetState extends State<ProjectsSectionWidget> {
 
                     return ProjectCardWidget(
                       projectName: project.name,
-                      projectImageUrl: project.files[0].url,
+                      projectImageUrl: project.media[0].url,
                     );
                   },
                 ),
