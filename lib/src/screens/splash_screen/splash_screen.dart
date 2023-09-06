@@ -58,28 +58,24 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     DataProviderInheritedWidget.of(context)?.setSplashScreenContext(context);
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Portfólio',
-      home: Scaffold(
-        backgroundColor: Colors.black,
-        body: Stack(
-          alignment: Alignment.center,
-          children: <Widget>[
-            BackgroundVideoWidget(
-              controller: _controller,
-              animationOpacityLogo: _animationOpacityLogo,
-              changeAnimationOpacityText: _changeAnimationOpacityText,
-            ),
-            ContentDisplayWidget(
-              screenContext: context,
-              controller: _controller,
-              animationOpacityText: _animationOpacityText,
-              disappear: _disappear,
-              changeDisappear: _changeDisappear,
-            ),
-          ],
-        ),
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          BackgroundVideoWidget(
+            controller: _controller,
+            animationOpacityLogo: _animationOpacityLogo,
+            changeAnimationOpacityText: _changeAnimationOpacityText,
+          ),
+          ContentDisplayWidget(
+            screenContext: context,
+            controller: _controller,
+            animationOpacityText: _animationOpacityText,
+            disappear: _disappear,
+            changeDisappear: _changeDisappear,
+          ),
+        ],
       ),
     );
   }

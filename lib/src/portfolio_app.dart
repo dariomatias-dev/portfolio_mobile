@@ -2,23 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:asyncstate/class/async_loader_handler.dart';
 import 'package:asyncstate/widget/async_state_builder.dart';
 
+import 'package:portfolio/src/core/routes/portfolio_route_names.dart';
+import 'package:portfolio/src/core/routes/portfolio_routes.dart';
 import 'package:portfolio/src/core/ui/portfolio_theme.dart';
 import 'package:portfolio/src/core/ui/widgets/portfolio_loader.dart';
-import 'package:portfolio/src/models/profile_model.dart';
 
+import 'package:portfolio/src/models/profile_model.dart';
 import 'package:portfolio/src/models/project/project_model.dart';
 import 'package:portfolio/src/models/social_network_model.dart';
 import 'package:portfolio/src/models/technology/technology_model.dart';
 
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
-import 'package:portfolio/src/repositories/profile_repository.dart';
 
+import 'package:portfolio/src/repositories/profile_repository.dart';
 import 'package:portfolio/src/repositories/projects_repository.dart';
 import 'package:portfolio/src/repositories/social_networks_repository.dart';
 import 'package:portfolio/src/repositories/technologies_repository.dart';
-
-import 'package:portfolio/src/screens/home_screen/home_screen.dart';
-import 'package:portfolio/src/screens/splash_screen/splash_screen.dart';
 
 class PortfolioApp extends StatefulWidget {
   const PortfolioApp({super.key});
@@ -81,7 +80,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
     if (splashAnimationCompleted.value && loadedData.value) {
       Navigator.pushReplacementNamed(
         splashScreenContext!,
-        '/home',
+        PortfolioRouteNames.home,
       );
     }
   }
@@ -128,10 +127,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
             title: 'Portfólio',
             theme: PortfolioTheme.themeData,
             navigatorObservers: [asyncNavigatorObserver],
-            routes: {
-              '/': (context) => const SplashScreen(),
-              '/home': (context) => const HomeScreen(),
-            },
+            routes: portfolioRoutes,
           );
         },
       ),
