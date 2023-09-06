@@ -44,6 +44,8 @@ dependencies:
   firebase_ui_firestore: ^1.5.9
   loading_animation_widget: ^1.2.0+4
   asyncstate: ^2.0.3
+  carousel_slider: ^4.2.1
+  youtube_player_flutter: ^8.1.2
 
 dev_dependencies:
   flutter_test:

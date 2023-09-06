@@ -37,41 +37,25 @@ class _ProjectScreenState extends State<ProjectScreen> {
     final project = setProject(widget.projectName);
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text(
-          project?.name ?? '',
-          style: const TextStyle(
-            color: Colors.white,
-          ),
-        ),
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: const Tooltip(
-            message: 'Sair',
-            child: Icon(
-              Icons.arrow_back_ios_new_rounded,
-              color: Colors.white,
-            ),
-          ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: project != null
+              ? ProjectBodyContentWidget(
+                  screenContext: context,
+                  project: project,
+                )
+              : const Center(
+                  child: Text(
+                    'Não foi possível carregar os dados do projeto',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
         ),
       ),
-      body: project != null
-          ? ProjectBodyContentWidget(
-              project: project,
-            )
-          : const Center(
-              child: Text(
-                'Não foi possível carregar os dados do projeto',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
     );
   }
 }
