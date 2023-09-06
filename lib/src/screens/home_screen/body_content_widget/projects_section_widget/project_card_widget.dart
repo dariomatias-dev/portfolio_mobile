@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/src/core/routes/portfolio_route_names.dart';
 import 'package:portfolio/src/core/ui/portfolio_colors.dart';
 
+import 'package:portfolio/src/screens/project_screen/project_screen.dart';
+
 class ProjectCardWidget extends StatelessWidget {
   const ProjectCardWidget({
     super.key,
@@ -17,11 +19,41 @@ class ProjectCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     const borderRadiusValue = 10.0;
 
-    return InkWell(
+    return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(
+        Navigator.push(
           context,
-          PortfolioRouteNames.project,
+          PageRouteBuilder(
+            settings: RouteSettings(
+              name: PortfolioRouteNames.project,
+            ),
+            pageBuilder: (
+              context,
+              animation,
+              secondaryAnimation,
+            ) {
+              return const ProjectScreen();
+            },
+            transitionsBuilder: (
+              context,
+              animation,
+              secondaryAnimation,
+              child,
+            ) {
+              const begin = Offset(0.0, 1.0);
+              const end = Offset.zero;
+              final tween = Tween(
+                begin: begin,
+                end: end,
+              );
+              final offsetAnimation = animation.drive(tween);
+
+              return SlideTransition(
+                position: offsetAnimation,
+                child: child,
+              );
+            },
+          ),
         );
       },
       child: ConstrainedBox(
