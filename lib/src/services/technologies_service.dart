@@ -1,20 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:portfolio/src/models/social_network_model.dart';
+import 'package:portfolio/src/models/technology/technology_model.dart';
 
-class SocialNetworksRepository {
+class TechnologiesService {
   final _db = FirebaseFirestore.instance;
 
-  Future<List<SocialNetworkModel>?> readSocialNetworks() async {
+  Future<List<TechnologyModel>?> readTechnologies() async {
     try {
-      final socialNetworksList = _db
-          .collection('social_networks')
+      final technologiesList = _db
+          .collection('technologies')
           .withConverter(
             fromFirestore: (snapshot, options) {
-              return SocialNetworkModel.fromMap(snapshot.data()!);
+              return TechnologyModel.fromMap(snapshot.data()!);
             },
-            toFirestore: (socialNetwork, options) {
-              return socialNetwork.toMap();
+            toFirestore: (technology, options) {
+              return technology.toMap();
             },
           )
           .get()
@@ -24,7 +24,7 @@ class SocialNetworksRepository {
             }).toList();
           });
 
-      return socialNetworksList;
+      return technologiesList;
     } catch (err) {
       return null;
     }

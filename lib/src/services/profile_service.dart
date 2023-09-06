@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:portfolio/src/models/profile_model.dart';
 
-class ProfileRepository {
+class ProfileService {
   final _db = FirebaseFirestore.instance;
 
   Future<ProfileModel?> readProfile() async {
@@ -19,7 +19,9 @@ class ProfileRepository {
           )
           .get()
           .then((querySnapshot) {
-            return querySnapshot.docs[0].data();
+            final docs = querySnapshot.docs;
+
+            return docs.isNotEmpty ? docs[0].data() : null;
           });
 
       return profile;

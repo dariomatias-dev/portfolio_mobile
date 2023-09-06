@@ -14,10 +14,10 @@ import 'package:portfolio/src/models/technology/technology_model.dart';
 
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 
-import 'package:portfolio/src/repositories/profile_repository.dart';
-import 'package:portfolio/src/repositories/projects_repository.dart';
-import 'package:portfolio/src/repositories/social_networks_repository.dart';
-import 'package:portfolio/src/repositories/technologies_repository.dart';
+import 'package:portfolio/src/services/profile_service.dart';
+import 'package:portfolio/src/services/projects_service.dart';
+import 'package:portfolio/src/services/social_networks_service.dart';
+import 'package:portfolio/src/services/technologies_service.dart';
 
 class PortfolioApp extends StatefulWidget {
   const PortfolioApp({super.key});
@@ -32,12 +32,10 @@ class _PortfolioAppState extends State<PortfolioApp> {
   ValueNotifier<bool> loadedData = ValueNotifier<bool>(false);
   AsyncLoaderHandler? handler;
 
-  final ProfileRepository profileRepository = ProfileRepository();
-  final ProjectsRepository projectRepository = ProjectsRepository();
-  final TechnologiesRepository technologiesRepository =
-      TechnologiesRepository();
-  final SocialNetworksRepository socialNetworksRepository =
-      SocialNetworksRepository();
+  final ProfileService profileService = ProfileService();
+  final ProjectsService projectsService = ProjectsService();
+  final TechnologiesService technologiesService = TechnologiesService();
+  final SocialNetworksService socialNetworksService = SocialNetworksService();
 
   ProfileModel? profile;
   List<ProjectModel>? projects;
@@ -56,10 +54,10 @@ class _PortfolioAppState extends State<PortfolioApp> {
 
   Future<void> fetchData() async {
     final List<Future> requests = [
-      profileRepository.readProfile(),
-      projectRepository.readProjects(),
-      technologiesRepository.readTechnologies(),
-      socialNetworksRepository.readSocialNetworks(),
+      profileService.readProfile(),
+      projectsService.readProjects(),
+      technologiesService.readTechnologies(),
+      socialNetworksService.readSocialNetworks(),
     ];
 
     final results = await Future.wait(requests);
