@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/models/project/project_links_model.dart';
 
+import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_details_widget/project_details_technologies_widget.dart';
+
 class ProjectDetailsWidget extends StatelessWidget {
   const ProjectDetailsWidget({
     super.key,
@@ -36,6 +38,10 @@ class ProjectDetailsWidget extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
           ),
+        ),
+        const SizedBox(height: 20.0),
+        ProjectDetailsTechnologiesWidget(
+          technologies: technologies,
         ),
       ],
     );

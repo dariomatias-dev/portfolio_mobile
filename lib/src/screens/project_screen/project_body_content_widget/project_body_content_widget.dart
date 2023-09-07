@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/src/models/project/project_model.dart';
 
 import 'package:portfolio/src/screens/project_screen/project_body_content_widget/media_carousel_widget.dart';
-import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_details_widget.dart';
+import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_details_widget/project_details_widget.dart';
 import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_screen_header_widget.dart';
 
 class ProjectBodyContentWidget extends StatelessWidget {
