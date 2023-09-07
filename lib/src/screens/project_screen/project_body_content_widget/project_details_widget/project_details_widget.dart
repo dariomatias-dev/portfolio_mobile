@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:portfolio/src/core/ui/portfolio_colors.dart';
+
 import 'package:portfolio/src/models/project/project_links_model.dart';
 
+import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_details_widget/project_details_links_widget.dart';
 import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_details_widget/project_details_technologies_widget.dart';
 
 class ProjectDetailsWidget extends StatelessWidget {
@@ -23,13 +26,39 @@ class ProjectDetailsWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          name,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.w700,
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              name,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            if (links.demo != null) ...[
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12.0,
+                    vertical: 6.0,
+                  ),
+                  decoration: BoxDecoration(
+                    color: PortfolioColors.darkGrey,
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  child: Text(
+                    'demo',
+                    style: TextStyle(
+                      color: Colors.grey.shade300,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ],
         ),
         const SizedBox(height: 10.0),
         const Text(
@@ -42,6 +71,12 @@ class ProjectDetailsWidget extends StatelessWidget {
         const SizedBox(height: 20.0),
         ProjectDetailsTechnologiesWidget(
           technologies: technologies,
+        ),
+        const SizedBox(height: 20.0),
+        const Divider(),
+        const SizedBox(height: 20.0),
+        ProjectDetailsLinksWidget(
+          links: links,
         ),
       ],
     );
