@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:portfolio/src/core/ui/portfolio_colors.dart';
+import 'package:portfolio/src/core/ui/helpers/open_url.dart';
 
 import 'package:portfolio/src/providers/project_data_provider_inherited_widget.dart';
 
@@ -24,28 +24,21 @@ class ProjectDetailsWidget extends StatelessWidget {
               project.name,
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 18,
+                fontSize: 18.0,
                 fontWeight: FontWeight.w700,
               ),
             ),
             if (project.links.demo != null) ...[
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12.0,
-                    vertical: 6.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: PortfolioColors.darkGrey,
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                  child: Text(
-                    'demo',
-                    style: TextStyle(
-                      color: Colors.grey.shade300,
-                    ),
-                  ),
+              IconButton(
+                onPressed: () {
+                  OpenUrl(
+                    context: context,
+                  ).launch(project.links.demo!);
+                },
+                icon: const Icon(
+                  Icons.visibility_outlined,
+                  color: Colors.white54,
+                  size: 28.0,
                 ),
               ),
             ],
