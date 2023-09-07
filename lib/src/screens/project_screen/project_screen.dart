@@ -7,6 +7,8 @@ import 'package:portfolio/src/providers/project_data_provider_inherited_widget.d
 
 import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_body_content_widget.dart';
 
+import 'package:portfolio/src/widgets/screen_header_template_widget.dart';
+
 class ProjectScreen extends StatefulWidget {
   const ProjectScreen({
     super.key,
@@ -47,15 +49,25 @@ class _ProjectScreenState extends State<ProjectScreen> {
                   project: project,
                   child: const ProjectBodyContentWidget(),
                 )
-              : const Center(
-                  child: Text(
-                    'Não foi possível carregar os dados do projeto',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
+              : Stack(
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.sizeOf(context).height,
+                      child: const Center(
+                        child: Text(
+                          'Não foi possível carregar os dados do projeto',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
+                    ScreenHeaderTemplateWidget(
+                      screenContext: context,
+                    ),
+                  ],
                 ),
         ),
       ),

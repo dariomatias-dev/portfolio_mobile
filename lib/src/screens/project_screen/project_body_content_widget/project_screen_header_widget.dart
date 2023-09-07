@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:portfolio/src/providers/project_data_provider_inherited_widget.dart';
 
-import 'package:portfolio/src/widgets/back_button_wdget.dart';
+import 'package:portfolio/src/widgets/screen_header_template_widget.dart';
 
 class ProjectScreenHeaderWidget extends StatelessWidget {
   const ProjectScreenHeaderWidget({super.key});
@@ -33,29 +34,15 @@ class ProjectScreenHeaderWidget extends StatelessWidget {
     final screenContext =
         ProjectDataProviderInheritedWidget.of(context)!.screenContext;
 
-    return Positioned(
-      top: 10.0,
-      child: Container(
-        width: MediaQuery.sizeOf(context).width,
-        padding: const EdgeInsets.symmetric(
-          horizontal: 10.0,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            BackButtonWidget(
-              screenContext: screenContext,
-            ),
-            IconButton(
-              onPressed: () {
-                _showDialog(screenContext);
-              },
-              icon: Icon(
-                Icons.info_outline_rounded,
-                color: Colors.white.withOpacity(0.8),
-              ),
-            ),
-          ],
+    return ScreenHeaderTemplateWidget(
+      screenContext: screenContext,
+      action: IconButton(
+        onPressed: () {
+          _showDialog(screenContext);
+        },
+        icon: Icon(
+          Icons.info_outline_rounded,
+          color: Colors.white.withOpacity(0.8),
         ),
       ),
     );
