@@ -4,7 +4,7 @@ import 'package:portfolio/src/core/ui/portfolio_colors.dart';
 
 import 'package:portfolio/src/models/project/project_links_model.dart';
 
-import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_details_widget/project_details_links_widget.dart';
+import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_details_widget/project_details_source_code_widget/project_details_source_code_widget.dart';
 import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_details_widget/project_details_technologies_widget.dart';
 
 class ProjectDetailsWidget extends StatelessWidget {
@@ -72,11 +72,11 @@ class ProjectDetailsWidget extends StatelessWidget {
         ProjectDetailsTechnologiesWidget(
           technologies: technologies,
         ),
-        const SizedBox(height: 20.0),
+        const SizedBox(height: 10.0),
         const Divider(),
-        const SizedBox(height: 20.0),
-        ProjectDetailsLinksWidget(
-          links: links,
+        const SizedBox(height: 10.0),
+        ProjectDetailsSourceCodeWidget(
+          sourceCode: links.sourceCode,
         ),
       ],
     );
