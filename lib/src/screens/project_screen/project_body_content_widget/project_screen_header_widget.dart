@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/providers/project_data_provider_inherited_widget.dart';
 
 import 'package:portfolio/src/widgets/back_button_wdget.dart';
 
 class ProjectScreenHeaderWidget extends StatelessWidget {
-  const ProjectScreenHeaderWidget({
-    super.key,
-    required this.screenContext,
-  });
+  const ProjectScreenHeaderWidget({super.key});
 
-  final BuildContext screenContext;
-
-  void _showDialog() {
+  void _showDialog(BuildContext screenContext) {
     showDialog(
       context: screenContext,
       builder: (context) {
@@ -34,6 +30,9 @@ class ProjectScreenHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenContext =
+        ProjectDataProviderInheritedWidget.of(context)!.screenContext;
+
     return Positioned(
       top: 10.0,
       child: Container(
@@ -49,7 +48,7 @@ class ProjectScreenHeaderWidget extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                _showDialog();
+                _showDialog(screenContext);
               },
               icon: Icon(
                 Icons.info_outline_rounded,

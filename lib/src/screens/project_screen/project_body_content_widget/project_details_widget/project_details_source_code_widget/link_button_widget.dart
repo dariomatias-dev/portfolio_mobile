@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'package:portfolio/src/core/ui/portfolio_colors.dart';
 
@@ -13,14 +12,10 @@ class LinkButtonWidget extends StatelessWidget {
   final String name;
   final String url;
 
-  Future<void> _launchUrl() async {
-    if (!await launchUrl(Uri.parse(url))) {}
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onDoubleTap: () => _launchUrl(),
+      onTap: () {},
       child: Container(
         padding: const EdgeInsets.symmetric(
           horizontal: 16.0,

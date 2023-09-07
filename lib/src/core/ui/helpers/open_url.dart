@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/providers/project_data_provider_inherited_widget.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
 class OpenUrl {
   OpenUrl({
-    required this.screenContext,
+    required this.context,
   });
 
-  final BuildContext screenContext;
+  final BuildContext context;
 
   Future<void> launch(String url) async {
     if (!await launchUrl(Uri.parse(url))) {
-      _alertDialo();
+      _alertDialog();
     }
   }
 
-  void _alertDialo() {
+  void _alertDialog() {
+    final screenContext =
+        ProjectDataProviderInheritedWidget.of(context)!.screenContext;
+
     showDialog(
       context: screenContext,
       builder: (context) {

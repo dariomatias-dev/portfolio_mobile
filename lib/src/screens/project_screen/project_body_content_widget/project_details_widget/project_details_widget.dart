@@ -2,27 +2,18 @@ import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/core/ui/portfolio_colors.dart';
 
-import 'package:portfolio/src/models/project/project_links_model.dart';
+import 'package:portfolio/src/providers/project_data_provider_inherited_widget.dart';
 
 import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_details_widget/project_details_source_code_widget/project_details_source_code_widget.dart';
 import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_details_widget/project_details_technologies_widget.dart';
 
 class ProjectDetailsWidget extends StatelessWidget {
-  const ProjectDetailsWidget({
-    super.key,
-    required this.name,
-    required this.description,
-    required this.technologies,
-    required this.links,
-  });
-
-  final String name;
-  final String description;
-  final List<String> technologies;
-  final ProjectLinksModel links;
+  const ProjectDetailsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final project = ProjectDataProviderInheritedWidget.of(context)!.project;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -30,14 +21,14 @@ class ProjectDetailsWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              name,
+              project.name,
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
               ),
             ),
-            if (links.demo != null) ...[
+            if (project.links.demo != null) ...[
               GestureDetector(
                 onTap: () {},
                 child: Container(
@@ -70,13 +61,13 @@ class ProjectDetailsWidget extends StatelessWidget {
         ),
         const SizedBox(height: 20.0),
         ProjectDetailsTechnologiesWidget(
-          technologies: technologies,
+          technologies: project.technologies,
         ),
         const SizedBox(height: 10.0),
         const Divider(),
         const SizedBox(height: 10.0),
         ProjectDetailsSourceCodeWidget(
-          sourceCode: links.sourceCode,
+          sourceCode: project.links.sourceCode,
         ),
       ],
     );
