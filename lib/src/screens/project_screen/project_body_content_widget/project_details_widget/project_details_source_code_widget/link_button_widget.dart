@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/core/ui/portfolio_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'package:portfolio/src/core/ui/portfolio_colors.dart';
 
 class LinkButtonWidget extends StatelessWidget {
   const LinkButtonWidget({
