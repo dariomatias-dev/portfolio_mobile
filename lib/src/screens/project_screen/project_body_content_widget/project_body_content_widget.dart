@@ -4,6 +4,8 @@ import 'package:portfolio/src/models/project/project_model.dart';
 
 import 'package:portfolio/src/screens/project_screen/project_body_content_widget/media_carousel_widget.dart';
 
+import 'package:portfolio/src/widgets/back_button_wdget.dart';
+
 class ProjectBodyContentWidget extends StatelessWidget {
   const ProjectBodyContentWidget({
     super.key,
@@ -60,25 +62,8 @@ class ProjectBodyContentWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  padding: const EdgeInsets.all(12.0),
-                  decoration: const BoxDecoration(
-                    color: Colors.black54,
-                    shape: BoxShape.circle,
-                  ),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Tooltip(
-                      message: 'Sair',
-                      child: Icon(
-                        Icons.arrow_back_ios_new_rounded,
-                        color: Colors.white,
-                        size: 16.0,
-                      ),
-                    ),
-                  ),
+                BackButtonWidget(
+                  screenContext: screenContext,
                 ),
                 IconButton(
                   onPressed: () {
