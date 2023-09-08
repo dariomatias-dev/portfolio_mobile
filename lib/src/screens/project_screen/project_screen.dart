@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'package:portfolio/src/core/ui/widgets/error_message_loading_data_widget.dart';
+
 import 'package:portfolio/src/models/project/project_model.dart';
 
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 import 'package:portfolio/src/providers/project_data_provider_inherited_widget.dart';
 
 import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_body_content_widget.dart';
-
-import 'package:portfolio/src/widgets/screen_header_template_widget.dart';
 
 class ProjectScreen extends StatelessWidget {
   const ProjectScreen({
@@ -39,25 +39,9 @@ class ProjectScreen extends StatelessWidget {
                   project: project,
                   child: const ProjectBodyContentWidget(),
                 )
-              : Stack(
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.sizeOf(context).height,
-                      child: const Center(
-                        child: Text(
-                          'Não foi possível carregar os dados do projeto',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ),
-                    ScreenHeaderTemplateWidget(
-                      screenContext: context,
-                    ),
-                  ],
+              : ErrorMessageLoadingDataWidget(
+                  messageVariation: 'do projeto',
+                  screenContext: context,
                 ),
         ),
       ),

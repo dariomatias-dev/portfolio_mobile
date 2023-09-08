@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:portfolio/src/core/ui/widgets/error_message_loading_data_widget.dart';
+
 import 'package:portfolio/src/models/technology/technology_model.dart';
 
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
@@ -34,7 +36,10 @@ class TechnologyScreen extends StatelessWidget {
                   technology: technology,
                   child: Container(),
                 )
-              : Container(),
+              : ErrorMessageLoadingDataWidget(
+                  messageVariation: 'da tecnologia',
+                  screenContext: context,
+                ),
         ),
       ),
     );
