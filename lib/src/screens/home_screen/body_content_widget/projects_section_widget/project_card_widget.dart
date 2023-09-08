@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/core/routes/portfolio_route_names.dart';
+import 'package:portfolio/src/core/ui/helpers/navigation_slide_transition.dart';
 import 'package:portfolio/src/core/ui/portfolio_colors.dart';
 
 import 'package:portfolio/src/screens/project_screen/project_screen.dart';
@@ -21,40 +22,11 @@ class ProjectCardWidget extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        Navigator.push(
+        NavigationSlideTransition().navegate(
           context,
-          PageRouteBuilder(
-            settings: RouteSettings(
-              name: PortfolioRouteNames.project,
-            ),
-            pageBuilder: (
-              context,
-              animation,
-              secondaryAnimation,
-            ) {
-              return ProjectScreen(
-                projectName: projectName,
-              );
-            },
-            transitionsBuilder: (
-              context,
-              animation,
-              secondaryAnimation,
-              child,
-            ) {
-              const begin = Offset(0.0, 1.0);
-              const end = Offset.zero;
-              final tween = Tween(
-                begin: begin,
-                end: end,
-              );
-              final offsetAnimation = animation.drive(tween);
-
-              return SlideTransition(
-                position: offsetAnimation,
-                child: child,
-              );
-            },
+          PortfolioRouteNames.project,
+          () => ProjectScreen(
+            projectName: projectName,
           ),
         );
       },

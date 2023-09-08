@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:portfolio/src/core/routes/portfolio_route_names.dart';
+import 'package:portfolio/src/core/ui/helpers/navigation_slide_transition.dart';
 
 import 'package:portfolio/src/models/technology/technology_model.dart';
 
@@ -47,40 +48,11 @@ class TechnologiesComponentWidget extends StatelessWidget {
 
             return GestureDetector(
               onTap: () {
-                Navigator.push(
+                NavigationSlideTransition().navegate(
                   context,
-                  PageRouteBuilder(
-                    settings: RouteSettings(
-                      name: PortfolioRouteNames.technology,
-                    ),
-                    pageBuilder: (
-                      context,
-                      animation,
-                      secondaryAnimation,
-                    ) {
-                      return TechnologyScreen(
-                        technologyName: technology.name,
-                      );
-                    },
-                    transitionsBuilder: (
-                      context,
-                      animation,
-                      secondaryAnimation,
-                      child,
-                    ) {
-                      const begin = Offset(0.0, 1.0);
-                      const end = Offset.zero;
-                      final tween = Tween(
-                        begin: begin,
-                        end: end,
-                      );
-                      final offsetAnimation = animation.drive(tween);
-
-                      return SlideTransition(
-                        position: offsetAnimation,
-                        child: child,
-                      );
-                    },
+                  PortfolioRouteNames.technology,
+                  () => TechnologyScreen(
+                    technologyName: technology.name,
                   ),
                 );
               },
