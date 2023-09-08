@@ -12,18 +12,21 @@ class TechnologyOriginWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sizedBoxWidth = MediaQuery.sizeOf(context).width / 2 - 25.0;
+
     return Container(
       padding: const EdgeInsets.symmetric(
+        horizontal: 20.0,
         vertical: 8.0,
       ),
       decoration: const BoxDecoration(
         color: Colors.white,
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            width: MediaQuery.sizeOf(context).width / 2,
+            width: sizedBoxWidth,
             child: Column(
               children: [
                 const Text(
@@ -44,22 +47,26 @@ class TechnologyOriginWidget extends StatelessWidget {
               ],
             ),
           ),
-          Column(
-            children: [
-              const Text(
-                'Lançada em:',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
+          const SizedBox(width: 10.0),
+          SizedBox(
+            width: sizedBoxWidth,
+            child: Column(
+              children: [
+                const Text(
+                  'Lançada em:',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Text(
-                createdIn,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w500,
+                Text(
+                  createdIn,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),

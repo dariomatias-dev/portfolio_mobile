@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import 'package:portfolio/src/models/project/project_model.dart';
 import 'package:portfolio/src/models/technology/technology_links_model.dart';
 
+import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 import 'package:portfolio/src/providers/technology_data_provider_inherited_widget.dart';
 
 import 'package:portfolio/src/screens/technology_screen/technology_body_content_widget/technology_links_widget.dart';
 import 'package:portfolio/src/screens/technology_screen/technology_body_content_widget/technology_origin_widget.dart';
+import 'package:portfolio/src/screens/technology_screen/technology_body_content_widget/technology_projects_widget.dart';
 
 import 'package:portfolio/src/widgets/screen_header_template_widget.dart';
 
@@ -22,6 +25,14 @@ class TechnologyBodyContentWidget extends StatelessWidget {
     final imageName = technology.imageName.imageDarkTheme ??
         technology.imageName.imageStandard;
     final TechnologyLinksModel links = technology.links;
+
+    final projects = DataProviderInheritedWidget.of(context)?.projects;
+    final List<ProjectModel> technologyProjects = projects?.where(
+          (element) {
+            return element.technologies.contains(technology.name);
+          },
+        ).toList() ??
+        [];
 
     return Stack(
       children: [
@@ -69,6 +80,10 @@ class TechnologyBodyContentWidget extends StatelessWidget {
                 officialWebsite: links.officialWebsite,
                 playground: links.playground,
               ),
+              if (technologyProjects.isNotEmpty)
+                TechnologyProjectsWidget(
+                  technologyProjects: technologyProjects,
+                ),
             ],
           ),
         ),

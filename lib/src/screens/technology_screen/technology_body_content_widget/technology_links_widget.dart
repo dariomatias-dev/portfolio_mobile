@@ -15,28 +15,30 @@ class TechnologyLinksWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sizedBoxWidth = playground != null ? 10.0 : 20.0;
+
     return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          const SizedBox(width: 10.0),
+          SizedBox(width: sizedBoxWidth),
           LinkButtonWidget(
             name: 'Site Oficial',
             url: officialWebsite,
           ),
-          const SizedBox(width: 10.0),
+          SizedBox(width: sizedBoxWidth),
           LinkButtonWidget(
             name: 'Repositório',
             url: githubRepository,
           ),
           if (playground != null) ...[
-            const SizedBox(width: 10.0),
+            SizedBox(width: sizedBoxWidth),
             LinkButtonWidget(
               name: 'Playground',
               url: playground!,
             ),
           ],
-          const SizedBox(width: 10.0),
+          SizedBox(width: sizedBoxWidth),
         ],
       ),
     );
