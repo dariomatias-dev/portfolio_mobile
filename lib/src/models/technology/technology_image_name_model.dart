@@ -1,5 +1,5 @@
-class TechnologieImageNameModel {
-  TechnologieImageNameModel({
+class TechnologyImageNameModel {
+  TechnologyImageNameModel({
     required this.imageStandard,
     this.imageDarkTheme,
   });
@@ -7,8 +7,8 @@ class TechnologieImageNameModel {
   final String imageStandard;
   final String? imageDarkTheme;
 
-  factory TechnologieImageNameModel.fromMap(Map<String, dynamic> map) {
-    return TechnologieImageNameModel(
+  factory TechnologyImageNameModel.fromMap(Map<String, dynamic> map) {
+    return TechnologyImageNameModel(
       imageStandard: map['image_standard'],
       imageDarkTheme: map['image_dark_theme'],
     );

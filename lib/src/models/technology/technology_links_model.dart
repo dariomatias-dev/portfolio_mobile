@@ -1,5 +1,5 @@
-class TechnologieLinksModel {
-  TechnologieLinksModel({
+class TechnologyLinksModel {
+  TechnologyLinksModel({
     required this.githubRepository,
     required this.officialWebsite,
     this.playground,
@@ -9,8 +9,8 @@ class TechnologieLinksModel {
   final String officialWebsite;
   final String? playground;
 
-  factory TechnologieLinksModel.fromMap(Map<String, dynamic> map) {
-    return TechnologieLinksModel(
+  factory TechnologyLinksModel.fromMap(Map<String, dynamic> map) {
+    return TechnologyLinksModel(
       githubRepository: map['github_repository'],
       officialWebsite: map['official_website'],
       playground: map['playground'],
