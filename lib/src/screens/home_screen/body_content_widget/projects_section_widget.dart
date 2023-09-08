@@ -5,8 +5,7 @@ import 'package:portfolio/src/core/ui/widgets/section_data_unavailable_widget.da
 
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 
-import 'package:portfolio/src/screens/home_screen/body_content_widget/projects_section_widget/project_card_widget.dart';
-
+import 'package:portfolio/src/widgets/project_card_list_view_widget/project_card_list_view_widget.dart';
 import 'package:portfolio/src/widgets/section_header_widget.dart';
 
 class ProjectsSectionWidget extends StatefulWidget {
@@ -43,23 +42,8 @@ class _ProjectsSectionWidgetState extends State<ProjectsSectionWidget> {
                 ),
               ),
               const SizedBox(height: 40.0),
-              SizedBox(
-                height: 170.0,
-                child: ListView.separated(
-                  itemCount: projects.length,
-                  scrollDirection: Axis.horizontal,
-                  separatorBuilder: (context, index) {
-                    return const SizedBox(width: 20.0);
-                  },
-                  itemBuilder: (context, index) {
-                    final project = projects[index];
-
-                    return ProjectCardWidget(
-                      projectName: project.name,
-                      projectImageUrl: project.media[0].url,
-                    );
-                  },
-                ),
+              ProjectCardListViewWidget(
+                projects: projects,
               ),
             ],
           );

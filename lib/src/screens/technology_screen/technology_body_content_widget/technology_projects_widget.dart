@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/models/project/project_model.dart';
 
+import 'package:portfolio/src/widgets/project_card_list_view_widget/project_card_list_view_widget.dart';
+
 class TechnologyProjectsWidget extends StatelessWidget {
   const TechnologyProjectsWidget({
     super.key,
@@ -23,22 +25,17 @@ class TechnologyProjectsWidget extends StatelessWidget {
           const Divider(),
           const SizedBox(height: 10.0),
           const Text(
-            'Projetos que a usam',
+            'Projetos que usam',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 20.0,
+              fontSize: 16.0,
               fontWeight: FontWeight.w500,
             ),
           ),
-          const SizedBox(height: 12.0),
-          ...technologyProjects.map((technologyProject) {
-            return Text(
-              technologyProject.name,
-              style: const TextStyle(
-                color: Colors.white,
-              ),
-            );
-          }),
+          const SizedBox(height: 17.0),
+          ProjectCardListViewWidget(
+            projects: technologyProjects,
+          ),
         ],
       ),
     );
