@@ -9,7 +9,7 @@ import 'package:portfolio/src/screens/project_screen/project_body_content_widget
 
 import 'package:portfolio/src/widgets/screen_header_template_widget.dart';
 
-class ProjectScreen extends StatefulWidget {
+class ProjectScreen extends StatelessWidget {
   const ProjectScreen({
     super.key,
     required this.projectName,
@@ -17,12 +17,7 @@ class ProjectScreen extends StatefulWidget {
 
   final String projectName;
 
-  @override
-  State<ProjectScreen> createState() => _ProjectScreenState();
-}
-
-class _ProjectScreenState extends State<ProjectScreen> {
-  ProjectModel? setProject(String projectName) {
+  ProjectModel? setProject(BuildContext context) {
     final projects = DataProviderInheritedWidget.of(context)?.projects;
     final project = projects?.firstWhere((item) {
       return item.name == projectName;
@@ -32,13 +27,8 @@ class _ProjectScreenState extends State<ProjectScreen> {
   }
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final project = setProject(widget.projectName);
+    final project = setProject(context);
 
     return Scaffold(
       body: SafeArea(
