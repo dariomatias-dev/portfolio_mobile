@@ -7,6 +7,8 @@ import 'package:portfolio/src/models/technology/technology_model.dart';
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 import 'package:portfolio/src/providers/technology_data_provider_inherited_widget.dart';
 
+import 'package:portfolio/src/screens/technology_screen/technology_body_content_widget/technology_body_content_widget.dart';
+
 class TechnologyScreen extends StatelessWidget {
   const TechnologyScreen({
     super.key,
@@ -33,8 +35,9 @@ class TechnologyScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: technology != null
               ? TechnologyDataProviderInheritedWidget(
+                  screenContext: context,
                   technology: technology,
-                  child: Container(),
+                  child: const TechnologyBodyContentWidget(),
                 )
               : ErrorMessageLoadingDataWidget(
                   messageVariation: 'da tecnologia',

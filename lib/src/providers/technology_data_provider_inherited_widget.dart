@@ -5,9 +5,11 @@ class TechnologyDataProviderInheritedWidget extends InheritedWidget {
   const TechnologyDataProviderInheritedWidget({
     super.key,
     required final Widget child,
+    required this.screenContext,
     required this.technology,
   }) : super(child: child);
 
+  final BuildContext screenContext;
   final TechnologyModel technology;
 
   static TechnologyDataProviderInheritedWidget? of(BuildContext context) {

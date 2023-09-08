@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import 'package:portfolio/src/core/routes/portfolio_route_names.dart';
+
 import 'package:portfolio/src/models/technology/technology_model.dart';
+
+import 'package:portfolio/src/screens/technology_screen/technology_screen.dart';
 
 class TechnologiesComponentWidget extends StatelessWidget {
   const TechnologiesComponentWidget({
@@ -41,8 +45,48 @@ class TechnologiesComponentWidget extends StatelessWidget {
             final String imageName = technology.imageName.imageDarkTheme ??
                 technology.imageName.imageStandard;
 
-            return Image.network(
-              '${dotenv.env['BASE_URL_IMAGES']}/technologies/${imageName}_logo.png',
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    settings: RouteSettings(
+                      name: PortfolioRouteNames.technology,
+                    ),
+                    pageBuilder: (
+                      context,
+                      animation,
+                      secondaryAnimation,
+                    ) {
+                      return TechnologyScreen(
+                        technologyName: technology.name,
+                      );
+                    },
+                    transitionsBuilder: (
+                      context,
+                      animation,
+                      secondaryAnimation,
+                      child,
+                    ) {
+                      const begin = Offset(0.0, 1.0);
+                      const end = Offset.zero;
+                      final tween = Tween(
+                        begin: begin,
+                        end: end,
+                      );
+                      final offsetAnimation = animation.drive(tween);
+
+                      return SlideTransition(
+                        position: offsetAnimation,
+                        child: child,
+                      );
+                    },
+                  ),
+                );
+              },
+              child: Image.network(
+                '${dotenv.env['BASE_URL_IMAGES']}/technologies/${imageName}_logo.png',
+              ),
             );
           },
         ),
