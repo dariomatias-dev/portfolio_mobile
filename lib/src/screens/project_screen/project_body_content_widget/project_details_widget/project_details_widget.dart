@@ -4,7 +4,7 @@ import 'package:portfolio/src/core/ui/helpers/open_url.dart';
 
 import 'package:portfolio/src/providers/project_data_provider_inherited_widget.dart';
 
-import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_details_widget/project_details_source_code_widget/project_details_source_code_widget.dart';
+import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_details_widget/project_details_source_code_widget.dart';
 import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_details_widget/project_details_technologies_widget.dart';
 
 class ProjectDetailsWidget extends StatelessWidget {

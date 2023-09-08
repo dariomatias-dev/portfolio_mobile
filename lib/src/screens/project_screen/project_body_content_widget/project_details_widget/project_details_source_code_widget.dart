@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/models/project/project_source_code_model.dart';
 
-import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_details_widget/project_details_source_code_widget/link_button_widget.dart';
+import 'package:portfolio/src/widgets/link_button_widget.dart';
 
 class ProjectDetailsSourceCodeWidget extends StatelessWidget {
   const ProjectDetailsSourceCodeWidget({

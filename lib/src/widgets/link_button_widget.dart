@@ -15,28 +15,23 @@ class LinkButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
+    return ElevatedButton(
+      onPressed: () {
         OpenUrl(
           context: context,
         ).launch(url);
       },
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16.0,
-          vertical: 8.0,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: PortfolioColors.darkGrey,
+        foregroundColor: Colors.grey.shade800,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
         ),
-        decoration: BoxDecoration(
-          color: PortfolioColors.darkGrey,
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-        child: Center(
-          child: Text(
-            name,
-            style: const TextStyle(
-              color: Colors.white,
-            ),
-          ),
+      ),
+      child: Text(
+        name,
+        style: const TextStyle(
+          color: Colors.white,
         ),
       ),
     );
