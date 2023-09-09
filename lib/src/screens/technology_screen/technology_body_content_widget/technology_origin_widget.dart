@@ -30,7 +30,7 @@ class TechnologyOriginWidget extends StatelessWidget {
             child: Column(
               children: [
                 const Text(
-                  'Criada por:',
+                  'Criado por:',
                   style: TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold,
@@ -53,7 +53,7 @@ class TechnologyOriginWidget extends StatelessWidget {
             child: Column(
               children: [
                 const Text(
-                  'Lançada em:',
+                  'Lançado em:',
                   style: TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold,

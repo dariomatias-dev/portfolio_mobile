@@ -10,6 +10,7 @@ import 'package:portfolio/src/providers/technology_data_provider_inherited_widge
 import 'package:portfolio/src/screens/technology_screen/technology_body_content_widget/technology_links_widget.dart';
 import 'package:portfolio/src/screens/technology_screen/technology_body_content_widget/technology_origin_widget.dart';
 import 'package:portfolio/src/screens/technology_screen/technology_body_content_widget/technology_projects_widget.dart';
+import 'package:portfolio/src/screens/technology_screen/technology_body_content_widget/technology_utilizers_widget/technology_utilizers_widget.dart';
 
 import 'package:portfolio/src/widgets/screen_header_template_widget.dart';
 
@@ -40,6 +41,7 @@ class TechnologyBodyContentWidget extends StatelessWidget {
           width: MediaQuery.sizeOf(context).width,
           padding: const EdgeInsets.only(
             top: 20.0,
+            bottom: 48.0,
           ),
           child: Column(
             children: [
@@ -58,9 +60,10 @@ class TechnologyBodyContentWidget extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                  vertical: 20.0,
+                padding: const EdgeInsets.only(
+                  top: 20.0,
+                  right: 10.0,
+                  left: 10.0,
                 ),
                 child: Text(
                   technology.description,
@@ -70,6 +73,13 @@ class TechnologyBodyContentWidget extends StatelessWidget {
                   ),
                 ),
               ),
+              if (technology.userCompanies != null ||
+                  technology.userApplications != null)
+                TechnologyUtilizersWidget(
+                  userCompanies: technology.userCompanies,
+                  userApplications: technology.userApplications,
+                ),
+              const SizedBox(height: 20.0),
               TechnologyOriginWidget(
                 createdBy: technology.createdBy,
                 createdIn: technology.releasedIn,
