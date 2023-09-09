@@ -17,6 +17,28 @@ import 'package:portfolio/src/widgets/screen_header_template_widget.dart';
 class TechnologyBodyContentWidget extends StatelessWidget {
   const TechnologyBodyContentWidget({super.key});
 
+  void _showAlertDialog(BuildContext screenContext) {
+    showDialog(
+      context: screenContext,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Atenção'),
+          content: const Text(
+            'As informações sobre as empresas e aplicações que usam a tecnologia podem não estarem presentes, pelo motivo que nem sempre essas informações são divulgadas, sendo necessário olhar os códigos-fonte disponíveis.',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenContext =
@@ -99,6 +121,15 @@ class TechnologyBodyContentWidget extends StatelessWidget {
         ),
         ScreenHeaderTemplateWidget(
           screenContext: screenContext,
+          action: IconButton(
+            onPressed: () {
+              _showAlertDialog(screenContext);
+            },
+            icon: Icon(
+              Icons.info_outline_rounded,
+              color: Colors.white.withOpacity(0.8),
+            ),
+          ),
         ),
       ],
     );

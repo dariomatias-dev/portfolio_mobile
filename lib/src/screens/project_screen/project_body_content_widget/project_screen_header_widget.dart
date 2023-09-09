@@ -7,7 +7,7 @@ import 'package:portfolio/src/widgets/screen_header_template_widget.dart';
 class ProjectScreenHeaderWidget extends StatelessWidget {
   const ProjectScreenHeaderWidget({super.key});
 
-  void _showDialog(BuildContext screenContext) {
+  void _showAlertDialog(BuildContext screenContext) {
     showDialog(
       context: screenContext,
       builder: (context) {
@@ -38,7 +38,7 @@ class ProjectScreenHeaderWidget extends StatelessWidget {
       screenContext: screenContext,
       action: IconButton(
         onPressed: () {
-          _showDialog(screenContext);
+          _showAlertDialog(screenContext);
         },
         icon: Icon(
           Icons.info_outline_rounded,
