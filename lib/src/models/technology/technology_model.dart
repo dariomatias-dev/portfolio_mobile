@@ -1,37 +1,40 @@
 import 'package:portfolio/src/models/technology/technology_image_name_model.dart';
-import 'package:portfolio/src/models/technology/technology_links_model.dart';
+import 'package:portfolio/src/models/technology/technology_references_model.dart';
 
 class TechnologyModel {
   TechnologyModel({
     required this.name,
     required this.description,
-    required this.gradient,
     required this.imageName,
     required this.status,
-    required this.createdIn,
+    this.userCompanies,
+    this.userApplications,
     required this.createdBy,
-    required this.links,
+    required this.releasedIn,
+    required this.references,
   });
 
   final String name;
   final String description;
-  final List<String> gradient;
   final TechnologyImageNameModel imageName;
   final String status;
-  final String createdIn;
+  final String? userCompanies;
+  final String? userApplications;
   final String createdBy;
-  final TechnologyLinksModel links;
+  final String releasedIn;
+  final TechnologyReferencesModel references;
 
   factory TechnologyModel.fromMap(Map<String, dynamic> map) {
     return TechnologyModel(
       name: map['name'],
       description: map['description'],
-      gradient: (map['gradient'] as List<dynamic>).cast<String>(),
       imageName: TechnologyImageNameModel.fromMap(map['image_name']),
       status: map['status'],
-      createdIn: map['created_in'],
+      userCompanies: map['user_companies'],
+      userApplications: map['user_applications'],
       createdBy: map['created_by'],
-      links: TechnologyLinksModel.fromMap(map['links']),
+      releasedIn: map['released_in'],
+      references: TechnologyReferencesModel.fromMap(map['references']),
     );
   }
 
@@ -39,12 +42,13 @@ class TechnologyModel {
     return {
       'name': name,
       'description': description,
-      'gradient': gradient,
       'imageName': imageName.toMap(),
       'status': status,
-      'createdIn': createdIn,
+      'userCompanies': userCompanies,
+      'userApplications': userApplications,
       'createdBy': createdBy,
-      'links': links.toMap(),
+      'releasedIn': releasedIn,
+      'references': references.toMap(),
     };
   }
 }

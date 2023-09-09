@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:portfolio/src/models/project/project_model.dart';
-import 'package:portfolio/src/models/technology/technology_links_model.dart';
+import 'package:portfolio/src/models/technology/technology_references_model.dart';
 
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 import 'package:portfolio/src/providers/technology_data_provider_inherited_widget.dart';
@@ -24,7 +24,7 @@ class TechnologyBodyContentWidget extends StatelessWidget {
         TechnologyDataProviderInheritedWidget.of(context)!.technology;
     final imageName = technology.imageName.imageDarkTheme ??
         technology.imageName.imageStandard;
-    final TechnologyLinksModel links = technology.links;
+    final TechnologyReferencesModel links = technology.references;
 
     final projects = DataProviderInheritedWidget.of(context)?.projects;
     final List<ProjectModel> technologyProjects = projects?.where(
@@ -72,7 +72,7 @@ class TechnologyBodyContentWidget extends StatelessWidget {
               ),
               TechnologyOriginWidget(
                 createdBy: technology.createdBy,
-                createdIn: technology.createdIn,
+                createdIn: technology.releasedIn,
               ),
               const SizedBox(height: 20.0),
               TechnologyLinksWidget(
