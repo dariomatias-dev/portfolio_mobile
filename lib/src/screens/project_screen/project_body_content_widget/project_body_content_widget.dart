@@ -19,9 +19,10 @@ class ProjectBodyContentWidget extends StatelessWidget {
               child: MediaCarouselWidget(),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 10.0,
-                vertical: 20.0,
+              padding: EdgeInsets.only(
+                right: 10.0,
+                bottom: 20.0,
+                left: 10.0,
               ),
               child: ProjectDetailsWidget(),
             ),
