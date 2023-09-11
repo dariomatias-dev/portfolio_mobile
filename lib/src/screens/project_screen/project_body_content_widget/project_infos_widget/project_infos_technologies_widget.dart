@@ -6,8 +6,8 @@ import 'package:portfolio/src/core/ui/helpers/navigation_slide_transition.dart';
 
 import 'package:portfolio/src/screens/technology_screen/technology_screen.dart';
 
-class ProjectDetailsTechnologiesWidget extends StatelessWidget {
-  const ProjectDetailsTechnologiesWidget({
+class ProjectInfosTechnologiesWidget extends StatelessWidget {
+  const ProjectInfosTechnologiesWidget({
     super.key,
     required this.technologies,
   });

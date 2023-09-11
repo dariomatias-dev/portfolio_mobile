@@ -4,8 +4,8 @@ import 'package:portfolio/src/models/project/project_source_code_model.dart';
 
 import 'package:portfolio/src/widgets/link_button_widget.dart';
 
-class ProjectDetailsSourceCodeWidget extends StatelessWidget {
-  const ProjectDetailsSourceCodeWidget({
+class ProjectInfosSourceCodeWidget extends StatelessWidget {
+  const ProjectInfosSourceCodeWidget({
     super.key,
     required this.sourceCode,
   });

@@ -4,11 +4,11 @@ import 'package:portfolio/src/core/ui/helpers/open_url.dart';
 
 import 'package:portfolio/src/providers/project_data_provider_inherited_widget.dart';
 
-import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_details_widget/project_details_source_code_widget.dart';
-import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_details_widget/project_details_technologies_widget.dart';
+import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_infos_widget/project_infos_source_code_widget.dart';
+import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_infos_widget/project_infos_technologies_widget.dart';
 
-class ProjectDetailsWidget extends StatelessWidget {
-  const ProjectDetailsWidget({super.key});
+class ProjectInfosWidget extends StatelessWidget {
+  const ProjectInfosWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -85,13 +85,13 @@ class ProjectDetailsWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20.0),
-        ProjectDetailsTechnologiesWidget(
+        ProjectInfosTechnologiesWidget(
           technologies: project.technologies,
         ),
         const SizedBox(height: 10.0),
         const Divider(),
         const SizedBox(height: 10.0),
-        ProjectDetailsSourceCodeWidget(
+        ProjectInfosSourceCodeWidget(
           sourceCode: project.links.sourceCode,
         ),
       ],
