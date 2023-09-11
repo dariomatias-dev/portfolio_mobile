@@ -33,6 +33,10 @@ class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
         technologies?.where((technology) {
       return technology.status == 'using';
     }).toList();
+    final List<TechnologyModel>? studyingTechnologies =
+        technologies?.where((technology) {
+      return technology.status == 'studying';
+    }).toList();
     final List<TechnologyModel>? plannedTechnologies =
         technologies?.where((technology) {
       return technology.status == 'planned';
@@ -53,11 +57,22 @@ class _TechnologiesSectionWidgetState extends State<TechnologiesSectionWidget> {
                 description: sectionTechnologiesDescription.knownTechnologies,
                 technologies: knownTechnologies!,
               ),
-              const SizedBox(height: 30.0),
-              TechnologiesComponentWidget(
-                description: sectionTechnologiesDescription.plannedTechnologies,
-                technologies: plannedTechnologies!,
-              ),
+              if (studyingTechnologies != null || plannedTechnologies != null)
+                const SizedBox(height: 30.0),
+              if (studyingTechnologies != null)
+                TechnologiesComponentWidget(
+                  description:
+                      sectionTechnologiesDescription.studyingTechnologies,
+                  technologies: studyingTechnologies,
+                ),
+              if (studyingTechnologies != null && plannedTechnologies != null)
+                const SizedBox(height: 30.0),
+              if (plannedTechnologies != null)
+                TechnologiesComponentWidget(
+                  description:
+                      sectionTechnologiesDescription.plannedTechnologies,
+                  technologies: plannedTechnologies,
+                ),
             ],
           );
   }
