@@ -29,7 +29,7 @@ class ProjectInfosWidget extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            if (project.links.demo != null) ...[
+            if (project.links.demo != null)
               IconButton(
                 onPressed: () {
                   OpenUrl(
@@ -42,7 +42,6 @@ class ProjectInfosWidget extends StatelessWidget {
                   size: 28.0,
                 ),
               ),
-            ],
           ],
         ),
         const SizedBox(height: 10.0),

@@ -20,24 +20,21 @@ class ProjectInfosSourceCodeWidget extends StatelessWidget {
 
   List<Widget> _generateLinkButtonWidgets() {
     return [
-      if (sourceCode.frontend != null) ...[
+      if (sourceCode.frontend != null)
         LinkButtonWidget(
           name: 'Frontend',
           url: sourceCode.frontend!,
         ),
-      ],
-      if (sourceCode.backend != null) ...[
+      if (sourceCode.backend != null)
         LinkButtonWidget(
           name: 'Backend',
           url: sourceCode.backend!,
         ),
-      ],
-      if (sourceCode.mobile != null) ...[
+      if (sourceCode.mobile != null)
         LinkButtonWidget(
           name: 'Mobile',
           url: sourceCode.mobile!,
         ),
-      ],
     ];
   }
 
@@ -47,17 +44,16 @@ class ProjectInfosSourceCodeWidget extends StatelessWidget {
 
     return Column(
       children: [
-        if (linkButtonWidgets.length == 1) ...[
+        if (linkButtonWidgets.length == 1)
           Text(
             'Código-fonte',
             style: titleStyle,
-          ),
-        ] else ...[
+          )
+        else
           Text(
             'Códigos-fonte',
             style: titleStyle,
           ),
-        ],
         const SizedBox(height: 12.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
