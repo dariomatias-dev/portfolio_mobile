@@ -5,6 +5,7 @@ class ProjectModel {
   ProjectModel({
     required this.name,
     required this.description,
+    required this.details,
     required this.media,
     required this.technologies,
     required this.links,
@@ -12,6 +13,7 @@ class ProjectModel {
 
   final String name;
   final String description;
+  final List<String> details;
   final List<ProjectMediaModel> media;
   final List<String> technologies;
   final ProjectLinksModel links;
@@ -20,6 +22,7 @@ class ProjectModel {
     return ProjectModel(
       name: map['name'],
       description: map['description'],
+      details: (map['details'] as List<dynamic>).cast<String>(),
       media: ((map['media'] as List<dynamic>).cast<Map<String, dynamic>>()).map(
         (file) {
           return ProjectMediaModel.fromMap(file);
@@ -34,6 +37,7 @@ class ProjectModel {
     return {
       'name': name,
       'description': description,
+      'details': details,
       'media': media.map((file) {
         return file.toMap();
       }),

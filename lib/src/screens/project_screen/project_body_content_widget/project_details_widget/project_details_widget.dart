@@ -45,11 +45,43 @@ class ProjectDetailsWidget extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 10.0),
-        const Text(
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        Text(
+          project.description,
           textAlign: TextAlign.justify,
+          style: const TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        const SizedBox(height: 6.0),
+        const Text(
+          'O que irá encontrar:',
           style: TextStyle(
             color: Colors.white,
+            fontSize: 16.0,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(
+            top: 2.0,
+            left: 12.0,
+          ),
+          child: ListView.separated(
+            itemCount: project.details.length,
+            shrinkWrap: true,
+            separatorBuilder: (context, index) {
+              return const SizedBox(height: 2.0);
+            },
+            itemBuilder: (context, index) {
+              final detail = project.details[index];
+
+              return Text(
+                '• $detail',
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+              );
+            },
           ),
         ),
         const SizedBox(height: 20.0),
