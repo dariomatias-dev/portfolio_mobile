@@ -4,7 +4,7 @@ import 'package:portfolio/src/models/section_descriptions/section_descriptions_t
 final sectionDescriptionsContant = SectionDescriptionsModel(
   projects:
       'Abaixo encontrará uma seleção dos meus principais projetos, que construí usando as tecnologias que tenho conhecimento. Cada projeto aqui presente possuí imagens e vídeo como referencia, link de acesso ao código fonte (frontend, backend e/ou mobile) e demo (ou apk de instalação) caso esteja disponível, assim como uma lista das tecnologias usadas, bastando apenas apertar no card para ter acesso a essas informações.',
-  socialNetworks:
+  contacts:
       'Me acompanhe para manter-se atualizado sobre meu trabalho. Nas redes sociais compartilho dicas, projetos, notícias, novidades, dentre outros assuntos relacionados ao mundo da tecnologia. Vamos manter contato e compartilhar ideias!',
   technologies: sectionDescriptionsTechnologiesContant,
 );

@@ -5,28 +5,26 @@ import 'package:portfolio/src/core/ui/widgets/section_data_unavailable_widget.da
 
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 
-import 'package:portfolio/src/screens/home_screen/body_content_widget/social_networks_section_widget/social_network_card_widget.dart';
+import 'package:portfolio/src/screens/home_screen/body_content_widget/contacts_section_widget/contact_card_widget.dart';
 
 import 'package:portfolio/src/widgets/section_header_widget.dart';
 
-class SocialNetworksSectionWidget extends StatefulWidget {
-  const SocialNetworksSectionWidget({super.key});
+class ContactsSectionWidget extends StatefulWidget {
+  const ContactsSectionWidget({super.key});
 
   @override
-  State<SocialNetworksSectionWidget> createState() =>
-      _SocialNetworksSectionWidgetState();
+  State<ContactsSectionWidget> createState() => ContactksSectionWidgetState();
 }
 
-class _SocialNetworksSectionWidgetState
-    extends State<SocialNetworksSectionWidget> {
+class ContactksSectionWidgetState extends State<ContactsSectionWidget> {
   @override
   Widget build(BuildContext context) {
-    const sectionName = 'Redes Sociais';
-    const imageName = 'social_networks';
+    const sectionName = 'Contatos';
+    const imageName = 'contacts';
 
-    final socialNetworks = DataProviderInheritedWidget.of(context)?.contacts;
+    final contacts = DataProviderInheritedWidget.of(context)?.contacts;
 
-    return socialNetworks == null
+    return contacts == null
         ? const SectionDataUnavailableWidget(
             sectionName: sectionName,
           )
@@ -38,7 +36,7 @@ class _SocialNetworksSectionWidgetState
               ),
               const SizedBox(height: 20.0),
               Text(
-                sectionDescriptionsContant.socialNetworks,
+                sectionDescriptionsContant.contacts,
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
                   color: Colors.white,
@@ -59,13 +57,13 @@ class _SocialNetworksSectionWidgetState
                 child: ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: socialNetworks.length,
+                  itemCount: contacts.length,
                   itemBuilder: (context, index) {
-                    final socialNetwork = socialNetworks[index];
+                    final contact = contacts[index];
 
-                    return SocialNetworkCardWidget(
-                      socialNetworkName: socialNetwork.name,
-                      socialNetworkLink: socialNetwork.link,
+                    return ContactCardWidget(
+                      contactName: contact.name,
+                      contactLink: contact.link,
                     );
                   },
                 ),

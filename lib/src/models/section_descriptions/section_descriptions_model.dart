@@ -4,10 +4,10 @@ class SectionDescriptionsModel {
   SectionDescriptionsModel({
     required this.projects,
     required this.technologies,
-    required this.socialNetworks,
+    required this.contacts,
   });
 
   final String projects;
-  final String socialNetworks;
+  final String contacts;
   final SectionDescriptionsTechnologiesModel technologies;
 }

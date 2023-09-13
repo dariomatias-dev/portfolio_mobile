@@ -4,7 +4,7 @@ import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 
 import 'package:portfolio/src/screens/home_screen/body_content_widget/email_widget.dart';
 import 'package:portfolio/src/screens/home_screen/body_content_widget/projects_section_widget.dart';
-import 'package:portfolio/src/screens/home_screen/body_content_widget/social_networks_section_widget/social_networks_section_widget.dart';
+import 'package:portfolio/src/screens/home_screen/body_content_widget/contacts_section_widget/contacts_section_widget.dart';
 import 'package:portfolio/src/screens/home_screen/body_content_widget/technologies_section_widget/technologies_section_widget.dart';
 
 class BodyContentWidget extends StatelessWidget {
@@ -84,7 +84,7 @@ class BodyContentWidget extends StatelessWidget {
                 const SizedBox(height: 30.0),
                 const Divider(),
                 const SizedBox(height: 30.0),
-                const SocialNetworksSectionWidget(),
+                const ContactsSectionWidget(),
                 const SizedBox(height: 40.0),
               ],
             ),
