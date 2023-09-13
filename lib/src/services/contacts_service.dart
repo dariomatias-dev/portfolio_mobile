@@ -1,20 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:portfolio/src/models/social_network_model.dart';
+import 'package:portfolio/src/models/contact_model.dart';
 
-class SocialNetworksService {
+class ContactsService {
   final _db = FirebaseFirestore.instance;
 
-  Future<List<SocialNetworkModel>?> readSocialNetworks() async {
+  Future<List<ContactModel>?> readContacts() async {
     try {
-      final socialNetworksList = _db
-          .collection('social_networks')
+      final contactsList = _db
+          .collection('contacts')
           .withConverter(
             fromFirestore: (snapshot, options) {
-              return SocialNetworkModel.fromMap(snapshot.data()!);
+              return ContactModel.fromMap(snapshot.data()!);
             },
-            toFirestore: (socialNetwork, options) {
-              return socialNetwork.toMap();
+            toFirestore: (contact, options) {
+              return contact.toMap();
             },
           )
           .get()
@@ -24,7 +24,7 @@ class SocialNetworksService {
             }).toList();
           });
 
-      return socialNetworksList;
+      return contactsList;
     } catch (err) {
       return null;
     }

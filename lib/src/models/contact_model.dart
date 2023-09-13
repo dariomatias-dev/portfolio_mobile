@@ -1,5 +1,5 @@
-class SocialNetworkModel {
-  SocialNetworkModel({
+class ContactModel {
+  ContactModel({
     required this.link,
     required this.name,
   });
@@ -7,8 +7,8 @@ class SocialNetworkModel {
   final String name;
   final String link;
 
-  factory SocialNetworkModel.fromMap(Map<String, dynamic> map) {
-    return SocialNetworkModel(
+  factory ContactModel.fromMap(Map<String, dynamic> map) {
+    return ContactModel(
       link: map['link'],
       name: map['name'],
     );

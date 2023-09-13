@@ -24,8 +24,7 @@ class _SocialNetworksSectionWidgetState
     const sectionName = 'Redes Sociais';
     const imageName = 'social_networks';
 
-    final socialNetworks =
-        DataProviderInheritedWidget.of(context)?.socialNetworks;
+    final socialNetworks = DataProviderInheritedWidget.of(context)?.contacts;
 
     return socialNetworks == null
         ? const SectionDataUnavailableWidget(
