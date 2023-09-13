@@ -11,7 +11,7 @@
 
 <ul>
   <li>
-    Tela inicial, dividida nas seguintes seções: perfil, com foto, nome, endereço de email, localização e sobre mim; projetos, com todos os meus principais projetos criados; tecnologias, dividido em tecnologias que tenho conhecimento, as que estou estudando e as que tenho intenção de estudar futuramente; redes sociais, com todas as minhas redes sociais, que são o Linkedin, GitHub, Instagram, Twitter e Website próprio.
+    Tela inicial, dividida nas seguintes seções: perfil, com foto, nome, endereço de email, localização e sobre mim; projetos, com todos os meus principais projetos criados; tecnologias, dividido em tecnologias que tenho conhecimento, as que estou estudando e as que tenho intenção de estudar futuramente; contatos, com todas as minhas redes sociais, podendo usá-las para mandar uma mensagem, que são o Linkedin, GitHub, Instagram, Twitter e Website próprio.
   </li>
   <li>
     Tela de projeto, com um carrossel de imagens do projeto e talvez um vídeo de demonstrção, nome, descrição, o que irá encontrar, tecnologias usadas e link para o repositório com seu código fonte.
@@ -22,7 +22,8 @@
 </ul>
 
 ## Download APK
-Link do Drive para poder baixar o APK: [portfolio_mobile](https://drive.google.com/file/d/1xCbCJLsENZviyojvqL7UBsmLsY6oFlYd/view?usp=drive_link)
+
+Link do Drive para poder baixar o APK: [portfolio_mobile](https://drive.google.com/file/d/1pe4tgVPjt3Mfft3td1b8BVrok_hrx_Tp/view?usp=drive_link)
 
 ## Screenshots
 

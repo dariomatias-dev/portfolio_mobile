@@ -35,12 +35,12 @@ class _PortfolioAppState extends State<PortfolioApp> {
   final ProfileService profileService = ProfileService();
   final ProjectsService projectsService = ProjectsService();
   final TechnologiesService technologiesService = TechnologiesService();
-  final ContactsService socialNetworksService = ContactsService();
+  final ContactsService contactsService = ContactsService();
 
   ProfileModel? profile;
   List<ProjectModel>? projects;
   List<TechnologyModel>? technologies;
-  List<ContactModel>? socialNetworks;
+  List<ContactModel>? contacts;
 
   void setSplashScreenContext(BuildContext screenContext) {
     splashScreenContext = screenContext;
@@ -57,7 +57,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
       profileService.readProfile(),
       projectsService.readProjects(),
       technologiesService.readTechnologies(),
-      socialNetworksService.readContacts(),
+      contactsService.readContacts(),
     ];
 
     final results = await Future.wait(requests);
@@ -65,7 +65,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
     profile = results[0];
     projects = results[1];
     technologies = results[2];
-    socialNetworks = results[3];
+    contacts = results[3];
 
     setState(() {
       loadedData.value = true;
@@ -116,7 +116,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
       profile: profile,
       projects: projects,
       technologies: technologies,
-      contacts: socialNetworks,
+      contacts: contacts,
       child: AsyncStateBuilder(
         customLoader: const PortfolioLoader(),
         builder: (asyncNavigatorObserver) {
