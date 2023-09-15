@@ -38,6 +38,7 @@ class ProjectInfosDetailsWidget extends StatelessWidget {
 
               return Text(
                 '• $detail',
+                textAlign: TextAlign.justify,
                 style: const TextStyle(
                   color: Colors.white,
                 ),

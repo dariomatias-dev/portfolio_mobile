@@ -11,7 +11,10 @@ class OpenUrl {
   final BuildContext context;
 
   Future<void> launch(String url) async {
-    if (!await launchUrl(Uri.parse(url))) {
+    if (!await launchUrl(
+      Uri.parse(url),
+      mode: LaunchMode.externalApplication,
+    )) {
       _alertDialog();
     }
   }
