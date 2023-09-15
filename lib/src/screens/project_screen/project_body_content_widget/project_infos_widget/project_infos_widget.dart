@@ -25,7 +25,6 @@ class ProjectInfosWidget extends StatelessWidget {
             Text(
               project.name,
               style: const TextStyle(
-                color: Colors.white,
                 fontSize: 18.0,
                 fontWeight: FontWeight.w700,
               ),
@@ -49,9 +48,6 @@ class ProjectInfosWidget extends StatelessWidget {
         Text(
           project.description,
           textAlign: TextAlign.justify,
-          style: const TextStyle(
-            color: Colors.white,
-          ),
         ),
         const SizedBox(height: 6.0),
         ProjectInfosDetailsWidget(

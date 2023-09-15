@@ -36,7 +36,6 @@ class ScreenHeaderTemplateWidget extends StatelessWidget {
                   message: 'Sair',
                   child: Icon(
                     Icons.arrow_back_ios_new_rounded,
-                    color: Colors.white,
                     size: 16.0,
                   ),
                 ),

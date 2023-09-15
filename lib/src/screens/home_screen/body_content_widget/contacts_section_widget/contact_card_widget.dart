@@ -21,12 +21,8 @@ class ContactCardWidget extends StatelessWidget {
         height: 26,
       ),
       title: Text(contactName),
-      titleTextStyle: const TextStyle(
-        color: Colors.white,
-      ),
       trailing: const Icon(
         Icons.link,
-        color: Colors.white,
       ),
       onTap: () async {
         await launchUrl(

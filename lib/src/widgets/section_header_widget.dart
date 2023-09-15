@@ -33,7 +33,6 @@ class SectionHeaderWidget extends StatelessWidget {
             child: Text(
               sectionName,
               style: const TextStyle(
-                color: Colors.white,
                 letterSpacing: 4,
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,

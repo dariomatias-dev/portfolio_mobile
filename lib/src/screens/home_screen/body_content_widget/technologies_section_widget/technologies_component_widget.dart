@@ -27,7 +27,6 @@ class TechnologiesComponentWidget extends StatelessWidget {
           description,
           textAlign: TextAlign.justify,
           style: const TextStyle(
-            color: Colors.white,
             fontSize: 14,
           ),
         ),

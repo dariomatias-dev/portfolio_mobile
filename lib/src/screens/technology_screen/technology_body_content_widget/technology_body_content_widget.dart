@@ -22,10 +22,19 @@ class TechnologyBodyContentWidget extends StatelessWidget {
       context: screenContext,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Atenção'),
+          title: const Text(
+            'Atenção',
+            style: TextStyle(
+              color: Colors.black,
+            ),
+          ),
           content: const Text(
             'As informações sobre as empresas e aplicações que usam a tecnologia podem não estarem presentes, pelo motivo que nem sempre essas informações são divulgadas, sendo necessário olhar os códigos-fonte disponíveis.',
+            style: TextStyle(
+              color: Colors.black,
+            ),
           ),
+          backgroundColor: Colors.white,
           actions: [
             TextButton(
               onPressed: () {
@@ -76,7 +85,6 @@ class TechnologyBodyContentWidget extends StatelessWidget {
               Text(
                 technology.name,
                 style: const TextStyle(
-                  color: Colors.white,
                   fontSize: 20.0,
                   fontWeight: FontWeight.w500,
                 ),
@@ -90,9 +98,6 @@ class TechnologyBodyContentWidget extends StatelessWidget {
                 child: Text(
                   technology.description,
                   textAlign: TextAlign.justify,
-                  style: const TextStyle(
-                    color: Colors.white,
-                  ),
                 ),
               ),
               if (technology.userCompanies != null ||

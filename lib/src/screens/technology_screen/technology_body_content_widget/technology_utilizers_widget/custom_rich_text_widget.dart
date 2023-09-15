@@ -15,7 +15,6 @@ class CustomRichTextWidget extends StatelessWidget {
     return RichText(
       text: TextSpan(
         style: const TextStyle(
-          color: Colors.white,
           fontSize: 16.0,
         ),
         children: <TextSpan>[

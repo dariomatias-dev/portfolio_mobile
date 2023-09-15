@@ -41,9 +41,6 @@ class ProjectInfosTechnologiesWidget extends StatelessWidget {
             style: ElevatedButtonStyle.defaultStyle,
             child: Text(
               technologyName,
-              style: const TextStyle(
-                color: Colors.white,
-              ),
             ),
           );
         },

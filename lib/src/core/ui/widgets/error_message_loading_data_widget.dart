@@ -22,7 +22,6 @@ class ErrorMessageLoadingDataWidget extends StatelessWidget {
             child: Text(
               'Não foi possível carregar os dados $messageVariation',
               style: const TextStyle(
-                color: Colors.white,
                 fontSize: 14,
                 fontWeight: FontWeight.w700,
               ),

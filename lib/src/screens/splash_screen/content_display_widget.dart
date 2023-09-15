@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fade_out_particle/fade_out_particle.dart';
-import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 import 'package:video_player/video_player.dart';
+
+import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 
 class ContentDisplayWidget extends StatelessWidget {
   const ContentDisplayWidget({
@@ -52,7 +53,6 @@ class ContentDisplayWidget extends StatelessWidget {
         child: const Text(
           'Dário Matias',
           style: TextStyle(
-            color: Colors.white,
             fontSize: 26,
             fontWeight: FontWeight.bold,
           ),

@@ -27,7 +27,6 @@ class TechnologyProjectsWidget extends StatelessWidget {
           const Text(
             'Projetos que usam',
             style: TextStyle(
-              color: Colors.white,
               fontSize: 16.0,
               fontWeight: FontWeight.w500,
             ),

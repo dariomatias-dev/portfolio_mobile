@@ -16,7 +16,6 @@ class ProjectInfosDetailsWidget extends StatelessWidget {
         const Text(
           'O que irá encontrar:',
           style: TextStyle(
-            color: Colors.white,
             fontSize: 16.0,
             fontWeight: FontWeight.w500,
           ),
@@ -39,9 +38,6 @@ class ProjectInfosDetailsWidget extends StatelessWidget {
               return Text(
                 '• $detail',
                 textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
               );
             },
           ),

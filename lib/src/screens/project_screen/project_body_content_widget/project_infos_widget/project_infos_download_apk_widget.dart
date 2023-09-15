@@ -23,7 +23,6 @@ class ProjectInfosDownloadApkWidget extends StatelessWidget {
             textAlign: TextAlign.center,
             softWrap: true,
             style: TextStyle(
-              color: Colors.white,
               fontSize: 16.0,
               fontWeight: FontWeight.w500,
             ),

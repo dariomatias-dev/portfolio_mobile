@@ -38,7 +38,6 @@ class BodyContentWidget extends StatelessWidget {
                     Text(
                       profile.name,
                       style: const TextStyle(
-                        color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
                       ),
@@ -69,9 +68,6 @@ class BodyContentWidget extends StatelessWidget {
                   profile.description,
                   textAlign: TextAlign.justify,
                   softWrap: true,
-                  style: const TextStyle(
-                    color: Colors.white,
-                  ),
                 ),
                 const SizedBox(height: 20.0),
                 const Divider(),

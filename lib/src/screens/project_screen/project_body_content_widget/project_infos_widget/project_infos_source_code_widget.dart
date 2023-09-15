@@ -13,7 +13,6 @@ class ProjectInfosSourceCodeWidget extends StatelessWidget {
   final ProjectSourceCodeModel sourceCode;
 
   static TextStyle titleStyle = const TextStyle(
-    color: Colors.white,
     fontSize: 16.0,
     fontWeight: FontWeight.w500,
   );

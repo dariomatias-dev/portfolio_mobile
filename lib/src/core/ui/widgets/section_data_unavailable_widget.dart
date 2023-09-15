@@ -13,9 +13,6 @@ class SectionDataUnavailableWidget extends StatelessWidget {
     return Center(
       child: Text(
         'Não foi possível carregar a seção ${sectionName.toLowerCase()}.',
-        style: const TextStyle(
-          color: Colors.white,
-        ),
       ),
     );
   }

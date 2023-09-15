@@ -37,9 +37,6 @@ class _ProjectsSectionWidgetState extends State<ProjectsSectionWidget> {
               Text(
                 sectionDescriptionsContant.projects,
                 textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
               ),
               const SizedBox(height: 40.0),
               ProjectCardListViewWidget(

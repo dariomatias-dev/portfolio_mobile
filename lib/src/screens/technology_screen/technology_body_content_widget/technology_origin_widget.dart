@@ -25,47 +25,56 @@ class TechnologyOriginWidget extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
-            width: sizedBoxWidth,
-            child: Column(
-              children: [
-                const Text(
-                  'Criado por:',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  createdBy,
-                  softWrap: true,
-                  textAlign: TextAlign.justify,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ),
+          TechnologyOriginContentWidget(
+            title: 'Criado por:',
+            content: createdBy,
+            sizedBoxWidth: sizedBoxWidth,
           ),
           const SizedBox(width: 10.0),
-          SizedBox(
-            width: sizedBoxWidth,
-            child: Column(
-              children: [
-                const Text(
-                  'Lançado em:',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  createdIn,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
+          TechnologyOriginContentWidget(
+            title: 'Lançado em:',
+            content: createdIn,
+            sizedBoxWidth: sizedBoxWidth,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TechnologyOriginContentWidget extends StatelessWidget {
+  const TechnologyOriginContentWidget({
+    super.key,
+    required this.title,
+    required this.content,
+    required this.sizedBoxWidth,
+  });
+
+  final String title;
+  final String content;
+  final double sizedBoxWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: sizedBoxWidth,
+      child: Column(
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 16.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            content,
+            softWrap: true,
+            textAlign: TextAlign.justify,
+            style: const TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ],

@@ -54,9 +54,6 @@ class ProjectCardWidget extends StatelessWidget {
                 child: Center(
                   child: Text(
                     projectName,
-                    style: const TextStyle(
-                      color: Colors.white,
-                    ),
                   ),
                 ),
               ),

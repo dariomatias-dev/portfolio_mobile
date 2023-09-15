@@ -38,9 +38,6 @@ class ContactksSectionWidgetState extends State<ContactsSectionWidget> {
               Text(
                 sectionDescriptionsContant.contacts,
                 textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
               ),
               const SizedBox(height: 40.0),
               Container(

@@ -24,9 +24,6 @@ class LinkButtonWidget extends StatelessWidget {
       style: ElevatedButtonStyle.defaultStyle,
       child: Text(
         name,
-        style: const TextStyle(
-          color: Colors.white,
-        ),
       ),
     );
   }

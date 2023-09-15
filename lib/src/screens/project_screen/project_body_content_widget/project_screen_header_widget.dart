@@ -12,10 +12,19 @@ class ProjectScreenHeaderWidget extends StatelessWidget {
       context: screenContext,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Informação'),
+          title: const Text(
+            'Informação',
+            style: TextStyle(
+              color: Colors.black,
+            ),
+          ),
           content: const Text(
             'Se estiver assistindo a um vídeo e desejar ver outros conteúdos, basta deslizar para a esquerda ou direita na parte inferior para retroceder ou avançar.',
+            style: TextStyle(
+              color: Colors.black,
+            ),
           ),
+          backgroundColor: Colors.white,
           actions: [
             TextButton(
               onPressed: () {
