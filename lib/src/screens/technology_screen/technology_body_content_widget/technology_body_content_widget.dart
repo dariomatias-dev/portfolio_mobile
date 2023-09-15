@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import 'package:portfolio/src/core/ui/helpers/show_alert_dialog.dart';
+
 import 'package:portfolio/src/models/project/project_model.dart';
 import 'package:portfolio/src/models/technology/technology_references_model.dart';
 
@@ -18,33 +20,14 @@ class TechnologyBodyContentWidget extends StatelessWidget {
   const TechnologyBodyContentWidget({super.key});
 
   void _showAlertDialog(BuildContext screenContext) {
-    showDialog(
-      context: screenContext,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text(
-            'Atenção',
-            style: TextStyle(
-              color: Colors.black,
-            ),
-          ),
-          content: const Text(
-            'As informações sobre as empresas e aplicações que usam a tecnologia podem não estarem presentes, pelo motivo que nem sempre essas informações são divulgadas, sendo necessário olhar os códigos-fonte disponíveis.',
-            style: TextStyle(
-              color: Colors.black,
-            ),
-          ),
-          backgroundColor: Colors.white,
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Ok'),
-            ),
-          ],
-        );
-      },
+    const String title = 'Atenção';
+    const String content =
+        'As informações sobre as empresas e aplicações que usam a tecnologia podem não estarem presentes, pelo motivo que nem sempre essas informações são divulgadas, sendo necessário olhar os códigos-fonte disponíveis.';
+
+    ShowAlertDialog().show(
+      screenContext,
+      title,
+      content,
     );
   }
 
