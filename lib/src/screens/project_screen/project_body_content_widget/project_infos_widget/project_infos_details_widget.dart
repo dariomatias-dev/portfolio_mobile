@@ -29,6 +29,7 @@ class ProjectInfosDetailsWidget extends StatelessWidget {
           child: ListView.separated(
             itemCount: details.length,
             shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             separatorBuilder: (context, index) {
               return const SizedBox(height: 2.0);
             },

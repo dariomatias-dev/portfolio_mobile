@@ -5,6 +5,7 @@ import 'package:portfolio/src/core/ui/helpers/open_url.dart';
 import 'package:portfolio/src/providers/project_data_provider_inherited_widget.dart';
 
 import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_infos_widget/project_infos_details_widget.dart';
+import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_infos_widget/project_infos_download_apk_widget.dart';
 import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_infos_widget/project_infos_source_code_widget.dart';
 import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_infos_widget/project_infos_technologies_widget.dart';
 
@@ -62,6 +63,12 @@ class ProjectInfosWidget extends StatelessWidget {
         ),
         const SizedBox(height: 10.0),
         const Divider(),
+        if (project.links.downloadApk != null) ...[
+          ProjectInfosDownloadApkWidget(
+            link: project.links.downloadApk!,
+          ),
+          const Divider(),
+        ],
         const SizedBox(height: 10.0),
         ProjectInfosSourceCodeWidget(
           sourceCode: project.links.sourceCode,
