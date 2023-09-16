@@ -1,48 +1,35 @@
-import 'package:portfolio/src/models/project/project_media_model.dart';
-import 'package:portfolio/src/models/project/project_links_model.dart';
+import 'package:portfolio/src/models/project/project_backend_model.dart';
+import 'package:portfolio/src/models/project/project_frontend_model.dart';
+import 'package:portfolio/src/models/project/project_mobile_model.dart';
 
 class ProjectModel {
   ProjectModel({
     required this.name,
-    required this.description,
-    required this.details,
-    required this.media,
-    required this.technologies,
-    required this.links,
+    required this.frontend,
+    required this.backend,
+    required this.mobile,
   });
 
   final String name;
-  final String description;
-  final List<String> details;
-  final List<ProjectMediaModel> media;
-  final List<String> technologies;
-  final ProjectLinksModel links;
+  final ProjectFrontendModel? frontend;
+  final ProjectBackendModel? backend;
+  final ProjectMobileModel? mobile;
 
   factory ProjectModel.fromMap(Map<String, dynamic> map) {
     return ProjectModel(
       name: map['name'],
-      description: map['description'],
-      details: (map['details'] as List<dynamic>).cast<String>(),
-      media: ((map['media'] as List<dynamic>).cast<Map<String, dynamic>>()).map(
-        (file) {
-          return ProjectMediaModel.fromMap(file);
-        },
-      ).toList(),
-      technologies: (map['technologies'] as List<dynamic>).cast<String>(),
-      links: ProjectLinksModel.fromMap(map['links']),
+      frontend: ProjectFrontendModel.fromMap(map['frontend']),
+      backend: ProjectBackendModel.fromMap(map['backend']),
+      mobile: ProjectMobileModel.fromMap(map['mobile']),
     );
   }
 
   toMap() {
     return {
       'name': name,
-      'description': description,
-      'details': details,
-      'media': media.map((file) {
-        return file.toMap();
-      }),
-      'technologies': technologies,
-      'links': links.toMap(),
+      'frontend': frontend?.toMap(),
+      'backend': backend?.toMap(),
+      'mobile': mobile?.toMap(),
     };
   }
 }
