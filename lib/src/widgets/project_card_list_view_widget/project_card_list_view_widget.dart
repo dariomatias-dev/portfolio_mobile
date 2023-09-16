@@ -8,9 +8,11 @@ class ProjectCardListViewWidget extends StatelessWidget {
   const ProjectCardListViewWidget({
     super.key,
     required this.projects,
+    required this.screenContext,
   });
 
   final List<ProjectModel> projects;
+  final BuildContext screenContext;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +38,7 @@ class ProjectCardListViewWidget extends StatelessWidget {
           return ProjectCardWidget(
             projectName: project.name,
             projectImageUrl: projectImageUrl!,
+            screenContext: screenContext,
           );
         },
       ),

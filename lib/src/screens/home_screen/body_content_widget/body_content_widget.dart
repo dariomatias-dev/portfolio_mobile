@@ -8,7 +8,12 @@ import 'package:portfolio/src/screens/home_screen/body_content_widget/contacts_s
 import 'package:portfolio/src/screens/home_screen/body_content_widget/technologies_section_widget/technologies_section_widget.dart';
 
 class BodyContentWidget extends StatelessWidget {
-  const BodyContentWidget({super.key});
+  const BodyContentWidget({
+    super.key,
+    required this.screenContext,
+  });
+
+  final BuildContext screenContext;
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +77,9 @@ class BodyContentWidget extends StatelessWidget {
                 const SizedBox(height: 20.0),
                 const Divider(),
                 const SizedBox(height: 30.0),
-                const ProjectsSectionWidget(),
+                ProjectsSectionWidget(
+                  screenContext: screenContext,
+                ),
                 const SizedBox(height: 30.0),
                 const Divider(),
                 const SizedBox(height: 30.0),

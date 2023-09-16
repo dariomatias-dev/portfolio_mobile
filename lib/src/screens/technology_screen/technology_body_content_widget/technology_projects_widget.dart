@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/models/project/project_model.dart';
+import 'package:portfolio/src/providers/technology_data_provider_inherited_widget.dart';
 
 import 'package:portfolio/src/widgets/project_card_list_view_widget/project_card_list_view_widget.dart';
 
@@ -14,6 +15,9 @@ class TechnologyProjectsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenContext =
+        TechnologyDataProviderInheritedWidget.of(context)!.screenContext;
+
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 10.0,
@@ -34,6 +38,7 @@ class TechnologyProjectsWidget extends StatelessWidget {
           const SizedBox(height: 17.0),
           ProjectCardListViewWidget(
             projects: technologyProjects,
+            screenContext: screenContext,
           ),
         ],
       ),

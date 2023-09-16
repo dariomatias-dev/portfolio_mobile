@@ -11,9 +11,11 @@ class ProjectScreen extends StatelessWidget {
   const ProjectScreen({
     super.key,
     required this.projectName,
+    required this.developmentArea,
   });
 
   final String projectName;
+  final String developmentArea;
 
   ProjectModel? setProject(BuildContext context) {
     final projects = DataProviderInheritedWidget.of(context)?.projects;
@@ -27,6 +29,8 @@ class ProjectScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final project = setProject(context);
+    print(developmentArea);
+    print('-----------------------------------------------------------------------------------------------------------------------------------------------------');
 
     return Scaffold(
       body: SafeArea(

@@ -22,11 +22,13 @@ class HomeScreen extends StatelessWidget {
                 height: 130.0,
                 width: double.maxFinite,
               ),
-              const Padding(
-                padding: EdgeInsets.only(
+              Padding(
+                padding: const EdgeInsets.only(
                   top: 120.0,
                 ),
-                child: BodyContentWidget(),
+                child: BodyContentWidget(
+                  screenContext: context,
+                ),
               ),
               Positioned(
                 top: 120.0,

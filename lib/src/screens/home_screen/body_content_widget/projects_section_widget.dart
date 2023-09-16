@@ -9,7 +9,12 @@ import 'package:portfolio/src/widgets/project_card_list_view_widget/project_card
 import 'package:portfolio/src/widgets/section_header_widget.dart';
 
 class ProjectsSectionWidget extends StatefulWidget {
-  const ProjectsSectionWidget({super.key});
+  const ProjectsSectionWidget({
+    super.key,
+    required this.screenContext,
+  });
+
+  final BuildContext screenContext;
 
   @override
   State<ProjectsSectionWidget> createState() => _ProjectsSectionWidgetState();
@@ -41,6 +46,7 @@ class _ProjectsSectionWidgetState extends State<ProjectsSectionWidget> {
               const SizedBox(height: 40.0),
               ProjectCardListViewWidget(
                 projects: projects,
+                screenContext: widget.screenContext,
               ),
             ],
           );
