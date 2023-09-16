@@ -44,7 +44,16 @@ class TechnologyBodyContentWidget extends StatelessWidget {
     final projects = DataProviderInheritedWidget.of(context)?.projects;
     final List<ProjectModel> technologyProjects = projects?.where(
           (element) {
-            return element.technologies.contains(technology.name);
+            final frontendContains =
+                element.frontend?.technologies.contains(technology.name) ??
+                    false;
+            final mobileContains =
+                element.mobile?.technologies.contains(technology.name) ?? false;
+            final backendContains =
+                element.backend?.technologies.contains(technology.name) ??
+                    false;
+
+            return frontendContains || mobileContains || backendContains;
           },
         ).toList() ??
         [];

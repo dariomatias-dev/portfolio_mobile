@@ -24,10 +24,18 @@ class ProjectCardListViewWidget extends StatelessWidget {
         },
         itemBuilder: (context, index) {
           final project = projects[index];
+          late final String? projectImageUrl;
+          if (project.frontend != null) {
+            projectImageUrl = project.frontend?.media[0].url;
+          } else if (project.mobile != null) {
+            projectImageUrl = project.mobile?.media[0].url;
+          } else {
+            projectImageUrl = project.backend?.media[0].url;
+          }
 
           return ProjectCardWidget(
             projectName: project.name,
-            projectImageUrl: project.media[0].url,
+            projectImageUrl: projectImageUrl!,
           );
         },
       ),

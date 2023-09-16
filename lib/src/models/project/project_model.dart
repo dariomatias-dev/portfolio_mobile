@@ -18,9 +18,15 @@ class ProjectModel {
   factory ProjectModel.fromMap(Map<String, dynamic> map) {
     return ProjectModel(
       name: map['name'],
-      frontend: ProjectFrontendModel.fromMap(map['frontend']),
-      backend: ProjectBackendModel.fromMap(map['backend']),
-      mobile: ProjectMobileModel.fromMap(map['mobile']),
+      frontend: map['frontend'] != null
+          ? ProjectFrontendModel.fromMap(map['frontend'])
+          : null,
+      backend: map['backend'] != null
+          ? ProjectBackendModel.fromMap(map['backend'])
+          : null,
+      mobile: map['mobile'] != null
+          ? ProjectMobileModel.fromMap(map['mobile'])
+          : null,
     );
   }
 

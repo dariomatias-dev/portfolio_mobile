@@ -17,7 +17,7 @@ class ProjectFrontendModel extends ProjectDefaultValuesModel {
           sourceCode: sourceCode,
         );
 
-  final String demo;
+  final String? demo;
 
   factory ProjectFrontendModel.fromMap(Map<String, dynamic> map) {
     return ProjectFrontendModel(
