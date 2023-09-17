@@ -28,10 +28,10 @@ class _MediaCarouselWidgetState extends State<MediaCarouselWidget> {
 
     if (developmentArea == 'frontend') {
       media = project.frontend!.media;
-    } else if (developmentArea == 'mobile') {
-      media = project.mobile!.media;
-    } else {
+    } else if (developmentArea == 'backend') {
       media = project.backend!.media;
+    } else {
+      media = project.mobile!.media;
     }
 
     return Stack(
