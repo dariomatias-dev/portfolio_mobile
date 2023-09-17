@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/models/project/project_model.dart';
 
-import 'package:portfolio/src/widgets/project_card_list_view_widget/project_card_widget.dart';
+import 'package:portfolio/src/widgets/project_card_list_view_widget/project_card_widget/project_card_widget.dart';
 
 class ProjectCardListViewWidget extends StatelessWidget {
   const ProjectCardListViewWidget({
