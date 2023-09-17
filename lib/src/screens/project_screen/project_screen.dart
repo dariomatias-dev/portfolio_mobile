@@ -8,6 +8,7 @@ import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 import 'package:portfolio/src/providers/project_data_provider_inherited_widget.dart';
 
 import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_body_content_widget.dart';
+import 'package:portfolio/src/screens/project_screen/project_screen_header_widget.dart';
 
 class ProjectScreen extends StatelessWidget {
   const ProjectScreen({
@@ -40,7 +41,12 @@ class ProjectScreen extends StatelessWidget {
                   screenContext: context,
                   project: project,
                   developmentArea: developmentArea,
-                  child: const ProjectBodyContentWidget(),
+                  child: const Stack(
+                    children: [
+                      ProjectBodyContentWidget(),
+                      ProjectScreenHeaderWidget(),
+                    ],
+                  ),
                 )
               : ErrorMessageLoadingDataWidget(
                   messageVariation: 'do projeto',

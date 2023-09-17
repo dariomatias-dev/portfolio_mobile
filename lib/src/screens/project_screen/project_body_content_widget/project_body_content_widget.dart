@@ -6,17 +6,13 @@ class ProjectBodyContentWidget extends StatelessWidget {
   const ProjectBodyContentWidget({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Stack(
+    return const Column(
       children: [
-        Column(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(28.0),
-              ),
-              child: MediaCarouselWidget(),
-            ),
-          ],
+        ClipRRect(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(28.0),
+          ),
+          child: MediaCarouselWidget(),
         ),
       ],
     );
