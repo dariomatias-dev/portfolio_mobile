@@ -7,10 +7,12 @@ class ProjectDataProviderInheritedWidget extends InheritedWidget {
     required final Widget child,
     required this.screenContext,
     required this.project,
+    required this.developmentArea,
   }) : super(child: child);
 
   final BuildContext screenContext;
   final ProjectModel project;
+  final String developmentArea;
 
   static ProjectDataProviderInheritedWidget? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<
