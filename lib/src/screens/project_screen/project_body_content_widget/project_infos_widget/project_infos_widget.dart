@@ -6,6 +6,7 @@ import 'package:portfolio/src/core/ui/helpers/open_url.dart';
 import 'package:portfolio/src/providers/project_data_provider_inherited_widget.dart';
 
 import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_infos_widget/project_infos_details_widget.dart';
+import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_infos_widget/project_infos_technologies_widget.dart';
 
 class ProjectInfosWidget extends StatelessWidget {
   const ProjectInfosWidget({super.key});
@@ -17,19 +18,23 @@ class ProjectInfosWidget extends StatelessWidget {
         ProjectDataProviderInheritedWidget.of(context)!.developmentArea;
     late final String projectDescription;
     late final List<String> projectDetails;
+    late final List<String> technologies;
     late final String sourceCode;
 
     if (developmentArea == 'frontend') {
       projectDescription = project.frontend!.description;
       projectDetails = project.frontend!.details;
+      technologies = project.frontend!.technologies;
       sourceCode = project.frontend!.sourceCode;
     } else if (developmentArea == 'backend') {
       projectDescription = project.backend!.description;
       projectDetails = project.backend!.details;
+      technologies = project.backend!.technologies;
       sourceCode = project.backend!.sourceCode;
     } else {
       projectDescription = project.mobile!.description;
       projectDetails = project.mobile!.details;
+      technologies = project.mobile!.technologies;
       sourceCode = project.mobile!.sourceCode;
     }
 
@@ -56,6 +61,10 @@ class ProjectInfosWidget extends StatelessWidget {
         const SizedBox(height: 6.0),
         ProjectInfosDetailsWidget(
           details: projectDetails,
+        ),
+        const SizedBox(height: 20.0),
+        ProjectInfosTechnologiesWidget(
+          technologies: technologies,
         ),
         const SizedBox(height: 10.0),
         const Divider(),
