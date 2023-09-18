@@ -16,6 +16,9 @@ class ProjectInfosWidget extends StatelessWidget {
     final project = ProjectDataProviderInheritedWidget.of(context)!.project;
     final developmentArea =
         ProjectDataProviderInheritedWidget.of(context)!.developmentArea;
+    final developmentAreaNameCapitalized =
+        developmentArea[0].toUpperCase() + developmentArea.substring(1);
+
     late final String projectDescription;
     late final List<String> projectDetails;
     late final List<String> technologies;
@@ -45,7 +48,7 @@ class ProjectInfosWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              project.name,
+              '${project.name} - $developmentAreaNameCapitalized',
               style: const TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.w700,
@@ -78,11 +81,7 @@ class ProjectInfosWidget extends StatelessWidget {
                 context: context,
               ).launch(sourceCode);
             },
-            style: ElevatedButtonStyle.defaultStyle.copyWith(
-              backgroundColor: MaterialStatePropertyAll(
-                Colors.grey.withOpacity(0.1),
-              ),
-            ),
+            style: ElevatedButtonStyle.defaultStyle,
             child: const Text('Código fonte'),
           ),
         )

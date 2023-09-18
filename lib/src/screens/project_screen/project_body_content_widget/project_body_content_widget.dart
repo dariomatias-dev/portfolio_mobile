@@ -17,6 +17,7 @@ class ProjectBodyContentWidget extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.only(
+            top: 6.0,
             right: 10.0,
             bottom: 20.0,
             left: 10.0,
