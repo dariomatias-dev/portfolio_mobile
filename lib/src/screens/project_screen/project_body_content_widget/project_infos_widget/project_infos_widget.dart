@@ -24,11 +24,16 @@ class ProjectInfosWidget extends StatelessWidget {
     late final List<String> technologies;
     late final String sourceCode;
 
+    String? urlAccessProject;
+    IconData? accessProjectButtonIcon;
+
     if (developmentArea == 'frontend') {
       projectDescription = project.frontend!.description;
       projectDetails = project.frontend!.details;
       technologies = project.frontend!.technologies;
       sourceCode = project.frontend!.sourceCode;
+      urlAccessProject = project.frontend!.demo;
+      accessProjectButtonIcon = Icons.visibility_outlined;
     } else if (developmentArea == 'backend') {
       projectDescription = project.backend!.description;
       projectDetails = project.backend!.details;
@@ -39,6 +44,8 @@ class ProjectInfosWidget extends StatelessWidget {
       projectDetails = project.mobile!.details;
       technologies = project.mobile!.technologies;
       sourceCode = project.mobile!.sourceCode;
+      urlAccessProject = project.mobile!.downloadApk;
+      accessProjectButtonIcon = Icons.download_sharp;
     }
 
     return Column(
@@ -54,6 +61,19 @@ class ProjectInfosWidget extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
             ),
+            if (urlAccessProject != null)
+              IconButton(
+                onPressed: () {
+                  OpenUrl(
+                    context: context,
+                  ).launch(urlAccessProject!);
+                },
+                icon: Icon(
+                  accessProjectButtonIcon,
+                  color: Colors.white54,
+                  size: 28.0,
+                ),
+              ),
           ],
         ),
         const SizedBox(height: 10.0),
