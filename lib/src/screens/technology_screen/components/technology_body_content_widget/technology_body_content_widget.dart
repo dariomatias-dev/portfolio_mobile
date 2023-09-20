@@ -9,10 +9,10 @@ import 'package:portfolio/src/models/technology/technology_references_model.dart
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 import 'package:portfolio/src/providers/technology_data_provider_inherited_widget.dart';
 
-import 'package:portfolio/src/screens/technology_screen/technology_body_content_widget/technology_links_widget.dart';
-import 'package:portfolio/src/screens/technology_screen/technology_body_content_widget/technology_origin_widget.dart';
-import 'package:portfolio/src/screens/technology_screen/technology_body_content_widget/technology_projects_widget.dart';
-import 'package:portfolio/src/screens/technology_screen/technology_body_content_widget/technology_utilizers_widget/technology_utilizers_widget.dart';
+import 'package:portfolio/src/screens/technology_screen/components/technology_body_content_widget/technology_links_widget.dart';
+import 'package:portfolio/src/screens/technology_screen/components/technology_body_content_widget/technology_origin_widget.dart';
+import 'package:portfolio/src/screens/technology_screen/components/technology_body_content_widget/technology_projects_widget.dart';
+import 'package:portfolio/src/screens/technology_screen/components/technology_body_content_widget/technology_utilizers_widget/technology_utilizers_widget.dart';
 
 import 'package:portfolio/src/widgets/screen_header_template_widget.dart';
 

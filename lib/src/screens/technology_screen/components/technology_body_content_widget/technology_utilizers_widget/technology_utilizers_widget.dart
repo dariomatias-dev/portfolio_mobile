@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:portfolio/src/screens/technology_screen/technology_body_content_widget/technology_utilizers_widget/custom_rich_text_widget.dart';
+import 'package:portfolio/src/screens/technology_screen/components/technology_body_content_widget/technology_utilizers_widget/custom_rich_text_widget.dart';
 
 class TechnologyUtilizersWidget extends StatelessWidget {
   const TechnologyUtilizersWidget({
