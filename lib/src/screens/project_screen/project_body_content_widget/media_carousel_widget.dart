@@ -46,19 +46,8 @@ class _MediaCarouselWidgetState extends State<MediaCarouselWidget> {
             itemCount: media.length,
             options: CarouselOptions(
               aspectRatio: 16 / 9,
-              autoPlay: true,
-              autoPlayInterval: const Duration(seconds: 10),
               autoPlayAnimationDuration: const Duration(seconds: 1),
               autoPlayCurve: Curves.fastOutSlowIn,
-              onPageChanged: (index, reason) {
-                setState(() {
-                  currentImageIndex = index;
-                });
-
-                if (media[index].type == 'video') {
-                  controller.stopAutoPlay();
-                }
-              },
               viewportFraction: 1.0,
             ),
             itemBuilder: (context, index, realIndex) {
@@ -83,9 +72,6 @@ class _MediaCarouselWidgetState extends State<MediaCarouselWidget> {
                       autoPlay: true,
                     ),
                   ),
-                  onEnded: (metaData) {
-                    controller.startAutoPlay();
-                  },
                 ),
                 builder: (context, player) {
                   return player;
