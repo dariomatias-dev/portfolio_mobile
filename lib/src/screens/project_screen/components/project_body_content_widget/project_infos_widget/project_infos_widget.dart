@@ -5,8 +5,8 @@ import 'package:portfolio/src/core/ui/helpers/open_url.dart';
 
 import 'package:portfolio/src/providers/project_data_provider_inherited_widget.dart';
 
-import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_infos_widget/project_infos_details_widget.dart';
-import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_infos_widget/project_infos_technologies_widget.dart';
+import 'package:portfolio/src/screens/project_screen/components/project_body_content_widget/project_infos_widget/project_infos_details_widget.dart';
+import 'package:portfolio/src/screens/project_screen/components/project_body_content_widget/project_infos_widget/project_infos_technologies_widget.dart';
 
 class ProjectInfosWidget extends StatelessWidget {
   const ProjectInfosWidget({super.key});

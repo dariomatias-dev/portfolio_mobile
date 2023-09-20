@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:portfolio/src/screens/project_screen/project_body_content_widget/media_carousel_widget.dart';
-import 'package:portfolio/src/screens/project_screen/project_body_content_widget/project_infos_widget/project_infos_widget.dart';
+import 'package:portfolio/src/screens/project_screen/components/project_body_content_widget/media_carousel_widget.dart';
+import 'package:portfolio/src/screens/project_screen/components/project_body_content_widget/project_infos_widget/project_infos_widget.dart';
 
 class ProjectBodyContentWidget extends StatelessWidget {
   const ProjectBodyContentWidget({super.key});
