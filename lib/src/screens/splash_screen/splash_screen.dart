@@ -4,8 +4,8 @@ import 'package:video_player/video_player.dart';
 
 import 'package:portfolio/src/core/ui/portfolio_videos.dart';
 
-import 'package:portfolio/src/screens/splash_screen/background_video_widget.dart';
-import 'package:portfolio/src/screens/splash_screen/content_display_widget.dart';
+import 'package:portfolio/src/screens/splash_screen/components/background_video_widget.dart';
+import 'package:portfolio/src/screens/splash_screen/components/content_display_widget.dart';
 
 void main() => runApp(const SplashScreen());
 
