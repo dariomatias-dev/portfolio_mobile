@@ -5,7 +5,7 @@ import 'package:portfolio/src/core/ui/widgets/section_data_unavailable_widget.da
 
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 
-import 'package:portfolio/src/screens/home_screen/body_content_widget/contacts_section_widget/contact_card_widget.dart';
+import 'package:portfolio/src/screens/home_screen/components/body_content_widget/contacts_section_widget/contact_card_widget.dart';
 
 import 'package:portfolio/src/widgets/section_header_widget.dart';
 

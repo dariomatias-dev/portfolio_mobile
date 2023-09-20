@@ -7,7 +7,7 @@ import 'package:portfolio/src/models/technology/technology_model.dart';
 
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 
-import 'package:portfolio/src/screens/home_screen/body_content_widget/technologies_section_widget/technologies_component_widget.dart';
+import 'package:portfolio/src/screens/home_screen/components/body_content_widget/technologies_section_widget/technologies_component_widget.dart';
 
 import 'package:portfolio/src/widgets/section_header_widget.dart';
 

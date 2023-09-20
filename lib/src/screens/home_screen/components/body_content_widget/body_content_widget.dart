@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:portfolio/src/providers/data_provider_inherited_widget.dart';
 
-import 'package:portfolio/src/screens/home_screen/body_content_widget/email_widget.dart';
-import 'package:portfolio/src/screens/home_screen/body_content_widget/projects_section_widget.dart';
-import 'package:portfolio/src/screens/home_screen/body_content_widget/contacts_section_widget/contacts_section_widget.dart';
-import 'package:portfolio/src/screens/home_screen/body_content_widget/technologies_section_widget/technologies_section_widget.dart';
+import 'package:portfolio/src/screens/home_screen/components/body_content_widget/email_widget.dart';
+import 'package:portfolio/src/screens/home_screen/components/body_content_widget/projects_section_widget.dart';
+import 'package:portfolio/src/screens/home_screen/components/body_content_widget/contacts_section_widget/contacts_section_widget.dart';
+import 'package:portfolio/src/screens/home_screen/components/body_content_widget/technologies_section_widget/technologies_section_widget.dart';
 
 class BodyContentWidget extends StatelessWidget {
   const BodyContentWidget({
